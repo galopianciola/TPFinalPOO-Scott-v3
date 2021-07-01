@@ -21,7 +21,6 @@ public class Main extends Application {
         URL url = new File("src/main/java/ui/login.fxml").toURI().toURL();
         Parent root = FXMLLoader.load(url);
 
-        //Parent root = FXMLLoader.load(getClass().getResource("login.fxml"));
         primaryStage.setTitle("Scott Login");
         primaryStage.setScene(new Scene(root, 600, 400));
         primaryStage.show();
