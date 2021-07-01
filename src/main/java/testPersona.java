@@ -1,3 +1,5 @@
+import models.Persona;
+
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
@@ -11,7 +13,7 @@ public class testPersona {
         emf = Persistence.createEntityManagerFactory("Persistencia");
         manager = emf.createEntityManager();
 
-        List <Persona> personas = (List<Persona>)manager.createQuery("FROM Persona").getResultList();
+        List <Persona> personas = (List<Persona>)manager.createQuery("FROM models.Persona").getResultList();
         System.out.println("Hay "+personas.size()+ " empleados en el sistema");
 
             Persona p = new Persona(41525,"Julian","Wagner","urquiza y Fal",225845);
@@ -26,7 +28,7 @@ public class testPersona {
 
     }
     private static void imprimirTodo(){
-        List <Persona> personas = (List<Persona>)manager.createQuery("FROM Persona").getResultList();
+        List <Persona> personas = (List<Persona>)manager.createQuery("FROM models.Persona").getResultList();
         System.out.println("Hay "+personas.size()+ " empleados en el sistema");
         for(Persona p:personas){
             System.out.println(p.toString());
