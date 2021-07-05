@@ -9,7 +9,7 @@
    <children>
       <ImageView fitHeight="104.0" fitWidth="105.0" layoutX="249.0" layoutY="34.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../../../../TPFinalPOO-Scott-v2/src/img/logo-scott.png" />
+            <Image url="@../img/logo-scott.png" />
          </image>
       </ImageView>
       <Button fx:id="resumenButton" layoutX="61.0" layoutY="173.0" mnemonicParsing="false" prefHeight="82.0" prefWidth="131.0" text="Resumen" />

@@ -5,10 +5,13 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+/*
+Clase que contiene Encargados y Jugadores
+ */
+
 @Entity
 @Table(name="personas")
 public class Persona {
-
     @Id
     @Column(name="dni")
     private int dni;
