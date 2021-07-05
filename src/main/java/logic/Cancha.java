@@ -30,12 +30,12 @@ public class Cancha extends Elemento{
     public int getCapacidad() {
         return this.capacidad;
     }
-
+/*
     @Override
     public Cancha getCanchaDisponible(Date fecha, Time hora) {
         return null;
     }
-
+*/
     @Override
     public boolean getEstado() {
       return this.estado;

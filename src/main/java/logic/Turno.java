@@ -8,8 +8,6 @@ import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 
-@Entity
-@Table(name="turnos")
 public class Turno {
     @Id
     @Column(name="idTurno")

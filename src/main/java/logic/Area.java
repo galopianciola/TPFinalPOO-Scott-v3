@@ -17,7 +17,6 @@ public class Area extends Elemento{
         this.elementos = new ArrayList<>();
     }
 
-
     @Override
     public int getCapacidad() {
         int retorno=0;
@@ -27,11 +26,11 @@ public class Area extends Elemento{
         return retorno;
     }
 
-    @Override
+  /*  @Override
     public Cancha getCanchaDisponible(Date fecha, Time hora) {
         return null;
     }
-
+*/
     @Override
     public List<Cancha> getCanchasXFiltro(Filtro f1){
         List<Cancha> retorno = new ArrayList<>();
@@ -77,6 +76,7 @@ public class Area extends Elemento{
 
     public void addElemento(Elemento e) {
         this.elementos.add(e);
+        e.setPadre(this);
     }
 
     public void setBaños(int baños) {

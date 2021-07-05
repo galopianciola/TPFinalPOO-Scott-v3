@@ -13,8 +13,8 @@ public class Area {
     private int baños;
 
 
-    @Entity
+    /*@Entity
     @OneToMany
     @Column(name="idElemento")
-    //private List<Elemento> elementos;
+    //private List<Elemento> elementos;*/
 }

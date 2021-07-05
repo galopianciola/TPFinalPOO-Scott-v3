@@ -26,6 +26,7 @@ public class Elemento {
     //private List<Elemento> elementos;
     @Column(name = "baños")
     private int baños;
-
+    @Column(name = "padre")
+    private int padre;
 
 }

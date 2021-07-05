@@ -15,13 +15,13 @@ public class Turno {
     @Column(name="idTurno")
     private int idTurno;
     @Column(name="titular")
-    private Persona titular;
+    private int titular; //guardo el id del titular
     @Column(name="fecha_hora")
     private Timestamp fecha_hora;
     //@Column(name="jugadores")
     //private List<Persona> jugadores;
     @Column(name="encargado")
-    private Persona encargado;
+    private int encargado; //Guardo el id del encargado
     @Column(name="pagado")
     private boolean pagado;
 

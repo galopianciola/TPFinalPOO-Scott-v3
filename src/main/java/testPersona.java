@@ -1,8 +1,7 @@
-import models.Persona;
+import models.*;
 
-import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
+
+import javax.persistence.*;
 import java.util.List;
 
 public class testPersona {
@@ -16,22 +15,22 @@ public class testPersona {
         List <Persona> personas = (List<Persona>)manager.createQuery("FROM models.Persona").getResultList();
         System.out.println("Hay "+personas.size()+ " empleados en el sistema");
 
-            Persona p = new Persona(41525,"Julian","Wagner","urquiza y Fal",225845);
-            Persona galopia = new Persona(415252,"Galo","Pianciola","Alsina y Colon",252525);
+            Encargado Juli = new Encargado(1,1,40000,"123j");
+            Encargado Galo = new Encargado(2,2,38000,"123g");
 
             manager.getTransaction().begin();
-            manager.persist(p);
-            manager.persist(galopia);
+            manager.persist(Juli);
+            manager.persist(Galo);
             manager.getTransaction().commit();
 
             imprimirTodo();
 
     }
     private static void imprimirTodo(){
-        List <Persona> personas = (List<Persona>)manager.createQuery("FROM models.Persona").getResultList();
-        System.out.println("Hay "+personas.size()+ " empleados en el sistema");
-        for(Persona p:personas){
-            System.out.println(p.toString());
+        List <Encargado> encargados = (List<Encargado>)manager.createQuery("FROM models.Encargado").getResultList();
+        System.out.println("Hay "+encargados.size()+ " encargados en el sistema");
+        for(Encargado e:encargados){
+            System.out.println(e.toString());
         }
 
 
