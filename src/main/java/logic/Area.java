@@ -10,10 +10,13 @@ public class Area extends Elemento{
 
     private int idArea;
     private int baños;
+    private int idEncargado;
     private List<Elemento> elementos;
 
-    public Area (int baños){
+    public Area (int idArea, int baños, int idEncargado){
+        this.idArea = idArea;
         this.baños = baños;
+        this.idEncargado = idEncargado;
         this.elementos = new ArrayList<>();
     }
 

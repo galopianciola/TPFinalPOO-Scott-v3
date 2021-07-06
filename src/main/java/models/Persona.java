@@ -1,20 +1,20 @@
 package models;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 /*
 Clase que contiene Encargados y Jugadores
  */
 
+//@Entity
+//@Table(name="personas")
 @Entity
+@Inheritance(strategy=InheritanceType.JOINED)
 @Table(name="personas")
 public class Persona {
     @Id
     @Column(name="dni")
-    private int dni;
+    protected int dni;
     @Column(name="nombre")
     private String nombre;
     @Column(name="apellido")
@@ -23,13 +23,16 @@ public class Persona {
     private String direccion;
     @Column(name="telefono")
     private int telefono;
+    @Column(name="isEncargado")
+    private boolean isEncargado;
 
-    public Persona(int dni,String nombre, String apellido,String direccion, int telefono) {
+    public Persona(int dni,String nombre, String apellido,String direccion, int telefono, boolean isEncargado) {
         this.nombre = nombre;
         this.apellido = apellido;
         this.dni = dni;
         this.direccion = direccion;
         this.telefono = telefono;
+        this.isEncargado = isEncargado;
     }
 
 

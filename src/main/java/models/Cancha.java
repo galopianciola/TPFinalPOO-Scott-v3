@@ -1,15 +1,12 @@
 package models;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-@Table(name="canchas")
-public class Cancha extends Elemento {
+@Table(name = "canchas")
+public class Cancha {
     @Id
     @Column(name="idCancha")
     private int idCancha;

@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+  Copyright (c) 2015, 2019, Gluon and/or its affiliates.
+  All rights reserved. Use is subject to license terms.
+
+  This file is available and licensed under the following license:
+
+  Redistribution and use in source and binary forms, with or without
+  modification, are permitted provided that the following conditions
+  are met:
+
+  - Redistributions of source code must retain the above copyright
+    notice, this list of conditions and the following disclaimer.
+  - Redistributions in binary form must reproduce the above copyright
+    notice, this list of conditions and the following disclaimer in
+    the documentation and/or other materials provided with the distribution.
+  - Neither the name of Oracle Corporation nor the names of its
+    contributors may be used to endorse or promote products derived
+    from this software without specific prior written permission.
+
+  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+  "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
+  LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
+  A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT
+  OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
+  SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT
+  LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
+  DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
+  THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+  (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
+  OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+-->
+
+<?import javafx.scene.control.Accordion?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<VBox prefHeight="400.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.AreasController">
+  <children>
+    <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="400.0" prefWidth="639.0" style="-fx-background-color: #2A2B3B#2A2B3B;" VBox.vgrow="ALWAYS">
+      <children>
+            <Label layoutX="78.0" layoutY="26.0" opacity="0.7" prefHeight="25.0" prefWidth="85.0" text="Areas" textFill="WHITE">
+               <font>
+                  <Font name="Lato Black" size="20.0" />
+               </font>
+            </Label>
+            <Separator layoutX="141.0" layoutY="30.0" opacity="0.5" prefHeight="16.0" prefWidth="457.0" />
+            <Separator layoutX="24.0" layoutY="363.0" opacity="0.5" prefHeight="16.0" prefWidth="580.0" />
+            <Separator layoutX="26.0" layoutY="30.0" opacity="0.5" prefHeight="16.0" prefWidth="44.0" />
+            <Accordion layoutX="213.0" layoutY="163.0" />
+            <AnchorPane fx:id="basquetButton" layoutX="24.0" layoutY="131.0" prefHeight="138.0" prefWidth="110.0" style="-fx-background-color: #D6D6D6#D6D6D6; -fx-background-radius: 10px;">
+               <children>
+                  <ImageView fitHeight="124.0" fitWidth="94.0" layoutX="6.0" layoutY="11.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../img/basketball.png" />
+                     </image>
+                  </ImageView>
+                  <Label layoutX="31.0" layoutY="112.0" text="Básquet">
+                     <font>
+                        <Font name="Lato Black" size="13.0" />
+                     </font>
+                  </Label>
+               </children>
+            </AnchorPane>
+            <AnchorPane fx:id="futbolButton" layoutX="142.0" layoutY="131.0" prefHeight="138.0" prefWidth="110.0" style="-fx-background-color: #D6D6D6#D6D6D6; -fx-background-radius: 10px;">
+               <children>
+                  <ImageView fitHeight="124.0" fitWidth="94.0" layoutX="6.0" layoutY="11.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../img/football.png" />
+                     </image>
+                  </ImageView>
+                  <Label layoutX="36.0" layoutY="116.0" text="Fútbol">
+                     <font>
+                        <Font name="Lato Black" size="13.0" />
+                     </font>
+                  </Label>
+               </children>
+            </AnchorPane>
+            <AnchorPane fx:id="paddleButton" layoutX="260.0" layoutY="131.0" prefHeight="138.0" prefWidth="110.0" style="-fx-background-color: #D6D6D6#D6D6D6; -fx-background-radius: 10px;">
+               <children>
+                  <ImageView fitHeight="124.0" fitWidth="94.0" layoutX="9.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../img/paddles.png" />
+                     </image>
+                  </ImageView>
+                  <Label layoutX="35.0" layoutY="116.0" text="Paddle">
+                     <font>
+                        <Font name="Lato Black" size="13.0" />
+                     </font>
+                  </Label>
+               </children>
+            </AnchorPane>
+            <AnchorPane fx:id="tenisButton" layoutX="378.0" layoutY="131.0" prefHeight="138.0" prefWidth="110.0" style="-fx-background-color: #D6D6D6#D6D6D6; -fx-background-radius: 10px;">
+               <children>
+                  <ImageView fitHeight="124.0" fitWidth="94.0" layoutX="9.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../img/tennis.png" />
+                     </image>
+                  </ImageView>
+                  <Label layoutX="35.0" layoutY="116.0" text="Tenis">
+                     <font>
+                        <Font name="Lato Black" size="13.0" />
+                     </font>
+                  </Label>
+               </children>
+            </AnchorPane>
+            <AnchorPane fx:id="voleyButton" layoutX="495.0" layoutY="131.0" prefHeight="138.0" prefWidth="110.0" style="-fx-background-color: #D6D6D6#D6D6D6; -fx-background-radius: 10px;">
+               <children>
+                  <ImageView fitHeight="124.0" fitWidth="94.0" layoutX="9.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../img/volleyball.png" />
+                     </image>
+                  </ImageView>
+                  <Label layoutX="38.0" layoutY="116.0" text="Voley">
+                     <font>
+                        <Font name="Lato Black" size="13.0" />
+                     </font>
+                  </Label>
+               </children>
+            </AnchorPane>
+      </children>
+    </AnchorPane>
+  </children>
+</VBox>

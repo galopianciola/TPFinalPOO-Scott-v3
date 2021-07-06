@@ -11,15 +11,24 @@
 
 <AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #2541b2;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.LoginController">
    <children>
-      <TextField fx:id="usernameField" layoutX="221.0" layoutY="191.0" promptText="Usuario" />
-      <PasswordField fx:id="passwordField" layoutX="221.0" layoutY="228.0" promptText="Contraseña" />
-      <Button fx:id="ingresarButton" layoutX="221.0" layoutY="292.0" mnemonicParsing="false" onAction="#userLogIn" prefHeight="26.0" prefWidth="160.0" text="Ingresar" />
-      <ImageView fitHeight="120.0" fitWidth="117.0" layoutX="242.0" layoutY="38.0" pickOnBounds="true" preserveRatio="true">
+      <TextField fx:id="usernameField" layoutX="221.0" layoutY="207.0" prefHeight="25.0" prefWidth="160.0" promptText="Usuario">
+         <font>
+            <Font name="Lato Regular" size="13.0" />
+         </font></TextField>
+      <PasswordField fx:id="passwordField" layoutX="221.0" layoutY="244.0" prefHeight="25.0" prefWidth="160.0" promptText="Contraseña">
+         <font>
+            <Font name="Lato Regular" size="13.0" />
+         </font></PasswordField>
+      <Button fx:id="ingresarButton" layoutX="220.0" layoutY="309.0" mnemonicParsing="false" onAction="#userLogIn" prefHeight="26.0" prefWidth="160.0" text="Ingresar">
+         <font>
+            <Font name="Lato Regular" size="13.0" />
+         </font></Button>
+      <ImageView fitHeight="120.0" fitWidth="117.0" layoutX="242.0" layoutY="48.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../../../../TPFinalPOO-Scott-v3/src/main/java/img/logo-scott.png" />
          </image>
       </ImageView>
-      <Label fx:id="wrongLogin" alignment="CENTER" layoutX="201.0" layoutY="264.0" prefHeight="17.0" prefWidth="200.0" textFill="#fcbb44">
+      <Label fx:id="wrongLogin" alignment="CENTER" layoutX="200.0" layoutY="281.0" prefHeight="17.0" prefWidth="200.0" textFill="#fcbb44">
          <font>
             <Font size="12.0" />
          </font></Label>
