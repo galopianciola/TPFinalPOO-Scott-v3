@@ -50,15 +50,15 @@ public class Main extends Application {
         emf = Persistence.createEntityManagerFactory("Persistencia");
         manager = emf.createEntityManager();
 
-        Area basquet = new Area(1, 4, -1);
-        Area futbol = new Area(2, 5, -1);
+        Area basquet = new Area(1, 300, "Basquet",4,1);
+        Area futbol = new Area(2, 400, "Futbol",5,2);
 
         Encargado Juli = new Encargado(
-                3333,
+                41537503,
                 "Julian",
                 "Wagner",
                 "Urquiza 4263",
-                423242,
+                220645,
                 basquet,
                 40000,
                 "123j");
@@ -89,18 +89,50 @@ public class Main extends Application {
                 Juli,
                 false
         );
+        Turno t2 = new Turno(
+                2,
+                p,
+                Timestamp.from(Instant.now()),
+                Galo,
+                true
+        );
+
+        Turno t3 = new Turno(
+                3,
+                p,
+                Timestamp.from(Instant.now()),
+                Galo,
+                true
+        );
+
 
         Cancha c = new Cancha(
-                1,
+                3,
+                15,
+                "Basquet",
                 10,
                 false,
                 1000,
                 false,
-                1000
+                500
         );
 
-        c.setTurno(t);
+        Cancha c2 = new Cancha(
+                4,
+                20,
+                "Futbol",
+                10,
+                false,
+                1000,
+                false,
+                600
+        );
 
+        basquet.setElementos(c);
+
+        c.setTurno(t);
+        c.setTurno(t2);
+        c2.setTurno(t3);
         manager.getTransaction().begin();
         manager.persist(basquet);
         manager.persist(futbol);
@@ -108,9 +140,21 @@ public class Main extends Application {
         manager.persist(Galo);
         manager.persist(p);
         manager.persist(t);
+        manager.persist(t2);
+        manager.persist(t3);
         manager.persist(c);
+        manager.persist(c2);
         manager.getTransaction().commit();
+
+
+        //Busco cosas
+        manager.getTransaction().begin();
+        Encargado aux = manager.find(Encargado.class,41537503);
+        manager.getTransaction().commit();
+        System.out.println(aux.toString());
 
         launch(args);
     }
+
+
 }

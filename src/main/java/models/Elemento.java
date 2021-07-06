@@ -4,24 +4,24 @@ import javax.persistence.*;
 import java.util.List;
 
 @Entity
+@Inheritance(strategy=InheritanceType.JOINED)
+@DiscriminatorColumn(name="element_type")
 @Table(name = "elementos")
-public class Elemento {
+public abstract class Elemento {
+
     @Id
-    @Column(name = "idCancha")
-    private int idCancha;
-    @Column(name = "capacidad")
-    private int capacidad;
-    @Column(name = "ocupada")
-    private boolean ocupada;
-    @Column(name = "precioTurno")
-    private int precioTurno;
-    @Column(name = "estado")
-    private boolean estado;
-    @Column(name = "gastoMensual")
-    private double gastoMensual;
-    //@Columm(name="elementos")
-    //private List<Elemento> elementos;
-    @Column(name = "baños")
-    private int baños;
+    @Column(name = "id")
+    private int id;
+    @Column(name = "dimension")
+    private double dimension;
+    @Column(name = "deporte")
+    private String deporte;
+
+    public Elemento(int id, double dimension, String deporte) {
+        this.id = id;
+        this.dimension = dimension;
+        this.deporte = deporte;
+    }
+
 
 }

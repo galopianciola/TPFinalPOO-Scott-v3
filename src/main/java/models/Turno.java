@@ -16,11 +16,12 @@ public class Turno {
     private Persona titular;
     @Column(name="fecha_hora")
     private Timestamp fecha_hora;
-    //@Column(name="jugadores")
-    //private List<Persona> jugadores;
-    @OneToOne
+    @ElementCollection
+    @Column(name="jugadores")
+    private List<Persona> jugadores;
+    @OneToOne()
     @JoinColumn(name="dniEncargado")
-    private Encargado encargado; //Guardo el id del encargado
+    private Encargado encargado;
     @Column(name="pagado")
     private boolean pagado;
 
@@ -31,4 +32,7 @@ public class Turno {
         this.encargado = encargado;
         this.pagado = pagado;
     }
+
+
+
 }
