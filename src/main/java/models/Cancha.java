@@ -10,6 +10,8 @@ public class Cancha {
     @Id
     @Column(name="idCancha")
     private int idCancha;
+    //@Column(name="area")
+    //private Area area;
     @Column(name="capacidad")
     private int capacidad;
     @Column(name="ocupada")
@@ -21,5 +23,21 @@ public class Cancha {
     @Column(name="gastoMensual")
     private double gastoMensual;
 
-    //private List<Turno> turnos = new ArrayList<>();
+    @ElementCollection
+    @CollectionTable(name="turnos", joinColumns=@JoinColumn(name="idCancha"))
+    @Column(name="turno")
+    private List<Turno> turnos = new ArrayList<>();
+
+    public Cancha(int idCancha, int capacidad, boolean ocupada, int precioTurno, boolean estado, double gastoMensual) {
+        this.idCancha = idCancha;
+        this.capacidad = capacidad;
+        this.ocupada = ocupada;
+        this.precioTurno = precioTurno;
+        this.estado = estado;
+        this.gastoMensual = gastoMensual;
+    }
+
+    public void setTurno(Turno t) {
+        this.turnos.add(t);
+    }
 }

@@ -5,9 +5,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-import models.Area;
-import models.Encargado;
-import models.Persona;
+import models.*;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -15,6 +13,8 @@ import javax.persistence.Persistence;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
+import java.sql.Timestamp;
+import java.time.Instant;
 
 public class Main extends Application {
     private static Stage stg;
@@ -73,7 +73,6 @@ public class Main extends Application {
                 38000,
                 "123g");
 
-
         Persona p = new Persona(
                 41104142,
                 "Gonzalo",
@@ -83,12 +82,33 @@ public class Main extends Application {
                 false
         );
 
+        Turno t = new Turno(
+                1,
+                p,
+                Timestamp.from(Instant.now()),
+                Juli,
+                false
+        );
+
+        Cancha c = new Cancha(
+                1,
+                10,
+                false,
+                1000,
+                false,
+                1000
+        );
+
+        c.setTurno(t);
+
         manager.getTransaction().begin();
         manager.persist(basquet);
         manager.persist(futbol);
         manager.persist(Juli);
         manager.persist(Galo);
         manager.persist(p);
+        manager.persist(t);
+        manager.persist(c);
         manager.getTransaction().commit();
 
         launch(args);

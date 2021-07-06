@@ -1,9 +1,6 @@
 package models;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
@@ -14,15 +11,24 @@ public class Turno {
     @Id
     @Column(name="idTurno")
     private int idTurno;
-    @Column(name="titular")
-    private int titular; //guardo el id del titular
+    @OneToOne
+    @JoinColumn(name="dniTitular")
+    private Persona titular;
     @Column(name="fecha_hora")
     private Timestamp fecha_hora;
     //@Column(name="jugadores")
     //private List<Persona> jugadores;
-    @Column(name="encargado")
-    private int encargado; //Guardo el id del encargado
+    @OneToOne
+    @JoinColumn(name="dniEncargado")
+    private Encargado encargado; //Guardo el id del encargado
     @Column(name="pagado")
     private boolean pagado;
 
+    public Turno(int idTurno, Persona titular, Timestamp fecha_hora, Encargado encargado, boolean pagado) {
+        this.idTurno = idTurno;
+        this.titular = titular;
+        this.fecha_hora = fecha_hora;
+        this.encargado = encargado;
+        this.pagado = pagado;
+    }
 }
