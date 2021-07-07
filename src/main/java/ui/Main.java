@@ -15,6 +15,8 @@ import java.io.IOException;
 import java.net.URL;
 import java.sql.Timestamp;
 import java.time.Instant;
+import java.time.LocalDate;
+import java.time.LocalTime;
 
 public class Main extends Application {
     private static Stage stg;
@@ -85,14 +87,16 @@ public class Main extends Application {
         Turno t = new Turno(
                 1,
                 p,
-                Timestamp.from(Instant.now()),
+                LocalDate.of(2021,7,10),
+                LocalTime.of(2,00),
                 Juli,
                 false
         );
         Turno t2 = new Turno(
                 2,
                 p,
-                Timestamp.from(Instant.now()),
+                LocalDate.of(2021,7,10),
+                LocalTime.of(3,00),
                 Galo,
                 true
         );
@@ -100,7 +104,8 @@ public class Main extends Application {
         Turno t3 = new Turno(
                 3,
                 p,
-                Timestamp.from(Instant.now()),
+                LocalDate.of(2021,7,10),
+                LocalTime.of(4,00),
                 Galo,
                 true
         );
