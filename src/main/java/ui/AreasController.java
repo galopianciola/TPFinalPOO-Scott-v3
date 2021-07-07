@@ -1,7 +1,10 @@
 package ui;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.input.MouseEvent;
+
 
 public class AreasController {
 
@@ -20,4 +23,16 @@ public class AreasController {
     @FXML
     private AnchorPane voleyButton;
 
+
+    @FXML
+    void basquetButtonClicked(MouseEvent event) {
+        Main m = new Main();
+
+        try {
+            m.changeScene("src/main/java/ui/basquet.fxml", "Basquet");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+    }
 }

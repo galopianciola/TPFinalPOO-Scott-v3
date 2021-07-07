@@ -1,22 +1,12 @@
 package logic;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
 
 public class Persona {
 
-    @Id
-    @Column(name="dni")
     private int dni;
-    @Column(name="nombre")
     private String nombre;
-    @Column(name="apellido")
     private String apellido;
-    @Column(name="direccion")
     private String direccion;
-    @Column(name="telefono")
     private int telefono;
 
     public Persona(int dni,String nombre, String apellido,String direccion, int telefono) {
@@ -27,5 +17,23 @@ public class Persona {
         this.telefono = telefono;
     }
 
+    public int getDni() {
+        return dni;
+    }
 
+    public String getNombre() {
+        return nombre;
+    }
+
+    public String getApellido() {
+        return apellido;
+    }
+
+    public String getDireccion() {
+        return direccion;
+    }
+
+    public int getTelefono() {
+        return telefono;
+    }
 }

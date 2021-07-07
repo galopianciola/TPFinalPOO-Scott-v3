@@ -1,34 +1,33 @@
 package logic;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
-import java.sql.Timestamp;
+//Fecha y hora
+import java.time.LocalDate;
+import java.time.LocalTime;
+
 import java.util.ArrayList;
 import java.util.List;
 
 public class Turno {
-    @Id
-    @Column(name="idTurno")
     private int idTurno;
-    @Column(name="titular")
     private Persona titular;
-    @Column(name="fecha_hora")
-    private Timestamp fecha_hora;
-    @Column(name="encargado")
+    private int getDniTitular; //para PropertyValueFactory
+    private LocalDate fecha;
+    private LocalTime hora;
     private Encargado encargado;
-    @Column(name="pagado")
     private boolean pagado;
+    private String getPagado; // para PropertyValueFactory
     private List<Persona> jugadores;
 
-    public Turno (Persona titular,Timestamp fecha_hora,Encargado encargado,boolean pagado){
-
+    public Turno (int idTurno, Persona titular,LocalDate fecha, LocalTime hora,Encargado encargado,boolean pagado){
+        this.idTurno = idTurno;
         this.titular=titular;
-        this.fecha_hora=fecha_hora;
+        this.getDniTitular=titular.getDni();
+        this.fecha = fecha;
+        this.hora = hora;
         this.jugadores=new ArrayList<>();
         this.encargado=encargado;
         this.pagado=pagado;
+        this.getPagado = this.getGetPagado();
     }
 
     public void setJugadores(Persona jugador) {
@@ -51,7 +50,25 @@ public class Turno {
         return pagado;
     }
 
-    public Timestamp getFechaHora() { return this.fecha_hora; }
+    public LocalDate getFecha() { return this.fecha; }
 
+    public LocalTime getHora(){
+        return this.hora;
+    }
+
+    public int getGetDniTitular() {
+        return this.titular.getDni();
+    }
+
+    public int getIdTurno() {
+        return idTurno;
+    }
+
+    public String getGetPagado(){
+        // para PropertyValueFactory
+        if (this.pagado)
+            return "Sí";
+        return "No";
+    }
 }
 
