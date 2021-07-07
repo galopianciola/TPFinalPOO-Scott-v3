@@ -17,11 +17,12 @@ import java.time.LocalTime;
 import java.util.ResourceBundle;
 
 
-public class basquetController implements Initializable {
+public class BasquetController implements Initializable {
 
     @FXML
     private TableView<Turno> tablaTurnos;
 
+    // Lista que alimenta la tablaTurnos
     private ObservableList<Turno> turnos;
 
     @FXML
@@ -51,8 +52,8 @@ public class basquetController implements Initializable {
         this.colID.setCellValueFactory(new PropertyValueFactory<>("idTurno"));
         this.colFecha.setCellValueFactory(new PropertyValueFactory<>("fecha"));
         this.colHora.setCellValueFactory(new PropertyValueFactory<>("hora"));
-        this.colTitular.setCellValueFactory(new PropertyValueFactory<>("getDniTitular"));
-        this.colPago.setCellValueFactory(new PropertyValueFactory<>("getPagado"));
+        this.colTitular.setCellValueFactory(new PropertyValueFactory<>("DniTitular"));
+        this.colPago.setCellValueFactory(new PropertyValueFactory<>("Pagado"));
 
         Persona p = new Persona(
                 41104148,

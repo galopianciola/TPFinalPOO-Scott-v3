@@ -10,24 +10,20 @@ import java.util.List;
 public class Turno {
     private int idTurno;
     private Persona titular;
-    private int getDniTitular; //para PropertyValueFactory
     private LocalDate fecha;
     private LocalTime hora;
     private Encargado encargado;
     private boolean pagado;
-    private String getPagado; // para PropertyValueFactory
     private List<Persona> jugadores;
 
     public Turno (int idTurno, Persona titular,LocalDate fecha, LocalTime hora,Encargado encargado,boolean pagado){
         this.idTurno = idTurno;
         this.titular=titular;
-        this.getDniTitular=titular.getDni();
         this.fecha = fecha;
         this.hora = hora;
         this.jugadores=new ArrayList<>();
         this.encargado=encargado;
         this.pagado=pagado;
-        this.getPagado = this.getGetPagado();
     }
 
     public void setJugadores(Persona jugador) {
@@ -56,7 +52,8 @@ public class Turno {
         return this.hora;
     }
 
-    public int getGetDniTitular() {
+    public int getDniTitular() {
+        // para PropertyValueFactory
         return this.titular.getDni();
     }
 
@@ -64,7 +61,7 @@ public class Turno {
         return idTurno;
     }
 
-    public String getGetPagado(){
+    public String getPagado(){
         // para PropertyValueFactory
         if (this.pagado)
             return "Sí";
