@@ -1,12 +1,9 @@
 package models;
 
-import net.bytebuddy.asm.Advice;
 
 import javax.persistence.*;
-import java.sql.Timestamp;
 import java.time.LocalDate;
 import java.time.LocalTime;
-import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -35,6 +32,7 @@ public class Turno {
         this.idTurno = idTurno;
         this.titular = titular;
         this.fecha = fecha;
+        this.hora = hora;
         this.encargado = encargado;
         this.pagado = pagado;
     }
