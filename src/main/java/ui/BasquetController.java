@@ -8,8 +8,9 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
-import logic.Persona;
-import logic.Turno;
+import models.*;
+
+
 
 import java.net.URL;
 import java.time.LocalDate;
@@ -60,7 +61,8 @@ public class BasquetController implements Initializable {
                 "Galo",
                 "Pianciola",
                 "Alsina",
-                434343
+                434343,
+                false
                 );
 
 

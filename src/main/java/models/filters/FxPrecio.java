@@ -1,5 +1,5 @@
-package logic.filters;
-import logic.*;
+package models.filters;
+import models.Cancha;
 
 public class FxPrecio implements Filtro{
 

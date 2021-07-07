@@ -1,5 +1,7 @@
 package models;
 
+import models.filters.Filtro;
+
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -39,9 +41,82 @@ public class Cancha extends Elemento implements Serializable {
         this.turnos = new ArrayList<>();;
     }
 
+    @Override
+    public int getCapacidad() {
+        return this.capacidad;
+    }
+
+    @Override
+    public boolean getEstado() {
+        return this.estado;
+    }
+    @Override
+    public double getGastoMensual() {
+        return gastoMensual;
+    }
+
+    @Override
+    public List<Cancha> getCanchasXFiltro(Filtro f1) {
+        List<Cancha> retorno = new ArrayList<>();
+        if (f1.cumple(this) == true)
+            retorno.add(this);
+        return retorno;
+    }
+
+
+    public boolean isOcupada() {
+        return ocupada;
+    }
+
+    public int getPrecioTurno() {
+        return precioTurno;
+    }
+
+    public boolean isEstado() {
+        return estado;
+    }
+
+
+    public List<Turno> getTurnos() {
+        List<Turno> retorno = new ArrayList<>(this.turnos);
+        return retorno;
+    }
+
     public void setTurno(Turno t) {
         this.turnos.add(t);
     }
 
+    public void setCapacidad(int capacidad) {
+        this.capacidad = capacidad;
+    }
 
-}
+    public void setOcupada(boolean ocupada) {
+        this.ocupada = ocupada;
+    }
+
+    public void setPrecioTurno(int precioTurno) {
+        this.precioTurno = precioTurno;
+    }
+
+    public void setEstado(boolean estado) {
+        this.estado = estado;
+    }
+
+    public void setGastoMensual(double gastoMensual) {
+        this.gastoMensual = gastoMensual;
+    }
+
+
+
+
+
+
+        /*
+    @Override
+    public Cancha getCanchaDisponible(Date fecha, Time hora) {
+        return null;
+    }
+*/
+
+    }
+

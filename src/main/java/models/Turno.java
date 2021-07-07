@@ -4,6 +4,7 @@ package models;
 import javax.persistence.*;
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -35,8 +36,63 @@ public class Turno {
         this.hora = hora;
         this.encargado = encargado;
         this.pagado = pagado;
+        this.jugadores = new ArrayList<>();
     }
 
+    public int getIdTurno() {
+        return idTurno;
+    }
 
+    public Persona getTitular() {
+        return titular;
+    }
 
+    public LocalDate getFecha() {
+        return fecha;
+    }
+
+    public LocalTime getHora() {
+        return hora;
+    }
+
+    public List<Persona> getJugadores() {
+        return jugadores;
+    }
+
+    public Encargado getEncargado() {
+        return encargado;
+    }
+
+    public boolean isPagado() {
+        return pagado;
+    }
+
+    public void setTitular(Persona titular) {
+        this.titular = titular;
+    }
+
+    public void setEncargado(Encargado encargado) {
+        this.encargado = encargado;
+    }
+
+    public void setPagado(boolean pagado) {
+        this.pagado = pagado;
+    }
+
+    public void setJugadores(Persona jugador) {
+
+        this.jugadores.add(jugador);
+    }
+
+    public int getDniTitular() {
+        // para PropertyValueFactory
+        return this.titular.getDni();
+    }
+
+    public String getPagado(){
+        // para PropertyValueFactory
+        if (this.pagado)
+            return "Sí";
+        return "No";
+    }
 }

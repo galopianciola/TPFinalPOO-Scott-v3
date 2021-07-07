@@ -1,5 +1,5 @@
-package logic.filters;
-import logic.*;
+package models.filters;
+import models.Cancha;
 
 public class FxNOT implements Filtro {
     private Filtro f;
