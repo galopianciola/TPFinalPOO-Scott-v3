@@ -11,10 +11,11 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import models.*;
 
 
-
+import javax.management.Query;
 import java.net.URL;
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.util.List;
 import java.util.ResourceBundle;
 
 
@@ -48,7 +49,8 @@ public class BasquetController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        this.turnos = FXCollections.observableArrayList();
+        List<Turno> turnosBd = (List<Turno>) Main.manager.createQuery("FROM Turno").getResultList(); //Obtengo los turnos de la base de datos.
+        this.turnos = FXCollections.observableArrayList(turnosBd); //Agrego los turnos al observable
 
         this.colID.setCellValueFactory(new PropertyValueFactory<>("idTurno"));
         this.colFecha.setCellValueFactory(new PropertyValueFactory<>("fecha"));
@@ -56,26 +58,6 @@ public class BasquetController implements Initializable {
         this.colTitular.setCellValueFactory(new PropertyValueFactory<>("DniTitular"));
         this.colPago.setCellValueFactory(new PropertyValueFactory<>("Pagado"));
 
-        Persona p = new Persona(
-                41104148,
-                "Galo",
-                "Pianciola",
-                "Alsina",
-                434343,
-                false
-                );
-
-
-        Turno t = new Turno(
-                1,
-                    p,
-                    LocalDate.of(2021, 7, 8),
-                    LocalTime.of(16, 00),
-                    null,
-                    false
-                );
-
-        this.turnos.add(t);
-        this.tablaTurnos.setItems(this.turnos);
+        this.tablaTurnos.setItems(turnos); //Inserto los turnos en la tabla que muestro por pantalla
     }
 }

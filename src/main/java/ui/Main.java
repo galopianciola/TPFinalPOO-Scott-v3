@@ -17,6 +17,7 @@ import java.sql.Timestamp;
 import java.time.Instant;
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.util.List;
 
 public class Main extends Application {
     private static Stage stg;
@@ -158,6 +159,8 @@ public class Main extends Application {
         manager.getTransaction().commit();
         System.out.println(aux.toString());
 
+        List<Persona> turnos = (List<Persona>) manager.createQuery("FROM Persona").getResultList();
+        System.out.println("Hay "+turnos.size()+" empleados en el sistema");
         launch(args);
     }
 
