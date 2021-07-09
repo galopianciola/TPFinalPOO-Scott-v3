@@ -13,8 +13,7 @@ import javax.persistence.Persistence;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
-import java.sql.Timestamp;
-import java.time.Instant;
+
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.List;
@@ -23,6 +22,7 @@ public class Main extends Application {
     private static Stage stg;
 
     // Variables de persistencia
+    public static Encargado encargadoLogeado;
     public static EntityManager manager;
     public static EntityManagerFactory emf;
 

@@ -2,6 +2,8 @@ package ui;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.input.MouseEvent;
 
@@ -24,12 +26,21 @@ public class AreasController {
     private AnchorPane voleyButton;
 
 
+
     @FXML
     void basquetButtonClicked(MouseEvent event) {
         Main m = new Main();
 
         try {
-            m.changeScene("src/main/java/ui/basquet.fxml", "Basquet");
+            if (Main.encargadoLogeado.getArea().getDeporte().equals("Basquet"))
+                m.changeScene("src/main/java/ui/basquet.fxml", "Basquet");
+            else {
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setHeaderText(null);
+                alert.setTitle("Acceso");
+                alert.setContentText("No es posible ingresar al área seleccionada");
+                alert.showAndWait();
+            }
         } catch (Exception e) {
             e.printStackTrace();
         }

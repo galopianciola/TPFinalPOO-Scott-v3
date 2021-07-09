@@ -39,12 +39,11 @@ public class LoginController {
             else {
                 Main.manager.getTransaction().begin();
                 int dniIngresado = Integer.parseInt(usernameField.getText());
-                Encargado e = Main.manager.find(Encargado.class, dniIngresado);
-                System.out.println(e);
+                Main.encargadoLogeado = Main.manager.find(Encargado.class, dniIngresado);
                 Main.manager.getTransaction().commit();
 
-                if (e != null) {
-                    if (e.getPassword().equals(passwordField.getText())) {
+                if (Main.encargadoLogeado != null) {
+                    if (Main.encargadoLogeado.getPassword().equals(passwordField.getText())) {
                         wrongLogin.setText("Ingreso exitoso!");
                         System.out.println("Ingreso exitoso!");
                         m.changeScene("src/main/java/ui/main-menu.fxml", "Scott Menu");
