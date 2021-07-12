@@ -29,7 +29,7 @@ public class RegistrarTurnoController {
     void agregarJugadorClicked(ActionEvent event) {
         Main m = new Main();
         try {
-            m.changeSceneOnParent("src/main/java/ui/agregarJugador.fxml", "Agregar persona");
+            m.changeSceneOnParent("src/main/java/ui/agregarJugador.fxml", "Agregar jugador");
         } catch (Exception e){
            e.printStackTrace();
         }
