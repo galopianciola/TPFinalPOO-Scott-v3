@@ -2,12 +2,15 @@ package ui;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.stage.Stage;
 import models.*;
 
 
@@ -45,6 +48,11 @@ public class BasquetController implements Initializable {
     @FXML
     private Button registrarTurnoButton;
 
+    @FXML
+    private DatePicker diaPicker;
+
+    @FXML
+    private ComboBox diaSelect;
 
 
     @Override
@@ -59,5 +67,18 @@ public class BasquetController implements Initializable {
         this.colPago.setCellValueFactory(new PropertyValueFactory<>("Pagado"));
 
         this.tablaTurnos.setItems(turnos); //Inserto los turnos en la tabla que muestro por pantalla
+    }
+
+    @FXML
+    void registrarTurnoButtonClicked(ActionEvent event) {
+
+        Main m = new Main();
+
+        try {
+            m.changeScene("src/main/java/ui/registrarTurno.fxml", "Registrar turno");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
     }
 }

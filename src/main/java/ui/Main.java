@@ -4,6 +4,7 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 import models.*;
 
@@ -40,12 +41,26 @@ public class Main extends Application {
     }
 
     public void changeScene(String fxml, String titulo) throws IOException {
+        //cambiar pantalla 100%
         URL url = new File(fxml).toURI().toURL();
         Parent pane = FXMLLoader.load(url);
 
         //Parent pane = FXMLLoader.load(getClass().getResource(fxml));
         stg.getScene().setRoot(pane);
         stg.setTitle(titulo);
+    }
+
+    public void changeSceneOnParent(String fxml, String titulo) throws IOException {
+        // abrir sobre la otra pantalla
+        URL url = new File(fxml).toURI().toURL();
+        Parent pane = FXMLLoader.load(url);
+
+        Scene scene = new Scene(pane);
+        Stage stage = new Stage();
+        stage.setTitle(titulo);
+        stage.initModality(Modality.APPLICATION_MODAL);
+        stage.setScene(scene);
+        stage.showAndWait();
     }
 
 
