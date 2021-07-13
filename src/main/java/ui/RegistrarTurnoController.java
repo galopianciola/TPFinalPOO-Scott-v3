@@ -2,17 +2,17 @@ package ui;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
+import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
+import javafx.scene.control.Label;
 import javafx.scene.control.TableView;
-import javafx.stage.Modality;
-import javafx.stage.Stage;
 import models.Area;
 import models.Encargado;
 import models.Turno;
+
+import java.net.URL;
+import java.util.ResourceBundle;
 
 public class RegistrarTurnoController {
 
@@ -28,7 +28,11 @@ public class RegistrarTurnoController {
     @FXML
     private CheckBox pagadoCheck;
 
+    @FXML
+    private Label diaLabel;
+
     private Turno turno;
+
 
     @FXML
     void agregarJugadorClicked(ActionEvent event) {
@@ -71,6 +75,7 @@ public class RegistrarTurnoController {
 
     public void initAtributtes(Turno t){
         this.turno = t;
+        this.diaLabel.setText(this.turno.getFecha().toString() + "  /  " + this.turno.getHora().toString());
     }
 
 
