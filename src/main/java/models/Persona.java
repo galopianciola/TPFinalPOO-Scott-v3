@@ -35,6 +35,10 @@ public class Persona {
         this.isEncargado = isEncargado;
     }
 
+    public Persona() {
+
+    }
+
     public int getDni() {
         return dni;
     }

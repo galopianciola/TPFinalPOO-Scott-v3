@@ -69,7 +69,7 @@ public class Main extends Application {
 
         emf = Persistence.createEntityManagerFactory("Persistencia");
         manager = emf.createEntityManager();
-
+    /*
         Area basquet = new Area(1, 300, "Basquet",4,1);
         Area futbol = new Area(2, 400, "Futbol",5,2);
 
@@ -156,6 +156,8 @@ public class Main extends Application {
         c.setTurno(t);
         c.setTurno(t2);
         c2.setTurno(t3);
+
+
         manager.getTransaction().begin();
 
         manager.persist(basquet);
@@ -179,6 +181,7 @@ public class Main extends Application {
 
         List<Persona> turnos = (List<Persona>) manager.createQuery("FROM Persona").getResultList();
         System.out.println("Hay "+turnos.size()+" empleados en el sistema");
+*/
         launch(args);
     }
 

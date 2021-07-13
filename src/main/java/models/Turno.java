@@ -39,6 +39,10 @@ public class Turno {
         this.jugadores = new ArrayList<>();
     }
 
+    public Turno(){
+
+    }
+
     public int getIdTurno() {
         return idTurno;
     }

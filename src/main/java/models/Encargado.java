@@ -25,6 +25,10 @@ public class Encargado extends Persona implements Serializable {
         if (this.area != null)
             this.area.setIdEncargado(super.dni);
     }
+    public Encargado(){
+        super();
+
+    }
 
     public String getPassword() {
         return password;

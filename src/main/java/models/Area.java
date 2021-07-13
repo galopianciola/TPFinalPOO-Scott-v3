@@ -29,6 +29,11 @@ public class Area extends Elemento implements Serializable {
         this.elementos = new ArrayList<>();
     }
 
+    public Area(){
+        super();
+
+    }
+
     @Override
     public int getCapacidad() {
         int retorno=0;

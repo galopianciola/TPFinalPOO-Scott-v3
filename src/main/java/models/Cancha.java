@@ -41,6 +41,10 @@ public class Cancha extends Elemento implements Serializable {
         this.turnos = new ArrayList<>();;
     }
 
+    public Cancha(){
+        super();
+    }
+
     @Override
     public int getCapacidad() {
         return this.capacidad;

@@ -26,6 +26,10 @@ public abstract class Elemento {
         this.deporte = deporte;
     }
 
+    public Elemento() {
+
+    }
+
 
     public abstract int getCapacidad();
     public abstract boolean getEstado();
