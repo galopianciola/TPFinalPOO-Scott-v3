@@ -4,6 +4,7 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.DatePicker;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import models.*;
@@ -65,6 +66,7 @@ public class Main extends Application {
 
 
     public static void main(String[] args) {
+
         emf = Persistence.createEntityManagerFactory("Persistencia");
         manager = emf.createEntityManager();
 
@@ -104,7 +106,7 @@ public class Main extends Application {
                 1,
                 p,
                 LocalDate.of(2021,7,10),
-                LocalTime.of(2,00),
+                LocalTime.of(14,00),
                 Juli,
                 false
         );
@@ -112,7 +114,7 @@ public class Main extends Application {
                 2,
                 p,
                 LocalDate.of(2021,7,10),
-                LocalTime.of(3,00),
+                LocalTime.of(17,00),
                 Galo,
                 true
         );
@@ -121,7 +123,7 @@ public class Main extends Application {
                 3,
                 p,
                 LocalDate.of(2021,7,10),
-                LocalTime.of(4,00),
+                LocalTime.of(20,00),
                 Galo,
                 true
         );
@@ -155,6 +157,7 @@ public class Main extends Application {
         c.setTurno(t2);
         c2.setTurno(t3);
         manager.getTransaction().begin();
+
         manager.persist(basquet);
         manager.persist(futbol);
         manager.persist(Juli);

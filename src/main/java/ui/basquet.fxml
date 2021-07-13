@@ -66,8 +66,8 @@
                   <TableColumn fx:id="colPago" minWidth="1.0" prefWidth="111.0" text="Pago" />
               </columns>
             </TableView>
-            <DatePicker fx:id="diaPicker" layoutX="25.0" layoutY="75.0" />
-            <ComboBox fx:id="diaSelect" layoutX="224.0" layoutY="75.0" prefHeight="26.0" prefWidth="193.0" />
+            <DatePicker fx:id="diaPicker" layoutX="25.0" layoutY="75.0" onAction="#seleccionarFecha" />
+            <ComboBox fx:id="diaSelect" layoutX="224.0" layoutY="75.0" onAction="#seleccionarHora" prefHeight="26.0" prefWidth="193.0" />
             <Button fx:id="registrarTurnoButton" layoutX="433.0" layoutY="75.0" mnemonicParsing="false" onAction="#registrarTurnoButtonClicked" prefHeight="26.0" prefWidth="143.0" text="Registrar turno" />
       </children>
     </AnchorPane>
