@@ -81,10 +81,23 @@ public class BasquetController implements Initializable {
 
         URL url = new File("src/main/java/ui/registrarTurno.fxml").toURI().toURL();
 
-        FXMLLoader loader = new FXMLLoader(url);
+        FXMLLoader loader = new FXMLLoader(url); //Creo FXMLLoader para poder pasarle el turno y que agregue los jugadores y el titular.
         Parent root = loader.load();
         RegistrarTurnoController controlador = loader.getController();
-        controlador.initAtributtes(new Turno(10,null,this.diaPicker.getValue(),(LocalTime.parse((String)this.diaSelect.getValue())),Main.encargadoLogeado,false));
+
+        //Obtengo el IdTurno maximo, para generar el siguiente
+        int idTurnoMax = (int) Main.manager.createQuery("SELECT max(idTurno) FROM Turno").getResultList().get(0);
+
+        Turno t = new Turno(idTurnoMax+1,
+                null,
+                this.diaPicker.getValue(),
+                (LocalTime.parse((String)this.diaSelect.getValue())),
+                Main.encargadoLogeado,
+                false);
+
+        //Paso por parametro el turno
+        controlador.initAttributes(t);
+
         Scene scene = new Scene(root);
         Stage stage = new Stage();
         stage.setTitle("Registrar turno");
@@ -92,40 +105,34 @@ public class BasquetController implements Initializable {
         stage.setScene(scene);
         stage.showAndWait();
 
-        /*Main m = new Main();
-
-        try {
-
-            m.changeScene("src/main/java/ui/registrarTurno.fxml", "Registrar turno");
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-*/
 
     }
 
     @FXML
     void seleccionarFecha(ActionEvent event) {
+        //Reseteo tablas que muestro por pantalla para volverlas a llenar con la nueva fecha
         this.horarios.clear();
         this.turnos.clear();
         LocalDate f = this.diaPicker.getValue();
+        //Obtengo los turnos filtrados por fecha
         List<Turno> turnosFiltrados = (List<Turno>) Main.manager.createQuery("FROM Turno where fecha='"+f+"'").getResultList();
 
         this.turnos.addAll(turnosFiltrados);
         this.tablaTurnos.setItems(this.turnos);
 
+        //Agrego todos los horarios
         List <String> horariosDisponibles = new ArrayList<>();
             for(int j=12;j<=20;j++) {
                 horariosDisponibles.add(j+":00");
             }
-
+        //Borro los horarios en los cuales ya tengo una reserva
         for(int i=0; i<this.turnos.size();i++){
             for(int j=0;j<8;j++) {
                 if(horariosDisponibles.contains(this.turnos.get(i).getHora().toString()))
                     horariosDisponibles.remove(this.turnos.get(i).getHora().toString());
             }
         }
-
+        //Muestro por pantalla los horarios disponibles.
         this.horarios.addAll(horariosDisponibles);
         this.diaSelect.setItems(this.horarios);
 

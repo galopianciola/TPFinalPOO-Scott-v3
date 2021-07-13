@@ -2,15 +2,23 @@ package ui;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableView;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
 import models.Area;
 import models.Encargado;
 import models.Turno;
 
+import java.io.File;
+import java.io.IOException;
+import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -35,36 +43,29 @@ public class RegistrarTurnoController {
 
 
     @FXML
-    void agregarJugadorClicked(ActionEvent event) {
-        Main m = new Main();
+    void agregarJugadorClicked(ActionEvent event) throws IOException {
+        URL url = new File("src/main/java/ui/agregarJugador.fxml").toURI().toURL();
 
-        try {
-            m.changeSceneOnParent("src/main/java/ui/agregarJugador.fxml", "Agregar jugador");
-        } catch (Exception e){
-           e.printStackTrace();
-        }
+        FXMLLoader loader = new FXMLLoader(url); //Creo FXMLLoader para poder pasarle el turno y que agregue los jugadores y el titular.
+        Parent root = loader.load();
+        AgregarJugadorController controlador = loader.getController();
+        controlador.initAttributes(this.turno);
+
+        Scene scene = new Scene(root);
+        Stage stage = new Stage();
+        stage.setTitle("Agregar Jugador");
+        stage.initModality(Modality.APPLICATION_MODAL);
+        stage.setScene(scene);
+        stage.showAndWait();
 
     }
 
     @FXML
     void registrarTurnoButtonClicked(ActionEvent event) {
-        Area basquet1 = new Area(10, 300, "Basquet",4,1);
+        Area basquet1 = new Area(23, 300, "Basquet",4,1);
 
-
-        Encargado Juli2 = new Encargado(
-                41537502,
-                "Julian",
-                "Wagner",
-                "Urquiza 4263",
-                220645,
-                basquet1,
-                40000,
-                "123j");
-
-        this.turno.setTitular(Juli2);
         Main.manager.getTransaction().begin();
         Main.manager.persist(basquet1);
-        Main.manager.persist(Juli2);
         Main.manager.persist(this.turno);
         Main.manager.getTransaction().commit();
 
@@ -73,7 +74,7 @@ public class RegistrarTurnoController {
 
     }
 
-    public void initAtributtes(Turno t){
+    public void initAttributes(Turno t){
         this.turno = t;
         this.diaLabel.setText(this.turno.getFecha().toString() + "  /  " + this.turno.getHora().toString());
     }
