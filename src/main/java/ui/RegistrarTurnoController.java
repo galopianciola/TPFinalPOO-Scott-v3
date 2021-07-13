@@ -46,7 +46,8 @@ public class RegistrarTurnoController {
     void agregarJugadorClicked(ActionEvent event) throws IOException {
         URL url = new File("src/main/java/ui/agregarJugador.fxml").toURI().toURL();
 
-        FXMLLoader loader = new FXMLLoader(url); //Creo FXMLLoader para poder pasarle el turno y que agregue los jugadores y el titular.
+        //Creo FXMLLoader para poder pasarle el turno y que agregue los jugadores y el titular.
+        FXMLLoader loader = new FXMLLoader(url);
         Parent root = loader.load();
         AgregarJugadorController controlador = loader.getController();
         controlador.initAttributes(this.turno);
@@ -69,6 +70,9 @@ public class RegistrarTurnoController {
         Main.manager.persist(this.turno);
         Main.manager.getTransaction().commit();
 
+        // Cierro la ventana porque la persona ya fue agregada
+        Stage stage = (Stage) registrarTurnoButton.getScene().getWindow();
+        stage.close();
 
         System.out.println("Fecha del turno creado "+this.turno.getFecha()+" hora del turno "+this.turno.getHora());
 

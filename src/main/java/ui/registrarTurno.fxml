@@ -42,9 +42,9 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.RegistrarTurnoController">
+<VBox prefHeight="356.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.RegistrarTurnoController">
   <children>
-    <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="300.0" prefWidth="500.0" style="-fx-background-color: #2A2B3B#2A2B3B;" VBox.vgrow="ALWAYS">
+    <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="370.0" prefWidth="600.0" style="-fx-background-color: #2A2B3B#2A2B3B;" VBox.vgrow="ALWAYS">
       <children>
             <Label layoutX="33.0" layoutY="22.0" opacity="0.7" prefHeight="25.0" prefWidth="156.0" text="Registrar turno" textFill="WHITE">
                <font>
@@ -52,8 +52,8 @@
                </font>
             </Label>
             <Accordion layoutX="213.0" layoutY="163.0" />
-            <Button fx:id="registrarTurnoButton" layoutX="424.0" layoutY="347.0" mnemonicParsing="false" onAction="#registrarTurnoButtonClicked" prefHeight="26.0" prefWidth="143.0" text="Registrar" />
-            <TableView fx:id="tablaJugadores" layoutX="33.0" layoutY="72.0" prefHeight="257.0" prefWidth="532.0">
+            <Button fx:id="registrarTurnoButton" layoutX="424.0" layoutY="316.0" mnemonicParsing="false" onAction="#registrarTurnoButtonClicked" prefHeight="26.0" prefWidth="143.0" text="Registrar" />
+            <TableView fx:id="tablaJugadores" layoutX="33.0" layoutY="72.0" prefHeight="221.0" prefWidth="532.0">
               <columns>
                 <TableColumn prefWidth="104.0" text="DNI" />
                 <TableColumn prefWidth="139.0" text="Nombre" />
@@ -62,7 +62,7 @@
               </columns>
             </TableView>
             <Button fx:id="agregarJugadorButton" layoutX="424.0" layoutY="23.0" mnemonicParsing="false" onAction="#agregarJugadorClicked" prefHeight="26.0" prefWidth="143.0" text="Agregar jugador" />
-            <CheckBox fx:id="pagadoCheck" layoutX="343.0" layoutY="351.0" mnemonicParsing="false" text="Pagado" textFill="WHITE" />
+            <CheckBox fx:id="pagadoCheck" layoutX="343.0" layoutY="320.0" mnemonicParsing="false" text="Pagado" textFill="WHITE" />
             <Label fx:id="diaLabel" layoutX="196.0" layoutY="28.0" prefHeight="16.0" prefWidth="162.0" text="13-7-2021 / 15:00" textFill="WHITE">
                <font>
                   <Font name="Arial Italic" size="13.0" />

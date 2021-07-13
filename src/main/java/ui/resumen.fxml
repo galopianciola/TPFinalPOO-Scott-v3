@@ -38,19 +38,19 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox prefHeight="400.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.ResumenController">
+<VBox prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.ResumenController">
   <children>
-    <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="369.0" prefWidth="640.0" style="-fx-background-color: #2A2B3B#2A2B3B;" VBox.vgrow="ALWAYS">
+    <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #2A2B3B#2A2B3B;" VBox.vgrow="ALWAYS">
       <children>
             <Label layoutX="78.0" layoutY="26.0" opacity="0.7" prefHeight="25.0" prefWidth="85.0" text="Resumen" textFill="WHITE">
                <font>
                   <Font name="Lato Black" size="20.0" />
                </font>
             </Label>
-            <Separator layoutX="175.0" layoutY="30.0" opacity="0.5" prefHeight="16.0" prefWidth="440.0" />
-            <Separator layoutX="27.0" layoutY="363.0" opacity="0.5" prefHeight="16.0" prefWidth="584.0" />
+            <Separator layoutX="175.0" layoutY="30.0" opacity="0.5" prefHeight="16.0" prefWidth="399.0" />
+            <Separator layoutX="27.0" layoutY="363.0" opacity="0.5" prefHeight="16.0" prefWidth="550.0" />
             <Separator layoutX="26.0" layoutY="30.0" opacity="0.5" prefHeight="16.0" prefWidth="44.0" />
-            <AnchorPane layoutX="26.0" layoutY="86.0" opacity="0.7" prefHeight="114.0" prefWidth="290.0" style="-fx-border-radius: 10px; -fx-background-color: #2541b2 #2541b2 #2541b2 #2541b2; -fx-background-radius: 10px;">
+            <AnchorPane layoutX="27.0" layoutY="86.0" opacity="0.7" prefHeight="114.0" prefWidth="260.0" style="-fx-border-radius: 10px; -fx-background-color: #2541b2 #2541b2 #2541b2 #2541b2; -fx-background-radius: 10px;">
                <children>
                   <Label layoutX="98.0" layoutY="14.0" text="Areas" textFill="WHITE">
                      <font>
@@ -67,15 +67,15 @@
                         <Font name="Lato Black" size="15.0" />
                      </font>
                   </Label>
-                  <Separator layoutX="18.0" layoutY="38.0" prefHeight="16.0" prefWidth="256.0" />
-                  <Label fx:id="areasLabel" layoutX="222.0" layoutY="57.0" prefHeight="16.0" prefWidth="64.0" text="3/4 (75%)" textFill="WHITE">
+                  <Separator layoutX="18.0" layoutY="38.0" prefHeight="16.0" prefWidth="219.0" />
+                  <Label fx:id="areasLabel" layoutX="173.0" layoutY="57.0" prefHeight="16.0" prefWidth="64.0" text="3/4 (75%)" textFill="WHITE">
                      <font>
                         <Font name="Lato Regular" size="13.0" />
                      </font>
                   </Label>
                </children>
             </AnchorPane>
-            <AnchorPane layoutX="325.0" layoutY="86.0" opacity="0.7" prefHeight="114.0" prefWidth="290.0" style="-fx-border-radius: 10px; -fx-background-color: #2541b2 #2541b2 #2541b2 #2541b2; -fx-background-radius: 10px;">
+            <AnchorPane layoutX="317.0" layoutY="86.0" opacity="0.7" prefHeight="114.0" prefWidth="260.0" style="-fx-border-radius: 10px; -fx-background-color: #2541b2 #2541b2 #2541b2 #2541b2; -fx-background-radius: 10px;">
                <children>
                   <Label layoutX="87.0" layoutY="14.0" text="Canchas" textFill="WHITE">
                      <font>
@@ -92,15 +92,15 @@
                         <Font name="Lato Black" size="15.0" />
                      </font>
                   </Label>
-                  <Separator layoutX="18.0" layoutY="38.0" prefHeight="16.0" prefWidth="256.0" />
-                  <Label fx:id="disponibilidadLabel" layoutX="210.0" layoutY="57.0" prefHeight="16.0" prefWidth="64.0" text="3/4 (75%)" textFill="WHITE">
+                  <Separator layoutX="18.0" layoutY="38.0" prefHeight="16.0" prefWidth="228.0" />
+                  <Label fx:id="disponibilidadLabel" layoutX="182.0" layoutY="57.0" prefHeight="16.0" prefWidth="64.0" text="3/4 (75%)" textFill="WHITE">
                      <font>
                         <Font name="Lato Regular" size="13.0" />
                      </font>
                   </Label>
                </children>
             </AnchorPane>
-            <AnchorPane layoutX="28.0" layoutY="219.0" opacity="0.7" prefHeight="114.0" prefWidth="584.0" style="-fx-border-radius: 10px; -fx-background-color: #2541b2 #2541b2 #2541b2 #2541b2; -fx-background-radius: 10px;">
+            <AnchorPane layoutX="28.0" layoutY="219.0" opacity="0.7" prefHeight="114.0" prefWidth="550.0" style="-fx-border-radius: 10px; -fx-background-color: #2541b2 #2541b2 #2541b2 #2541b2; -fx-background-radius: 10px;">
                <children>
                   <Label layoutX="230.0" layoutY="14.0" prefHeight="25.0" prefWidth="64.0" text="Turnos" textAlignment="CENTER" textFill="WHITE">
                      <font>
@@ -117,7 +117,7 @@
                         <Font name="Lato Black" size="15.0" />
                      </font>
                   </Label>
-                  <Separator layoutX="18.0" layoutY="38.0" prefHeight="16.0" prefWidth="543.0" />
+                  <Separator layoutX="11.0" layoutY="39.0" prefHeight="16.0" prefWidth="525.0" />
                </children>
             </AnchorPane>
       </children>

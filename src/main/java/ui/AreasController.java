@@ -26,6 +26,12 @@ public class AreasController {
     private AnchorPane voleyButton;
 
 
+    @FXML
+    void backButtonClicked(ActionEvent event){
+        Main m = new Main();
+        m.backButtonClicked("src/main/java/ui/main-menu.fxml", "Menu principal");
+    }
+
 
     @FXML
     void basquetButtonClicked(MouseEvent event) {

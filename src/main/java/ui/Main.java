@@ -41,6 +41,10 @@ public class Main extends Application {
         primaryStage.show();
     }
 
+    public void closeScene(){
+        this.stg.close();
+    }
+
     public void changeScene(String fxml, String titulo) throws IOException {
         //cambiar pantalla 100%
         URL url = new File(fxml).toURI().toURL();
@@ -49,6 +53,15 @@ public class Main extends Application {
         //Parent pane = FXMLLoader.load(getClass().getResource(fxml));
         stg.getScene().setRoot(pane);
         stg.setTitle(titulo);
+    }
+
+    public void backButtonClicked(String fxml, String titulo){
+        try {
+            this.changeScene(fxml, titulo);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     public void changeSceneOnParent(String fxml, String titulo) throws IOException {

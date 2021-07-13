@@ -57,7 +57,7 @@ public class BasquetController implements Initializable {
     private DatePicker diaPicker;
 
     @FXML
-    private ComboBox diaSelect;
+    private ComboBox horaSelect;
 
 
     @Override
@@ -74,36 +74,53 @@ public class BasquetController implements Initializable {
         this.colPago.setCellValueFactory(new PropertyValueFactory<>("Pagado"));
 
         this.tablaTurnos.setItems(turnos); //Inserto los turnos en la tabla que muestro por pantalla
+
+        this.diaPicker.setValue(null);
+        this.horaSelect.setValue(null);
     }
 
     @FXML
     void registrarTurnoButtonClicked(ActionEvent event) throws IOException {
 
-        URL url = new File("src/main/java/ui/registrarTurno.fxml").toURI().toURL();
+        // Si se seleccionaron ambos datos (que habian sido inicializados en null previamente con setValue)
+        if (this.diaPicker.getValue() != null && this.horaSelect.getValue() != null){
 
-        FXMLLoader loader = new FXMLLoader(url); //Creo FXMLLoader para poder pasarle el turno y que agregue los jugadores y el titular.
-        Parent root = loader.load();
-        RegistrarTurnoController controlador = loader.getController();
+            URL url = new File("src/main/java/ui/registrarTurno.fxml").toURI().toURL();
 
-        //Obtengo el IdTurno maximo, para generar el siguiente
-        int idTurnoMax = (int) Main.manager.createQuery("SELECT max(idTurno) FROM Turno").getResultList().get(0);
+            FXMLLoader loader = new FXMLLoader(url); //Creo FXMLLoader para poder pasarle el turno y que agregue los jugadores y el titular.
+            Parent root = loader.load();
+            RegistrarTurnoController controlador = loader.getController();
 
-        Turno t = new Turno(idTurnoMax+1,
-                null,
-                this.diaPicker.getValue(),
-                (LocalTime.parse((String)this.diaSelect.getValue())),
-                Main.encargadoLogeado,
-                false);
+            //Obtengo el IdTurno maximo, para generar el siguiente
+            int idTurnoMax = (int) Main.manager.createQuery("SELECT max(idTurno) FROM Turno").getResultList().get(0);
 
-        //Paso por parametro el turno
-        controlador.initAttributes(t);
+            Turno t = new Turno(idTurnoMax+1,
+                    null,
+                    this.diaPicker.getValue(),
+                    (LocalTime.parse((String)this.horaSelect.getValue())),
+                    Main.encargadoLogeado,
+                    false);
 
-        Scene scene = new Scene(root);
-        Stage stage = new Stage();
-        stage.setTitle("Registrar turno");
-        stage.initModality(Modality.APPLICATION_MODAL);
-        stage.setScene(scene);
-        stage.showAndWait();
+            //Paso por parametro el turno
+            controlador.initAttributes(t);
+
+            Scene scene = new Scene(root);
+            Stage stage = new Stage();
+            stage.setTitle("Registrar turno");
+            stage.initModality(Modality.APPLICATION_MODAL);
+            stage.setScene(scene);
+            stage.showAndWait();
+        } else { // Si no se selecciono dia u horario
+
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setHeaderText(null);
+            alert.setTitle("Error en los datos");
+            alert.setContentText("No se seleccionó día y horario para el turno");
+            alert.showAndWait();
+
+        }
+
+
 
 
     }
@@ -134,7 +151,7 @@ public class BasquetController implements Initializable {
         }
         //Muestro por pantalla los horarios disponibles.
         this.horarios.addAll(horariosDisponibles);
-        this.diaSelect.setItems(this.horarios);
+        this.horaSelect.setItems(this.horarios);
 
     }
 
@@ -142,6 +159,12 @@ public class BasquetController implements Initializable {
     @FXML
     void seleccionarHora(ActionEvent event){
 
+    }
+
+    @FXML
+    void backButtonClicked(ActionEvent event){
+        Main m = new Main();
+        m.backButtonClicked("src/main/java/ui/areas.fxml", "Áreas");
     }
 
 }
