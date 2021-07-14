@@ -54,6 +54,9 @@ public class RegistrarTurnoController implements Initializable {
     @FXML
     private Label diaLabel;
 
+    @FXML
+    private Label titularLabel;
+
     private Turno turno = new Turno();
 
 
@@ -114,7 +117,12 @@ public class RegistrarTurnoController implements Initializable {
 
     public void initAttributes(Turno t){
         this.turno = t;
-        this.diaLabel.setText(this.turno.getFecha().toString() + "  /  " + this.turno.getHora().toString());
+        this.diaLabel.setText(this.turno.getFecha().toString() + "\n" + this.turno.getHora().toString());
+
+        if (this.turno.getTitular() == null) // Si aun no hay titular
+            this.titularLabel.setText("Titular:\n-");
+        else
+            this.titularLabel.setText("Titular:\n" + Integer.toString(this.turno.getTitular().getDni()));
     }
 
 
