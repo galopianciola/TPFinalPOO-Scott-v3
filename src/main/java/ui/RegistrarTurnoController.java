@@ -90,9 +90,8 @@ public class RegistrarTurnoController implements Initializable {
         // Al volver de agregar un jugador, refresco el TableView
         this.listaJugadores = FXCollections.observableArrayList(this.turno.getJugadores());
 
-        for (Persona j: this.turno.getJugadores())
-            System.out.println(j.toString());
-        System.out.println("Cant jugadores ahora " + this.turno.getJugadores().size());
+        // Y tambien veo si se debe actualizar el titular del turno
+        this.actualizarTitular();
 
         this.tablaJugadores.setItems(this.listaJugadores);
         this.tablaJugadores.refresh();
@@ -115,14 +114,18 @@ public class RegistrarTurnoController implements Initializable {
 
     }
 
-    public void initAttributes(Turno t){
-        this.turno = t;
-        this.diaLabel.setText(this.turno.getFecha().toString() + "\n" + this.turno.getHora().toString());
-
+    public void actualizarTitular(){
         if (this.turno.getTitular() == null) // Si aun no hay titular
             this.titularLabel.setText("Titular:\n-");
         else
             this.titularLabel.setText("Titular:\n" + Integer.toString(this.turno.getTitular().getDni()));
+    }
+
+    public void initAttributes(Turno t){
+        this.turno = t;
+        this.diaLabel.setText(this.turno.getFecha().toString() + "\n" + this.turno.getHora().toString());
+
+        this.actualizarTitular();
     }
 
 

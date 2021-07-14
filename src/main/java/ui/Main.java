@@ -89,7 +89,13 @@ public class Main extends Application {
 
         emf = Persistence.createEntityManagerFactory("Persistencia");
         manager = emf.createEntityManager();
-    /*
+
+        /*
+        CREACION DE PRIMERAS AREAS Y ENCARGADOS
+         */
+
+        /*
+
         Area basquet = new Area(1, 300, "Basquet",4,1);
         Area futbol = new Area(2, 400, "Futbol",5,2);
 
@@ -97,7 +103,6 @@ public class Main extends Application {
                 41537503,
                 "Julian",
                 "Wagner",
-                "Urquiza 4263",
                 220645,
                 basquet,
                 40000,
@@ -107,7 +112,6 @@ public class Main extends Application {
                 41104148,
                 "Galo",
                 "Pianciola",
-                "Alsina 3393",
                 426487,
                 futbol,
                 38000,
@@ -117,7 +121,6 @@ public class Main extends Application {
                 41104142,
                 "Gonzalo",
                 "Kolman",
-                "Vte lopez 2123",
                 424242,
                 false
         );
@@ -199,9 +202,11 @@ public class Main extends Application {
         manager.getTransaction().commit();
         System.out.println(aux.toString());
 
+         */
+
         List<Persona> turnos = (List<Persona>) manager.createQuery("FROM Persona").getResultList();
         System.out.println("Hay "+turnos.size()+" empleados en el sistema");
-*/
+
         launch(args);
     }
 

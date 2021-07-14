@@ -48,7 +48,7 @@
       <children>
             <AnchorPane layoutX="174.0" layoutY="15.0" prefHeight="42.0" prefWidth="137.0" style="-fx-background-color: #327AC6; -fx-background-radius: 10px;">
                <children>
-                  <Label fx:id="diaLabel" alignment="CENTER" layoutX="6.0" layoutY="3.0" prefHeight="36.0" prefWidth="125.0" text="13-7-2021 / 15:00" textFill="WHITE">
+                  <Label fx:id="diaLabel" alignment="CENTER" layoutX="6.0" layoutY="2.0" prefHeight="42.0" prefWidth="125.0" text="13-7-2021 / 15:00" textAlignment="CENTER" textFill="WHITE">
                      <font>
                         <Font name="Arial Italic" size="13.0" />
                      </font>
@@ -74,7 +74,7 @@
             <CheckBox fx:id="pagadoCheck" layoutX="360.0" layoutY="320.0" mnemonicParsing="false" text="Pagado" textFill="WHITE" />
             <AnchorPane layoutX="323.0" layoutY="15.0" prefHeight="42.0" prefWidth="101.0" style="-fx-background-color: #327AC6; -fx-background-radius: 10px;">
                <children>
-                  <Label fx:id="titularLabel" alignment="CENTER" layoutX="2.0" layoutY="4.0" prefHeight="36.0" prefWidth="102.0" text="Titular:" textFill="WHITE">
+                  <Label fx:id="titularLabel" alignment="CENTER" layoutX="2.0" layoutY="4.0" prefHeight="42.0" prefWidth="102.0" text="Titular:" textAlignment="CENTER" textFill="WHITE">
                      <font>
                         <Font name="Arial Italic" size="13.0" />
                      </font>
