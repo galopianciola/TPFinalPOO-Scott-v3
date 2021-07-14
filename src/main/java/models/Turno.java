@@ -40,7 +40,7 @@ public class Turno {
     }
 
     public Turno(){
-
+        this.titular = null;
     }
 
     public int getIdTurno() {

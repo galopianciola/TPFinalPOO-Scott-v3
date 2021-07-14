@@ -4,6 +4,7 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.DatePicker;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
@@ -41,9 +42,15 @@ public class Main extends Application {
         primaryStage.show();
     }
 
-    public void closeScene(){
-        this.stg.close();
+    public void sendAlert(Alert.AlertType alertType, String title, String content){
+        Alert alert = new Alert(alertType);
+        alert.setHeaderText(null);
+        alert.setTitle(title);
+        alert.setContentText(content);
+        alert.showAndWait();
     }
+
+
 
     public void changeScene(String fxml, String titulo) throws IOException {
         //cambiar pantalla 100%

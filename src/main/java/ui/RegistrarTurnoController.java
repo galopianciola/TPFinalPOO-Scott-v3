@@ -54,7 +54,7 @@ public class RegistrarTurnoController implements Initializable {
     @FXML
     private Label diaLabel;
 
-    private Turno turno;
+    private Turno turno = new Turno();
 
 
     @Override
@@ -86,8 +86,13 @@ public class RegistrarTurnoController implements Initializable {
 
         // Al volver de agregar un jugador, refresco el TableView
         this.listaJugadores = FXCollections.observableArrayList(this.turno.getJugadores());
-        System.out.println(this.turno.getJugadores().get(0));
+
+        for (Persona j: this.turno.getJugadores())
+            System.out.println(j.toString());
+        System.out.println("Cant jugadores ahora " + this.turno.getJugadores().size());
+
         this.tablaJugadores.setItems(this.listaJugadores);
+        this.tablaJugadores.refresh();
     }
 
     @FXML

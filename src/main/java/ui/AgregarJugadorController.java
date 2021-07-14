@@ -5,9 +5,9 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.CheckBox;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
-import models.Encargado;
 import models.Persona;
 import models.Turno;
 
@@ -31,6 +31,9 @@ public class AgregarJugadorController implements Initializable {
     @FXML
     private Button addButton;
 
+    @FXML
+    private CheckBox titularCheck;
+
     private Turno turno;
 
     @Override
@@ -39,6 +42,7 @@ public class AgregarJugadorController implements Initializable {
         this.nombreField.setText("");
         this.apellidoField.setText("");
         this.telefonoField.setText("");
+        this.titularCheck.setSelected(false);
     }
 
     @FXML
@@ -71,11 +75,7 @@ public class AgregarJugadorController implements Initializable {
                         false
                 );
 
-                // Agrego el jugador a la lista de jugadores
-                this.turno.setJugadores(p);
-                this.turno.setTitular(p);
-
-                Main.manager.persist(p);
+                this.chequearTitular(p, true);
 
             } else {
                 // Si ya existe, y encima ya esta agregada como jugador en este turno
@@ -90,40 +90,53 @@ public class AgregarJugadorController implements Initializable {
                 } else { // Si ya existe pero no esta en el turno aún
                     // Simplemente aviso y lo agrego
 
-                    Alert alert = new Alert(Alert.AlertType.INFORMATION);
-                    alert.setHeaderText(null);
-                    alert.setTitle("Jugador agregado al turno");
-                    alert.setContentText("La persona ya se encuentra en el sistema.\nJugador agregado");
-                    alert.showAndWait();
+                    Main m = new Main();
+                    m.sendAlert(Alert.AlertType.INFORMATION, "Jugador agregado al turno", "La persona ya se encuentra en el sistema.\nJugador agregado");
 
-                    this.turno.setTitular(personaExistente);
+                    this.chequearTitular(personaExistente, false);
 
-                    // Agrego el jugador a la lista de jugadores
-                    this.turno.setJugadores(personaExistente);
                 }
             }
 
             Main.manager.getTransaction().commit(); // Cierro la conexion
 
-            // Cierro la ventana porque la persona ya fue agregada
-            Stage stage = (Stage) addButton.getScene().getWindow();
-            stage.close();
-
         } else { // Si algun dato esta incompleto...
-
-            Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setHeaderText(null);
-            alert.setTitle("Datos incompletos");
-            alert.setContentText("Los datos están incompletos. Inténtelo de nuevo");
-            alert.showAndWait();
-
+            Main m = new Main();
+            m.sendAlert(Alert.AlertType.ERROR, "Datos incompletos", "Los datos están incompletos. Inténtelo de nuevo");
         }
-
-
-
     }
 
     public void initAttributes(Turno t) {
         this.turno = t;
     }
+
+    public void chequearTitular(Persona persona, boolean persist) {
+        /*
+        Este metodo chequea si la persona a agregar a la lista de jugadores fue marcada como titular o no,
+        y de haber sido marcada, se chequea si el turno no tiene ya un titular existente.
+        Recibe un parametro persist que determinara si la persona es nueva o no (si debe ir a la base o no)
+         */
+
+        // Si quiere ser titular pero ya hay un titular
+        if (this.turno.getTitular() != null && this.titularCheck.isSelected()){
+            Main m = new Main();
+            if (this.titularCheck.isSelected()) {
+                m.sendAlert(Alert.AlertType.ERROR, "Error en el turno", "Ya existe un jugador titular del turno");
+                return; // Corto la funcion
+            }
+        }
+
+        this.turno.setJugadores(persona); // Lo agrego
+
+        if (persist) // Lo persisto de ser necesario
+            Main.manager.persist(persona);
+
+        if (this.titularCheck.isSelected()) // Y si el checkbox de titular esta marcado
+            this.turno.setTitular(persona); // Lo seteo como titular
+
+        // Cierro la ventana porque la persona ya fue agregada
+        Stage stage = (Stage) addButton.getScene().getWindow();
+        stage.close();
+    }
+
 }
