@@ -29,7 +29,7 @@ public class AreasController {
     @FXML
     void backButtonClicked(ActionEvent event){
         Main m = new Main();
-        m.backButtonClicked("src/main/java/ui/main-menu.fxml", "Menu principal");
+        m.backButtonClicked("src/main/java/ui/main-menu.fxml", "Menú principal");
     }
 
 
@@ -43,7 +43,7 @@ public class AreasController {
             else {
                 Alert alert = new Alert(Alert.AlertType.ERROR);
                 alert.setHeaderText(null);
-                alert.setTitle("Acceso");
+                alert.setTitle("Acceso denegado");
                 alert.setContentText("No es posible ingresar al área seleccionada");
                 alert.showAndWait();
             }

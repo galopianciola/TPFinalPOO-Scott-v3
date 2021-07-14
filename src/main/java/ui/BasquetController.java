@@ -101,7 +101,7 @@ public class BasquetController implements Initializable {
                     Main.encargadoLogeado,
                     false);
 
-            //Paso por parametro el turno
+            //Paso por parametro el turno para que se le puedan añadir los jugadores y setear el titular
             controlador.initAttributes(t);
 
             Scene scene = new Scene(root);
