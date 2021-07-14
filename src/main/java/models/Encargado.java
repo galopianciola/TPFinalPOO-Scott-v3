@@ -16,8 +16,8 @@ public class Encargado extends Persona implements Serializable {
     @Column(name="password")
     private String password;
 
-    public Encargado(int dni, String nombre, String apellido, String direccion, int telefono, Area area, double sueldo, String password) {
-        super(dni, nombre, apellido, direccion, telefono, true);
+    public Encargado(int dni, String nombre, String apellido, int telefono, Area area, double sueldo, String password) {
+        super(dni, nombre, apellido, telefono, true);
         this.area = area;
         this.sueldo = sueldo;
         this.password = password;

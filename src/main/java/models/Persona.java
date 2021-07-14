@@ -19,18 +19,15 @@ public class Persona {
     private String nombre;
     @Column(name="apellido")
     private String apellido;
-    @Column(name="direccion")
-    private String direccion;
     @Column(name="telefono")
     private int telefono;
     @Column(name="isEncargado")
     private boolean isEncargado;
 
-    public Persona(int dni,String nombre, String apellido,String direccion, int telefono, boolean isEncargado) {
+    public Persona(int dni,String nombre, String apellido, int telefono, boolean isEncargado) {
         this.nombre = nombre;
         this.apellido = apellido;
         this.dni = dni;
-        this.direccion = direccion;
         this.telefono = telefono;
         this.isEncargado = isEncargado;
     }
@@ -51,10 +48,6 @@ public class Persona {
         return apellido;
     }
 
-    public String getDireccion() {
-        return direccion;
-    }
-
     public int getTelefono() {
         return telefono;
     }
@@ -69,10 +62,6 @@ public class Persona {
 
     public void setApellido(String apellido) {
         this.apellido = apellido;
-    }
-
-    public void setDireccion(String direccion) {
-        this.direccion = direccion;
     }
 
     public void setTelefono(int telefono) {

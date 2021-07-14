@@ -55,10 +55,10 @@
             <Button fx:id="registrarTurnoButton" layoutX="424.0" layoutY="316.0" mnemonicParsing="false" onAction="#registrarTurnoButtonClicked" prefHeight="26.0" prefWidth="143.0" text="Registrar" />
             <TableView fx:id="tablaJugadores" layoutX="33.0" layoutY="72.0" prefHeight="221.0" prefWidth="532.0">
               <columns>
-                <TableColumn prefWidth="104.0" text="DNI" />
-                <TableColumn prefWidth="139.0" text="Nombre" />
-                  <TableColumn prefWidth="142.0" text="Apellido" />
-                  <TableColumn prefWidth="143.0" text="Teléfono" />
+                <TableColumn fx:id="colDni" prefWidth="104.0" text="DNI" />
+                <TableColumn fx:id="colNombre" prefWidth="139.0" text="Nombre" />
+                  <TableColumn fx:id="colApellido" prefWidth="142.0" text="Apellido" />
+                  <TableColumn fx:id="colTelefono" prefWidth="143.0" text="Teléfono" />
               </columns>
             </TableView>
             <Button fx:id="agregarJugadorButton" layoutX="424.0" layoutY="23.0" mnemonicParsing="false" onAction="#agregarJugadorClicked" prefHeight="26.0" prefWidth="143.0" text="Agregar jugador" />

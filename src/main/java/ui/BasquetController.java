@@ -110,6 +110,8 @@ public class BasquetController implements Initializable {
             stage.initModality(Modality.APPLICATION_MODAL);
             stage.setScene(scene);
             stage.showAndWait();
+
+
         } else { // Si no se selecciono dia u horario
 
             Alert alert = new Alert(Alert.AlertType.ERROR);

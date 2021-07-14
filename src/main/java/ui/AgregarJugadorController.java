@@ -67,32 +67,43 @@ public class AgregarJugadorController implements Initializable {
                         Integer.parseInt(this.dniField.getText()),
                         this.nombreField.getText(),
                         this.apellidoField.getText(),
-                        null,
                         Integer.parseInt(this.telefonoField.getText()),
                         false
                 );
+
+                // Agrego el jugador a la lista de jugadores
+                this.turno.setJugadores(p);
                 this.turno.setTitular(p);
 
                 Main.manager.persist(p);
-                Main.manager.getTransaction().commit();
+
             } else {
+                // Si ya existe, y encima ya esta agregada como jugador en este turno
+                if (this.turno.getJugadores().contains(personaExistente)){
 
-                // Si ya existe, simplemente aviso y lo seteo como titular
+                    Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                    alert.setHeaderText(null);
+                    alert.setTitle("Error");
+                    alert.setContentText("El jugador ya existe en el turno");
+                    alert.showAndWait();
 
-                // TODO Aca ver si ya esta en el turno o no. Si ya esta, error, ya lo cargaste pelotudo
+                } else { // Si ya existe pero no esta en el turno aún
+                    // Simplemente aviso y lo agrego
 
-                Alert alert = new Alert(Alert.AlertType.INFORMATION);
-                alert.setHeaderText(null);
-                alert.setTitle("Jugador agregado al turno");
-                alert.setContentText("La persona ya se encuentra en el sistema.\nJugador agregado");
-                alert.showAndWait();
+                    Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                    alert.setHeaderText(null);
+                    alert.setTitle("Jugador agregado al turno");
+                    alert.setContentText("La persona ya se encuentra en el sistema.\nJugador agregado");
+                    alert.showAndWait();
 
-                this.turno.setTitular(personaExistente);
+                    this.turno.setTitular(personaExistente);
 
-                // TODO: y deberia tambien agregarla a la lista de jugadores
-
-                Main.manager.getTransaction().commit(); // Cierro la conexion
+                    // Agrego el jugador a la lista de jugadores
+                    this.turno.setJugadores(personaExistente);
+                }
             }
+
+            Main.manager.getTransaction().commit(); // Cierro la conexion
 
             // Cierro la ventana porque la persona ya fue agregada
             Stage stage = (Stage) addButton.getScene().getWindow();
