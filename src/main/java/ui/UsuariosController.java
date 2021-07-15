@@ -46,7 +46,8 @@ public class UsuariosController implements Initializable {
 
     @FXML
     void backButtonClicked(ActionEvent event) {
-
+        Main m = new Main();
+        m.backButtonClicked("src/main/java/ui/main-menu.fxml", "Menú principal");
     }
 
     @FXML

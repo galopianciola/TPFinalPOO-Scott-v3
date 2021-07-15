@@ -7,6 +7,7 @@ import javafx.scene.control.Button;
 import javafx.stage.Stage;
 
 
+import javax.swing.*;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -48,6 +49,19 @@ public class MainMenuController implements Initializable {
         try {
             Main m = new Main();
             m.changeScene("src/main/java/ui/resumen.fxml", "Resumen");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+    }
+
+
+    @FXML
+    void usuariosButtonClicked(ActionEvent event) throws IOException {
+
+        try {
+            Main m = new Main();
+            m.changeScene("src/main/java/ui/usuarios.fxml", "Usuarios");
         } catch (Exception e) {
             e.printStackTrace();
         }
