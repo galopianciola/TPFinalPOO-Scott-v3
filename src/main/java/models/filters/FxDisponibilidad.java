@@ -19,7 +19,7 @@ public class FxDisponibilidad implements Filtro{
     public boolean cumple(Cancha c){
         boolean disponible = true;
         List<Turno> aux = new ArrayList<>();
-        if(c.getEstado()==false)
+        if(c.getMantenimiento()==true)
             disponible=false;
         else
             aux = c.getTurnos();

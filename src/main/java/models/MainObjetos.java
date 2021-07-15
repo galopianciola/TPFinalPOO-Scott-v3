@@ -17,9 +17,8 @@ public static void main(String[] args) {
             "Basquet",
             10,
             false,
-            1000,
             false,
-            500
+            3000
     );
 
     Cancha c2 = new Cancha(
@@ -28,9 +27,8 @@ public static void main(String[] args) {
             "Futbol",
             15,
             false,
-            1000,
             false,
-            600
+            3500
     );
 
     basquet.setElementos(c);

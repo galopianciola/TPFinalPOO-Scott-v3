@@ -6,6 +6,6 @@ public class FxEstado implements Filtro{
 
     @Override
     public boolean cumple(Cancha c){
-        return c.isEstado();
+        return c.getMantenimiento();
     }
 }

@@ -28,8 +28,10 @@ public class Turno {
     private Encargado encargado;
     @Column(name="pagado")
     private boolean pagado;
+    @Column (name="precio")
+    private int precio;
 
-    public Turno(int idTurno, Persona titular, LocalDate fecha, LocalTime hora, Encargado encargado, boolean pagado) {
+    public Turno(int idTurno, Persona titular, LocalDate fecha, LocalTime hora, Encargado encargado, boolean pagado,int precio) {
         this.idTurno = idTurno;
         this.titular = titular;
         this.fecha = fecha;
@@ -37,6 +39,7 @@ public class Turno {
         this.encargado = encargado;
         this.pagado = pagado;
         this.jugadores = new ArrayList<>();
+        this.precio=precio;
     }
 
     public Turno(){
@@ -53,6 +56,10 @@ public class Turno {
 
     public LocalDate getFecha() {
         return fecha;
+    }
+
+    public int getPrecio(){
+        return this.precio;
     }
 
     public LocalTime getHora() {
@@ -98,5 +105,8 @@ public class Turno {
         if (this.pagado)
             return "Sí";
         return "No";
+    }
+    public void setPrecio(int precio){
+        this.precio=precio;
     }
 }

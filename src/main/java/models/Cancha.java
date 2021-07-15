@@ -22,10 +22,8 @@ public class Cancha extends Elemento implements Serializable {
     private int capacidad;
     @Column(name="ocupada")
     private boolean ocupada;
-    @Column(name="precioTurno")
-    private int precioTurno;
     @Column(name="estado")
-    private boolean estado;
+    private boolean mantenimiento;
     @Column(name="gastoMensual")
     private double gastoMensual;
 
@@ -33,12 +31,11 @@ public class Cancha extends Elemento implements Serializable {
     @Column(name="turno")
     private List<Turno> turnos;
 
-    public Cancha(int id, double dimension, String deporte, int capacidad, boolean ocupada, int precioTurno, boolean estado, double gastoMensual) {
+    public Cancha(int id, double dimension, String deporte, int capacidad, boolean ocupada, boolean mantenimiento, double gastoMensual) {
         super(id, dimension, deporte);
         this.capacidad = capacidad;
         this.ocupada = ocupada;
-        this.precioTurno = precioTurno;
-        this.estado = estado;
+        this.mantenimiento = mantenimiento;
         this.gastoMensual = gastoMensual;
         this.turnos = new ArrayList<>();;
     }
@@ -53,9 +50,10 @@ public class Cancha extends Elemento implements Serializable {
     }
 
     @Override
-    public boolean getEstado() {
-        return this.estado;
+    public boolean getMantenimiento() {
+        return this.mantenimiento;
     }
+
     @Override
     public double getGastoMensual() {
         return gastoMensual;
@@ -69,11 +67,6 @@ public class Cancha extends Elemento implements Serializable {
         return retorno;
     }
 
-
-    public boolean isOcupada() {
-        return ocupada;
-    }
-
     @Override
     public boolean isOcupadaXFecha(LocalDate date,LocalTime time){
         for(Turno turno:this.turnos)
@@ -82,13 +75,14 @@ public class Cancha extends Elemento implements Serializable {
         return false;
     }
 
-    public int getPrecioTurno() {
-        return precioTurno;
+    public double getRecaudado(LocalDate date){
+        double recaudado = 0;
+        for(Turno turno:this.turnos)
+            if(turno.getFecha().equals(date))
+                recaudado+= turno.getPrecio();
+        return recaudado;
     }
 
-    public boolean isEstado() {
-        return estado;
-    }
 
 
     public List<Turno> getTurnos() {
@@ -116,12 +110,8 @@ public class Cancha extends Elemento implements Serializable {
         this.ocupada = ocupada;
     }
 
-    public void setPrecioTurno(int precioTurno) {
-        this.precioTurno = precioTurno;
-    }
-
-    public void setEstado(boolean estado) {
-        this.estado = estado;
+    public void setMantenimiento(boolean mantenimiento) {
+        this.mantenimiento=mantenimiento;
     }
 
     public void setGastoMensual(double gastoMensual) {

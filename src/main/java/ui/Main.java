@@ -95,7 +95,7 @@ public class Main extends Application {
          */
 
 
-
+/*
         Area basquet = new Area(1, 300, "Basquet",4,1);
         Area futbol = new Area(2, 400, "Futbol",5,2);
 
@@ -131,7 +131,8 @@ public class Main extends Application {
                 LocalDate.of(2021,7,10),
                 LocalTime.of(14,00),
                 Juli,
-                false
+                false,
+                300
         );
         Turno t2 = new Turno(
                 2,
@@ -139,7 +140,8 @@ public class Main extends Application {
                 LocalDate.of(2021,7,10),
                 LocalTime.of(17,00),
                 Galo,
-                true
+                true,
+                300
         );
 
         Turno t3 = new Turno(
@@ -148,7 +150,8 @@ public class Main extends Application {
                 LocalDate.of(2021,7,10),
                 LocalTime.of(20,00),
                 Galo,
-                true
+                true,
+                300
         );
 
 
@@ -158,9 +161,8 @@ public class Main extends Application {
                 "Basquet",
                 10,
                 false,
-                1000,
-                true,
-                500
+                false,
+                2500
         );
 
         Cancha c2 = new Cancha(
@@ -169,9 +171,8 @@ public class Main extends Application {
                 "Futbol",
                 10,
                 false,
-                1000,
-                true,
-                600
+                false,
+                3000
         );
 
         basquet.setElementos(c);
@@ -202,7 +203,7 @@ public class Main extends Application {
         manager.getTransaction().commit();
         System.out.println(aux.toString());
 
-
+*/
 
 
 

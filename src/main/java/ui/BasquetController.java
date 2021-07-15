@@ -110,7 +110,8 @@ public class BasquetController implements Initializable {
                     this.diaPicker.getValue(),
                     (LocalTime.parse((String)this.horaSelect.getValue())),
                     Main.encargadoLogeado,
-                    false);
+                    false,
+                    300);
 
             //Paso por parametro el turno para que se le puedan añadir los jugadores y setear el titular
             controlador.initAttributes(t);
@@ -190,9 +191,9 @@ public class BasquetController implements Initializable {
     }
 
     @FXML
-    void verCanchaButtonClicked(ActionEvent event) {
+    void verCanchaButtonClicked(ActionEvent event) throws IOException {
         Main m = new Main();
-        m.changeScene("src/main/java/ui/.fxml");
+        m.changeScene("src/main/java/ui/canchas.fxml","Canchas");
     }
     /*
     public void refrescarTabla(){

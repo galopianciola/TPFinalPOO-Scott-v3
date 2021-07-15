@@ -46,10 +46,10 @@ public class Area extends Elemento implements Serializable {
     }
 
     @Override
-    public boolean getEstado() {
+    public boolean getMantenimiento() {
         boolean retorno=false;
         for(Elemento e:this.elementos)
-            if(e.getEstado()==true)
+            if(e.getMantenimiento()==true)
                 retorno=true;
         return retorno;
     }
@@ -82,7 +82,7 @@ public class Area extends Elemento implements Serializable {
         int cantElementosDisponibles=0;
         double retorno=0;
         for(Elemento e:this.elementos)
-            if (e.getEstado()==true)
+            if (e.getMantenimiento()==true)
                 cantElementosDisponibles++;
         if (cantElementosDisponibles == 0)
             return "Disponible en 0%";
@@ -93,7 +93,7 @@ public class Area extends Elemento implements Serializable {
 
     public boolean getDisponibilidad(){
         for(Elemento e:this.elementos) {
-            if (e.getEstado() == true)
+            if (e.getMantenimiento() == true)
                 return true;
         }
         return false;

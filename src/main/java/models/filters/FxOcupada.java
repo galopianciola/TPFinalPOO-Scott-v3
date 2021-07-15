@@ -1,3 +1,4 @@
+/*
 package models.filters;
 import models.Cancha;
 
@@ -12,3 +13,4 @@ public class FxOcupada implements Filtro {
         return c.isOcupada();
     }
 }
+*/

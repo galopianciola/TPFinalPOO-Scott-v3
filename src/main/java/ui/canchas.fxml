@@ -32,7 +32,9 @@
   OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 -->
 
+<?import javafx.scene.control.Accordion?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Separator?>
 <?import javafx.scene.control.TableColumn?>
@@ -41,29 +43,35 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox prefHeight="400.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1">
+<VBox prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.CanchasController">
   <children>
-    <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="369.0" prefWidth="640.0" style="-fx-background-color: #2A2B3B#2A2B3B;" VBox.vgrow="ALWAYS">
+    <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #2A2B3B#2A2B3B;" VBox.vgrow="ALWAYS">
       <children>
-            <Label layoutX="78.0" layoutY="26.0" opacity="0.7" prefHeight="25.0" prefWidth="85.0" text="Canchas" textFill="WHITE">
+            <Label layoutX="70.0" layoutY="27.0" opacity="0.7" prefHeight="25.0" prefWidth="143.0" text="Canchas" textFill="WHITE">
                <font>
                   <Font name="Lato Black" size="20.0" />
                </font>
             </Label>
-            <Separator layoutX="167.0" layoutY="30.0" opacity="0.5" prefHeight="16.0" prefWidth="431.0" />
-            <Separator layoutX="24.0" layoutY="363.0" opacity="0.5" prefHeight="16.0" prefWidth="580.0" />
-            <Separator layoutX="26.0" layoutY="30.0" opacity="0.5" prefHeight="16.0" prefWidth="44.0" />
-            <Button fx:id="agregarCanchaButton" layoutX="454.0" layoutY="76.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="145.0" text="Agregar cancha" />
-            <TableView fx:id="canchasTable" layoutX="25.0" layoutY="76.0" prefHeight="266.0" prefWidth="407.0">
+            <Separator layoutX="201.0" layoutY="32.0" opacity="0.5" prefHeight="16.0" prefWidth="374.0" />
+            <Separator layoutX="23.0" layoutY="364.0" opacity="0.5" prefHeight="16.0" prefWidth="554.0" />
+            <Accordion layoutX="213.0" layoutY="163.0" />
+            <TableView fx:id="tablaCanchas" layoutX="24.0" layoutY="129.0" prefHeight="221.0" prefWidth="414.0">
               <columns>
-                <TableColumn prefWidth="96.0" text="Numero" />
-                <TableColumn prefWidth="91.0" text="Estado" />
-                  <TableColumn prefWidth="92.0" text="Área" />
-                  <TableColumn prefWidth="106.0" text="Deporte" />
+                <TableColumn fx:id="colID" prefWidth="71.0" text="ID" />
+                <TableColumn fx:id="colEstado" prefWidth="97.0" text="Estado" />
+                  <TableColumn fx:id="colOcupada" prefWidth="112.0" text="Ocupada" />
+                  <TableColumn fx:id="colRecaudado" prefWidth="162.0" text="Recaudado" />
               </columns>
             </TableView>
-            <Button fx:id="eliminarCanchaButton" layoutX="454.0" layoutY="117.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="145.0" text="Eliminar cancha" />
-            <Button fx:id="modificarCanchaButton" layoutX="454.0" layoutY="157.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="145.0" text="Modificar cancha" />
+            <Button fx:id="eliminarCanchaButton" layoutX="459.0" layoutY="227.0" mnemonicParsing="false" onAction="#eliminarCanchaButtonClicked" prefHeight="26.0" prefWidth="121.0" text="Eliminar cancha" />
+            <Button fx:id="backButton" layoutX="25.0" layoutY="25.0" mnemonicParsing="false" onAction="#backButtonClicked" text="&lt;&lt;">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Button>
+            <Button fx:id="agregarCanchaButton" layoutX="459.0" layoutY="150.0" mnemonicParsing="false" onAction="#agregarCanchaButtonClicked" prefHeight="26.0" prefWidth="121.0" text="Agregar cancha" />
+            <DatePicker fx:id="diaPicker" layoutX="38.0" layoutY="75.0" prefHeight="25.0" prefWidth="201.0" />
+            <Button fx:id="modificarCanchaButton" layoutX="459.0" layoutY="187.0" mnemonicParsing="false" onAction="#modificarCanchaButtonClicked" prefHeight="26.0" prefWidth="121.0" text="Modificar cancha" />
       </children>
     </AnchorPane>
   </children>
