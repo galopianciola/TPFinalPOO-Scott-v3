@@ -71,7 +71,7 @@
               </columns>
             </TableView>
             <Button fx:id="agregarJugadorButton" layoutX="441.0" layoutY="23.0" mnemonicParsing="false" onAction="#agregarJugadorClicked" prefHeight="26.0" prefWidth="143.0" text="Agregar jugador" />
-            <CheckBox fx:id="pagadoCheck" layoutX="360.0" layoutY="320.0" mnemonicParsing="false" text="Pagado" textFill="WHITE" />
+            <CheckBox fx:id="pagoCheck" layoutX="375.0" layoutY="321.0" mnemonicParsing="false" text="Pago" textFill="WHITE" />
             <AnchorPane layoutX="323.0" layoutY="15.0" prefHeight="42.0" prefWidth="101.0" style="-fx-background-color: #327AC6; -fx-background-radius: 10px;">
                <children>
                   <Label fx:id="titularLabel" alignment="CENTER" layoutX="2.0" layoutY="4.0" prefHeight="42.0" prefWidth="102.0" text="Titular:" textAlignment="CENTER" textFill="WHITE">

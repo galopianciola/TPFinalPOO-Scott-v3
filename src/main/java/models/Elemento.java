@@ -3,6 +3,8 @@ package models;
 import models.filters.Filtro;
 
 import javax.persistence.*;
+import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.List;
 
 @Entity
@@ -34,7 +36,11 @@ public abstract class Elemento {
     public abstract boolean getEstado();
     public abstract double getGastoMensual();
     public abstract List<Cancha> getCanchasXFiltro(Filtro f1);
-    // public abstract Cancha getCanchaDisponible(Date fecha, Time hora);
+    public abstract List<Turno> getTurnos();
+    public abstract void setTurno(Turno t);
+    public abstract boolean isOcupadaXFecha(LocalDate date, LocalTime time);
+
+        // public abstract Cancha getCanchaDisponible(Date fecha, Time hora);
 
 
     public int getId() {

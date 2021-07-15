@@ -49,7 +49,7 @@ public class RegistrarTurnoController implements Initializable {
     private Button agregarJugadorButton;
 
     @FXML
-    private CheckBox pagadoCheck;
+    private CheckBox pagoCheck;
 
     @FXML
     private Label diaLabel;
@@ -99,18 +99,23 @@ public class RegistrarTurnoController implements Initializable {
 
     @FXML
     void registrarTurnoButtonClicked(ActionEvent event) {
-        Area basquet1 = new Area(23, 300, "Basquet",4,1);
+        //Area de la cual esta a cargo el encargado logeado
+        Area area = (Area)Main.manager.createQuery("FROM Area where idEncargado ="+Main.encargadoLogeado.getDni()).getSingleResult();
+
+        if(this.pagoCheck.isSelected())
+            this.turno.setPagado(true);
+
+        area.setTurno(this.turno);
 
         Main.manager.getTransaction().begin();
-        Main.manager.persist(basquet1);
         Main.manager.persist(this.turno);
         Main.manager.getTransaction().commit();
 
-        // Cierro la ventana porque la persona ya fue agregada
+
+
+        // Cierro la ventana porque el turno ya fue registrado
         Stage stage = (Stage) registrarTurnoButton.getScene().getWindow();
         stage.close();
-
-        System.out.println("Fecha del turno creado "+this.turno.getFecha()+" hora del turno "+this.turno.getHora());
 
     }
 

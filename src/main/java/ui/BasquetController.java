@@ -34,7 +34,8 @@ public class BasquetController implements Initializable {
     // Lista que alimenta la tablaTurnos
     private ObservableList<Turno> turnos;
     private ObservableList<String> horarios;
-
+    private List<Turno> listaTurnos;
+    private Area area;
     @FXML
     private TableColumn colID;
 
@@ -60,17 +61,19 @@ public class BasquetController implements Initializable {
     private ComboBox horaSelect;
 
 
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
         //Obtengo los turnos de la base de datos.
 
         //Area de la cual esta a cargo el encargado logeado
-        Area area = (Area)Main.manager.createQuery("FROM Area where idEncargado ="+Main.encargadoLogeado.getDni()).getSingleResult();
+        this.area = (Area)Main.manager.createQuery("FROM Area where idEncargado ="+Main.encargadoLogeado.getDni()).getSingleResult();
 
-        List<Turno> turnosBd = (List<Turno>) Main.manager.createQuery("FROM Turno").getResultList(); //Obtengo los turnos de la base de datos.
-
-        this.turnos = FXCollections.observableArrayList(turnosBd); //Agrego los turnos al observable
+        //List<Turno> turnosBd = (List<Turno>) Main.manager.createQuery("FROM Turno").getResultList(); //Obtengo los turnos de la base de datos.
+        this.listaTurnos= new ArrayList<>(area.getTurnos());
+        System.out.println(area.getTurnos().size());
+        this.turnos = FXCollections.observableArrayList(this.listaTurnos); //Agrego los turnos al observable
         this.horarios = FXCollections.observableArrayList();
 
         this.colID.setCellValueFactory(new PropertyValueFactory<>("idTurno"));
@@ -79,8 +82,8 @@ public class BasquetController implements Initializable {
         this.colTitular.setCellValueFactory(new PropertyValueFactory<>("DniTitular"));
         this.colPago.setCellValueFactory(new PropertyValueFactory<>("Pagado"));
 
-        this.tablaTurnos.setItems(turnos); //Inserto los turnos en la tabla que muestro por pantalla
-
+        this.tablaTurnos.setItems(this.turnos); //Inserto los turnos en la tabla que muestro por pantalla
+        this.tablaTurnos.refresh();
         this.diaPicker.setValue(null);
         this.horaSelect.setValue(null);
     }
@@ -118,6 +121,7 @@ public class BasquetController implements Initializable {
             stage.showAndWait();
 
 
+
         } else { // Si no se selecciono dia u horario
 
             Alert alert = new Alert(Alert.AlertType.ERROR);
@@ -128,9 +132,6 @@ public class BasquetController implements Initializable {
 
         }
 
-
-
-
     }
 
     @FXML
@@ -138,12 +139,22 @@ public class BasquetController implements Initializable {
         //Reseteo tablas que muestro por pantalla para volverlas a llenar con la nueva fecha
         this.horarios.clear();
         this.turnos.clear();
+        this.area = (Area)Main.manager.createQuery("FROM Area where idEncargado ="+Main.encargadoLogeado.getDni()).getSingleResult();
+        this.listaTurnos= new ArrayList<>(area.getTurnos());
+
         LocalDate f = this.diaPicker.getValue();
+
         //Obtengo los turnos filtrados por fecha
-        List<Turno> turnosFiltrados = (List<Turno>) Main.manager.createQuery("FROM Turno where fecha='"+f+"'").getResultList();
+        List<Turno> turnosFiltrados = new ArrayList<>();
+        for(Turno turno:this.listaTurnos) {
+            if (turno.getFecha().equals(f))
+                turnosFiltrados.add(turno);
+        }
+        //List<Turno> turnosFiltrados = (List<Turno>) Main.manager.createQuery("FROM Turno where fecha='"+f+"'").getResultList();
 
         this.turnos.addAll(turnosFiltrados);
         this.tablaTurnos.setItems(this.turnos);
+        this.tablaTurnos.refresh();
 
         //Agrego todos los horarios
         List <String> horariosDisponibles = new ArrayList<>();
@@ -161,6 +172,7 @@ public class BasquetController implements Initializable {
         this.horarios.addAll(horariosDisponibles);
         this.horaSelect.setItems(this.horarios);
 
+        //this.refrescarTabla();
     }
 
 
@@ -173,6 +185,14 @@ public class BasquetController implements Initializable {
     void backButtonClicked(ActionEvent event){
         Main m = new Main();
         m.backButtonClicked("src/main/java/ui/areas.fxml", "Áreas");
+    }
+
+    public void refrescarTabla(){
+        this.listaTurnos= new ArrayList<>(area.getTurnos());
+        this.turnos.clear();
+        this.turnos = FXCollections.observableArrayList(listaTurnos); //Agrego los turnos al observable
+        this.tablaTurnos.setItems(turnos);
+        this.tablaTurnos.refresh();
     }
 
 }

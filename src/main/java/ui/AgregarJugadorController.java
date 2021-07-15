@@ -56,11 +56,6 @@ public class AgregarJugadorController implements Initializable {
         // Si ningun dato esta incompleto
         if ((!nombreField.getText().equals("")) && (!apellidoField.getText().equals("")) && (!dniField.getText().equals("")) && (!telefonoField.getText().equals(""))){
 
-            System.out.println(nombreField.getText());
-            System.out.println(apellidoField.getText());
-            System.out.println(dniField.getText());
-            System.out.println(telefonoField.getText());
-
             // Busco a la persona en la base por DNI
             Persona personaExistente = Main.manager.find(Persona.class, Integer.parseInt(this.dniField.getText()));
             System.out.println("EL DNI ES" + this.dniField.getText());

@@ -4,6 +4,8 @@ import models.filters.Filtro;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -68,6 +70,14 @@ public class Area extends Elemento implements Serializable {
         return retorno;
     }
 
+    @Override
+    public List<Turno> getTurnos() {
+        List<Turno> turnos = new ArrayList<>();
+        for(Elemento elemento:this.elementos)
+            turnos.addAll(elemento.getTurnos());
+        return turnos;
+    }
+
     public String getPorcentajeElementosDisponibles(){ //devuelve el porcentaje de elementos disponibles
         int cantElementosDisponibles=0;
         double retorno=0;
@@ -100,6 +110,25 @@ public class Area extends Elemento implements Serializable {
     public List<Elemento> getElementos() {
         List<Elemento> retorno = new ArrayList<>(this.elementos);
         return retorno;
+    }
+
+    @Override
+    public boolean isOcupadaXFecha(LocalDate date, LocalTime time){
+        for(Elemento elemento:this.elementos)
+            if (elemento.isOcupadaXFecha(date,time))
+                return true;
+        return false;
+    }
+
+    @Override
+    public void setTurno(Turno t){
+        int contador=0;
+        for(Elemento elemento:this.elementos) {
+            if ((!elemento.isOcupadaXFecha(t.getFecha(),t.getHora())) && (contador==0)) {
+                elemento.setTurno(t);
+                contador++;
+            }
+        }
     }
 
     public void setIdEncargado(int idEncargado) {

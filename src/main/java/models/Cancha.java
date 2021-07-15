@@ -74,6 +74,14 @@ public class Cancha extends Elemento implements Serializable {
         return ocupada;
     }
 
+    @Override
+    public boolean isOcupadaXFecha(LocalDate date,LocalTime time){
+        for(Turno turno:this.turnos)
+            if ((turno.getFecha().equals(date)) && (turno.getHora().equals(time)))
+                return true;
+        return false;
+    }
+
     public int getPrecioTurno() {
         return precioTurno;
     }
@@ -84,8 +92,7 @@ public class Cancha extends Elemento implements Serializable {
 
 
     public List<Turno> getTurnos() {
-        List<Turno> retorno = new ArrayList<>(this.turnos);
-        return retorno;
+        return new ArrayList<>(this.turnos);
     }
 
     public List<Turno> getTurnosXFechaYHora(LocalDate date, LocalTime time){
