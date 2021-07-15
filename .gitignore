@@ -1,0 +1,2 @@
+src/main/resources/persistence.xml
+target/classes/META-INF/persistence.xml
