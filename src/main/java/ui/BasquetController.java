@@ -61,6 +61,9 @@ public class BasquetController implements Initializable {
     private ComboBox horaSelect;
 
 
+    @FXML
+    private Button verCanchaButton;
+
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -72,7 +75,6 @@ public class BasquetController implements Initializable {
 
         //List<Turno> turnosBd = (List<Turno>) Main.manager.createQuery("FROM Turno").getResultList(); //Obtengo los turnos de la base de datos.
         this.listaTurnos= new ArrayList<>(area.getTurnos());
-        System.out.println(area.getTurnos().size());
         this.turnos = FXCollections.observableArrayList(this.listaTurnos); //Agrego los turnos al observable
         this.horarios = FXCollections.observableArrayList();
 
@@ -187,12 +189,18 @@ public class BasquetController implements Initializable {
         m.backButtonClicked("src/main/java/ui/areas.fxml", "Áreas");
     }
 
+    @FXML
+    void verCanchaButtonClicked(ActionEvent event) {
+        Main m = new Main();
+        m.changeScene("src/main/java/ui/.fxml");
+    }
+    /*
     public void refrescarTabla(){
         this.listaTurnos= new ArrayList<>(area.getTurnos());
         this.turnos.clear();
         this.turnos = FXCollections.observableArrayList(listaTurnos); //Agrego los turnos al observable
         this.tablaTurnos.setItems(turnos);
         this.tablaTurnos.refresh();
-    }
+    }*/
 
 }
