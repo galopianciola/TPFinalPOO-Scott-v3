@@ -82,7 +82,8 @@ public class UsuariosController implements Initializable {
 
     @FXML
     void borrarUsuarioButtonClicked(ActionEvent event) {
-
+        Encargado encargadoSeleccionado = (Encargado) this.tablaUsuarios.getSelectionModel().getSelectedItem();
+        System.out.println(encargadoSeleccionado.toString());
     }
 
 }
