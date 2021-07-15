@@ -94,7 +94,7 @@ public class Main extends Application {
         CREACION DE PRIMERAS AREAS Y ENCARGADOS
          */
 
-/*
+
 
         Area basquet = new Area(1, 300, "Basquet",4,1);
         Area futbol = new Area(2, 400, "Futbol",5,2);
@@ -203,7 +203,7 @@ public class Main extends Application {
         System.out.println(aux.toString());
 
 
-*/
+
 
 
         launch(args);
