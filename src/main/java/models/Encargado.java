@@ -38,8 +38,20 @@ public class Encargado extends Persona implements Serializable {
         return area;
     }
 
+    public int getIdArea() {
+        return this.area.getId();
+    }
+
     public double getSueldo() {
         return sueldo;
+    }
+
+    public int getDni(){
+        return super.getDni();
+    }
+
+    public String getDeporte(){
+        return this.area.getDeporte();
     }
 
     public void setArea(Area area) {
