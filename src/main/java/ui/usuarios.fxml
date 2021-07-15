@@ -56,9 +56,10 @@
             <Accordion layoutX="213.0" layoutY="163.0" />
             <TableView fx:id="tablaUsuarios" layoutX="23.0" layoutY="77.0" prefHeight="276.0" prefWidth="501.0">
               <columns>
-                <TableColumn fx:id="colDNI" prefWidth="167.0" text="DNI" />
-                <TableColumn fx:id="colArea" minWidth="0.0" prefWidth="167.0" text="Área" />
-                  <TableColumn fx:id="colSueldo" prefWidth="166.0" text="Sueldo" />
+                <TableColumn fx:id="colDNI" prefWidth="133.0" text="DNI" />
+                <TableColumn fx:id="colArea" minWidth="0.0" text="ID Área" />
+                  <TableColumn fx:id="colDeporte" prefWidth="157.0" text="Deporte del Área" />
+                  <TableColumn fx:id="colSueldo" prefWidth="130.0" text="Sueldo" />
               </columns>
             </TableView>
             <Button fx:id="agregarUsuarioButton" layoutX="532.0" layoutY="77.0" mnemonicParsing="false" onAction="#agregarUsuarioButtonClicked" prefHeight="40.0" prefWidth="45.0" style="-fx-background-color: #65D26E#65D26E;" text="+">
