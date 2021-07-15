@@ -18,7 +18,6 @@ public abstract class Elemento {
     private double dimension;
     @Column(name = "deporte")
     private String deporte;
-    //private Elemento padre; Hay que ver si poner denbtoe de que area o comlejo estoy o no.
 
     public Elemento(int id, double dimension, String deporte) {
         this.id = id;

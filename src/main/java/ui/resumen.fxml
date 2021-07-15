@@ -50,7 +50,7 @@
             </Label>
             <Separator layoutX="175.0" layoutY="30.0" opacity="0.5" prefHeight="16.0" prefWidth="399.0" />
             <Separator layoutX="27.0" layoutY="363.0" opacity="0.5" prefHeight="16.0" prefWidth="550.0" />
-            <AnchorPane layoutX="27.0" layoutY="86.0" opacity="0.7" prefHeight="114.0" prefWidth="260.0" style="-fx-border-radius: 10px; -fx-background-color: #2541b2 #2541b2 #2541b2 #2541b2; -fx-background-radius: 10px;">
+            <AnchorPane layoutX="326.0" layoutY="86.0" opacity="0.7" prefHeight="114.0" prefWidth="260.0" style="-fx-border-radius: 10px; -fx-background-color: #2541b2 #2541b2 #2541b2 #2541b2; -fx-background-radius: 10px;">
                <children>
                   <Label layoutX="98.0" layoutY="14.0" text="Areas" textFill="WHITE">
                      <font>
@@ -68,14 +68,19 @@
                      </font>
                   </Label>
                   <Separator layoutX="18.0" layoutY="38.0" prefHeight="16.0" prefWidth="219.0" />
-                  <Label fx:id="areasLabel" layoutX="173.0" layoutY="57.0" prefHeight="16.0" prefWidth="64.0" text="3/4 (75%)" textFill="WHITE">
+                  <Label fx:id="disponibilidadAreasLabel" layoutX="173.0" layoutY="57.0" prefHeight="16.0" prefWidth="64.0" textFill="WHITE">
+                     <font>
+                        <Font name="Lato Regular" size="13.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="mantenimientoAreasLabel" layoutX="173.0" layoutY="81.0" prefHeight="16.0" prefWidth="64.0" textFill="WHITE">
                      <font>
                         <Font name="Lato Regular" size="13.0" />
                      </font>
                   </Label>
                </children>
             </AnchorPane>
-            <AnchorPane layoutX="317.0" layoutY="86.0" opacity="0.7" prefHeight="114.0" prefWidth="260.0" style="-fx-border-radius: 10px; -fx-background-color: #2541b2 #2541b2 #2541b2 #2541b2; -fx-background-radius: 10px;">
+            <AnchorPane layoutX="326.0" layoutY="216.0" opacity="0.7" prefHeight="114.0" prefWidth="260.0" style="-fx-border-radius: 10px; -fx-background-color: #2541b2 #2541b2 #2541b2 #2541b2; -fx-background-radius: 10px;">
                <children>
                   <Label layoutX="87.0" layoutY="14.0" text="Canchas" textFill="WHITE">
                      <font>
@@ -93,31 +98,76 @@
                      </font>
                   </Label>
                   <Separator layoutX="18.0" layoutY="38.0" prefHeight="16.0" prefWidth="228.0" />
-                  <Label fx:id="disponibilidadLabel" layoutX="182.0" layoutY="57.0" prefHeight="16.0" prefWidth="64.0" text="3/4 (75%)" textFill="WHITE">
+                  <Label fx:id="disponibilidadCanchasLabel" layoutX="182.0" layoutY="57.0" prefHeight="16.0" prefWidth="64.0" textFill="WHITE">
+                     <font>
+                        <Font name="Lato Regular" size="13.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="mantenimientoCanchasLabel" layoutX="182.0" layoutY="81.0" prefHeight="16.0" prefWidth="64.0" textFill="WHITE">
                      <font>
                         <Font name="Lato Regular" size="13.0" />
                      </font>
                   </Label>
                </children>
             </AnchorPane>
-            <AnchorPane layoutX="28.0" layoutY="219.0" opacity="0.7" prefHeight="114.0" prefWidth="550.0" style="-fx-border-radius: 10px; -fx-background-color: #2541b2 #2541b2 #2541b2 #2541b2; -fx-background-radius: 10px;">
+            <AnchorPane layoutX="16.0" layoutY="86.0" opacity="0.7" prefHeight="268.0" prefWidth="294.0" style="-fx-border-radius: 10px; -fx-background-color: #2541b2 #2541b2 #2541b2 #2541b2; -fx-background-radius: 10px;">
                <children>
-                  <Label layoutX="230.0" layoutY="14.0" prefHeight="25.0" prefWidth="64.0" text="Turnos" textAlignment="CENTER" textFill="WHITE">
+                  <Label layoutX="85.0" layoutY="14.0" prefHeight="30.0" prefWidth="124.0" text="Información" textAlignment="CENTER" textFill="WHITE">
                      <font>
                         <Font name="Lato Black" size="20.0" />
                      </font>
                   </Label>
-                  <Label layoutX="16.0" layoutY="55.0" text="· Disponibles:" textFill="WHITE">
+                  <Label layoutX="19.0" layoutY="70.0" prefHeight="21.0" prefWidth="99.0" text="· Dimension:" textFill="WHITE">
                      <font>
                         <Font name="Lato Black" size="15.0" />
                      </font>
                   </Label>
-                  <Label layoutX="14.0" layoutY="80.0" text="· En mantenimiento:" textFill="WHITE">
+                  <Label layoutX="19.0" layoutY="102.0" prefHeight="21.0" prefWidth="157.0" text="· Cantidad de deportes:" textFill="WHITE">
                      <font>
                         <Font name="Lato Black" size="15.0" />
                      </font>
                   </Label>
-                  <Separator layoutX="11.0" layoutY="39.0" prefHeight="16.0" prefWidth="525.0" />
+                  <Separator layoutX="19.0" layoutY="36.0" prefHeight="16.0" prefWidth="254.0" />
+                  <Label layoutX="16.0" layoutY="134.0" prefHeight="21.0" prefWidth="151.0" text="· Cantidad de canchas:" textFill="WHITE">
+                     <font>
+                        <Font name="Lato Black" size="15.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="13.0" layoutY="166.0" prefHeight="21.0" prefWidth="157.0" text="· Gente en el complejo:" textFill="WHITE">
+                     <font>
+                        <Font name="Lato Black" size="15.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="dimesionLabel" layoutX="177.0" layoutY="71.0" prefHeight="16.0" prefWidth="64.0" textFill="WHITE">
+                     <font>
+                        <Font name="Lato Regular" size="13.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="cantDeportesLabel" layoutX="177.0" layoutY="103.0" prefHeight="16.0" prefWidth="64.0" textFill="WHITE">
+                     <font>
+                        <Font name="Lato Regular" size="13.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="cantCanchasLabel" layoutX="177.0" layoutY="135.0" prefHeight="16.0" prefWidth="64.0" textFill="WHITE">
+                     <font>
+                        <Font name="Lato Regular" size="13.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="cantGenteComplejoLabel" layoutX="177.0" layoutY="167.0" prefHeight="16.0" prefWidth="64.0" textFill="WHITE">
+                     <font>
+                        <Font name="Lato Regular" size="13.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="13.0" layoutY="197.0" prefHeight="21.0" prefWidth="157.0" text="· Gasto mensual:" textFill="WHITE">
+                     <font>
+                        <Font name="Lato Black" size="15.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="gastoMensualLabel" layoutX="177.0" layoutY="198.0" prefHeight="16.0" prefWidth="64.0" textFill="WHITE">
+                     <font>
+                        <Font name="Lato Regular" size="13.0" />
+                     </font>
+                  </Label>
                </children>
             </AnchorPane>
             <Button fx:id="backButton" layoutX="28.0" layoutY="24.0" mnemonicParsing="false" onAction="#backButtonClicked" text="&lt;&lt;">

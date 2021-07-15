@@ -94,7 +94,7 @@ public class Main extends Application {
         CREACION DE PRIMERAS AREAS Y ENCARGADOS
          */
 
-        /*
+/*
 
         Area basquet = new Area(1, 300, "Basquet",4,1);
         Area futbol = new Area(2, 400, "Futbol",5,2);
@@ -159,7 +159,7 @@ public class Main extends Application {
                 10,
                 false,
                 1000,
-                false,
+                true,
                 500
         );
 
@@ -170,7 +170,7 @@ public class Main extends Application {
                 10,
                 false,
                 1000,
-                false,
+                true,
                 600
         );
 
@@ -202,10 +202,9 @@ public class Main extends Application {
         manager.getTransaction().commit();
         System.out.println(aux.toString());
 
-         */
 
-        List<Persona> turnos = (List<Persona>) manager.createQuery("FROM Persona").getResultList();
-        System.out.println("Hay "+turnos.size()+" empleados en el sistema");
+*/
+
 
         launch(args);
     }

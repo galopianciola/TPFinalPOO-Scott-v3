@@ -63,7 +63,13 @@ public class BasquetController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
+        //Obtengo los turnos de la base de datos.
+
+        //Area de la cual esta a cargo el encargado logeado
+        Area area = (Area)Main.manager.createQuery("FROM Area where idEncargado ="+Main.encargadoLogeado.getDni()).getSingleResult();
+
         List<Turno> turnosBd = (List<Turno>) Main.manager.createQuery("FROM Turno").getResultList(); //Obtengo los turnos de la base de datos.
+
         this.turnos = FXCollections.observableArrayList(turnosBd); //Agrego los turnos al observable
         this.horarios = FXCollections.observableArrayList();
 

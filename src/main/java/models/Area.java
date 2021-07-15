@@ -81,6 +81,14 @@ public class Area extends Elemento implements Serializable {
         return "Disponible en " + retorno+"%";
     }
 
+    public boolean getDisponibilidad(){
+        for(Elemento e:this.elementos) {
+            if (e.getEstado() == true)
+                return true;
+        }
+        return false;
+    }
+
     public int getBaños() {
         return baños;
     }
