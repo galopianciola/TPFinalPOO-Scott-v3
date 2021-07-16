@@ -51,10 +51,10 @@
                   <Font name="Lato Black" size="20.0" />
                </font>
             </Label>
-            <Separator layoutX="201.0" layoutY="32.0" opacity="0.5" prefHeight="16.0" prefWidth="374.0" />
+            <Separator layoutX="163.0" layoutY="32.0" opacity="0.5" prefHeight="16.0" prefWidth="412.0" />
             <Separator layoutX="23.0" layoutY="364.0" opacity="0.5" prefHeight="16.0" prefWidth="554.0" />
             <Accordion layoutX="213.0" layoutY="163.0" />
-            <TableView fx:id="tablaCanchas" layoutX="9.0" layoutY="76.0" prefHeight="274.0" prefWidth="437.0">
+            <TableView fx:id="tablaCanchas" layoutX="25.0" layoutY="76.0" prefHeight="274.0" prefWidth="490.0">
               <columns>
                 <TableColumn fx:id="colID" prefWidth="71.0" text="ID" />
                 <TableColumn fx:id="colMantenimiento" prefWidth="100.0" text="Mantenimiento" />
@@ -62,14 +62,23 @@
                   <TableColumn fx:id="colGananciaMensual" prefWidth="165.0" text="Ganancias del mes" />
               </columns>
             </TableView>
-            <Button fx:id="eliminarCanchaButton" layoutX="462.0" layoutY="174.0" mnemonicParsing="false" onAction="#eliminarCanchaButtonClicked" prefHeight="26.0" prefWidth="121.0" text="Eliminar cancha" />
+            <Button fx:id="eliminarCanchaButton" layoutX="528.0" layoutY="189.0" mnemonicParsing="false" onAction="#eliminarCanchaButtonClicked" prefHeight="49.0" prefWidth="49.0" style="-fx-background-color: #CE375C#CE375C #CE375C#CE375C;" text="-">
+               <font>
+                  <Font size="20.0" />
+               </font></Button>
             <Button fx:id="backButton" layoutX="25.0" layoutY="25.0" mnemonicParsing="false" onAction="#backButtonClicked" text="&lt;&lt;">
                <font>
                   <Font size="15.0" />
                </font>
             </Button>
-            <Button fx:id="agregarCanchaButton" layoutX="462.0" layoutY="99.0" mnemonicParsing="false" onAction="#agregarCanchaButtonClicked" prefHeight="26.0" prefWidth="121.0" text="Agregar cancha" />
-            <Button fx:id="modificarCanchaButton" layoutX="462.0" layoutY="137.0" mnemonicParsing="false" onAction="#modificarCanchaButtonClicked" prefHeight="26.0" prefWidth="121.0" text="Modificar cancha" />
+            <Button fx:id="agregarCanchaButton" layoutX="528.0" layoutY="76.0" mnemonicParsing="false" onAction="#agregarCanchaButtonClicked" prefHeight="49.0" prefWidth="49.0" style="-fx-background-color: #65D26E#65D26E #65D26E#65D26E;" text="+">
+               <font>
+                  <Font name="System Bold" size="20.0" />
+               </font></Button>
+            <Button fx:id="modificarCanchaButton" layoutX="528.0" layoutY="132.0" mnemonicParsing="false" onAction="#modificarCanchaButtonClicked" prefHeight="49.0" prefWidth="49.0" style="-fx-background-color: #F2B443#F2B443;" text="&lt;&gt;">
+               <font>
+                  <Font size="18.0" />
+               </font></Button>
       </children>
     </AnchorPane>
   </children>
