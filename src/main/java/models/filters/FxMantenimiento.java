@@ -2,10 +2,10 @@ package models.filters;
 
 import models.Cancha;
 
-public class FxEstado implements Filtro{
+public class FxMantenimiento implements Filtro{
 
     @Override
     public boolean cumple(Cancha c){
-        return c.getMantenimiento();
+        return (!c.getMantenimiento());
     }
 }

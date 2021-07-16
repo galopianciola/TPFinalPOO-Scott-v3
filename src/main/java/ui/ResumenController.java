@@ -6,14 +6,12 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import models.*;
-import models.filters.FxDisponibilidad;
-import models.filters.FxEstado;
+import models.filters.FxMantenimiento;
 
 import java.net.URL;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
-import java.time.Month;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
@@ -77,24 +75,24 @@ public class ResumenController implements Initializable {
             }
         }
         //Convierto a String tanto la cantidad de areas disponibles como las que estan en mantenimiento.
-        String porcentajeAreasDisponibles = (Double.toString((double) (contadorAreasDisponibles / this.areas.size() * 100))) + "%";
-        String PorcentajeAreasMantenimiento = (Double.toString((double) (100 - (contadorAreasDisponibles / this.areas.size() * 100)))) + "%";
+        String porcentajeAreasDisponibles = (Double.toString(((double)contadorAreasDisponibles / this.areas.size() * 100))) + "%";
+        String PorcentajeAreasMantenimiento = (Double.toString( (100 - ((double)contadorAreasDisponibles / this.areas.size() * 100)))) + "%";
         //Seteo en los label los String ya convertidos, con el % al final.
         this.disponibilidadAreasLabel.setText(porcentajeAreasDisponibles);
         this.mantenimientoAreasLabel.setText(PorcentajeAreasMantenimiento);
 
 
         //Para todas las areas que tengo, me fijo cuantas canchas estan disponibles y cuantas no
-        FxEstado fxEstado = new FxEstado();
+        FxMantenimiento fxMantenimiento = new FxMantenimiento();
         int contadorCanchasTotales = 0;
         List<Cancha> canchasDisponibles = new ArrayList<>(); //Voy a guardar las canchas que no se encuentra en mantenimiento.
         for (Area area : this.areas) {
-            canchasDisponibles.addAll(area.getCanchasXFiltro(fxEstado));
+            canchasDisponibles.addAll(area.getCanchasXFiltro(fxMantenimiento));
             contadorCanchasTotales += area.getElementos().size();
         }
         //Convierto a String tanto la cantidad de canchas disponibles como las que estan en mantenimiento.
-        String porcentajeCanchasDisponibles = (Double.toString((double) (canchasDisponibles.size() / contadorCanchasTotales * 100))) + "%";
-        String porcentajeCanchasMantenimiento = (Double.toString((double) (100 - (canchasDisponibles.size() / contadorCanchasTotales * 100)))) + "%";
+        String porcentajeCanchasDisponibles = (Double.toString(((double)canchasDisponibles.size() / contadorCanchasTotales * 100))) + "%";
+        String porcentajeCanchasMantenimiento = (Double.toString((100 - ((double)canchasDisponibles.size() / contadorCanchasTotales * 100)))) + "%";
         //Seteo en los label los String ya convertidos, con el % al final.
         this.disponibilidadCanchasLabel.setText(porcentajeCanchasDisponibles);
         this.mantenimientoCanchasLabel.setText(porcentajeCanchasMantenimiento);
@@ -136,8 +134,9 @@ public class ResumenController implements Initializable {
         }
         //Ya obtuve los turnos filtrados, ahora calculo cuanta gente hay en mi complejo actualmente.
         int cantGenteAct = 0;
+        System.out.println(turnosFiltrados.size());
         for (Turno turno : turnosFiltrados)
-            cantGenteAct += turno.getJugadores().size() + 1;//Sumo 1 ya que si o si tiene que tener un encargado el turno.
+            cantGenteAct += turno.getJugadores().size();
         //Seteo el valor obtenido en el label
         this.cantGenteComplejoLabel.setText(Integer.toString(cantGenteAct));
 

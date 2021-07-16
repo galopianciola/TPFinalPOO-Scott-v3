@@ -101,7 +101,7 @@ public class Area extends Elemento implements Serializable {
 
     public boolean getDisponibilidad(){
         for(Elemento e:this.elementos) {
-            if (e.getMantenimiento() == true)
+            if (e.getMantenimiento() == false)
                 return true;
         }
         return false;
@@ -144,7 +144,9 @@ public class Area extends Elemento implements Serializable {
     }
 
     public void setElementos(Elemento e){
-        this.elementos.add(e);}
+        this.elementos.add(e);
+        super.setDimension(super.getDimension()+e.getDimension());
+    }
 
     public void setBaños(int baños) {
         this.baños = baños;

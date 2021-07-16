@@ -106,7 +106,7 @@ public class Cancha extends Elemento implements Serializable {
     public List<Turno> getTurnosXFechaYHora(LocalDate date, LocalTime time){
         List<Turno> turnos = new ArrayList<>();
         for (Turno turno : this.turnos) {
-            if ((turno.getFecha().equals(date)) && ((time.getHour()-turno.getHora().getHour())>0 &&(time.getHour()-turno.getHora().getHour())<=1)) //Chequeo que los jugadores todavia sigan en el complejo
+            if ((turno.getFecha().equals(date)) && ((time.getHour()-turno.getHora().getHour())>=0 &&(time.getHour()-turno.getHora().getHour())<1)) //Chequeo que los jugadores todavia sigan en el complejo
                 turnos.add(turno);
         }
         return turnos;

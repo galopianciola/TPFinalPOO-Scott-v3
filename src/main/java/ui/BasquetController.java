@@ -175,7 +175,6 @@ public class BasquetController implements Initializable {
         this.horarios.addAll(horariosDisponibles);
         this.horaSelect.setItems(this.horarios);
 
-        //this.refrescarTabla();
     }
 
 
