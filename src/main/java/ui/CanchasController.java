@@ -64,25 +64,29 @@ public class CanchasController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         this.area = (Area)Main.manager.createQuery("FROM Area where idEncargado ="+Main.encargadoLogeado.getDni()).getSingleResult();
-        System.out.println(this.area.getElementos().size());
-            this.listaCanchas.addAll(this.area.getElementos()); //Obtengo las canchas del area
-           // for(Elemento elemento:this.listaCanchas)
-            this.canchas = FXCollections.observableArrayList(this.listaCanchas);//Agrego las canchas al observable
+        this.listaCanchas.addAll(this.area.getElementos()); //Obtengo las canchas del area
+        // for(Elemento elemento:this.listaCanchas)
+        this.canchas = FXCollections.observableArrayList(this.listaCanchas);//Agrego las canchas al observable
 
-            this.colID.setCellValueFactory(new PropertyValueFactory<>("id"));
-            this.colMantenimiento.setCellValueFactory(new PropertyValueFactory<>("mantenimiento"));
-            this.colOcupada.setCellValueFactory(new PropertyValueFactory<>("ocupada"));
-            this.colGananciaMensual.setCellValueFactory(new PropertyValueFactory<>("gananciaMensual"));
-            this.tablaCanchas.setItems(this.canchas);
-            this.tablaCanchas.refresh();
-        }
+        this.colID.setCellValueFactory(new PropertyValueFactory<>("id"));
+        this.colMantenimiento.setCellValueFactory(new PropertyValueFactory<>("mantenimiento"));
+        this.colOcupada.setCellValueFactory(new PropertyValueFactory<>("ocupada"));
+        this.colGananciaMensual.setCellValueFactory(new PropertyValueFactory<>("gananciaMensual"));
+        this.tablaCanchas.setItems(this.canchas);
+        this.tablaCanchas.refresh();
+    }
 
 
     @FXML
     void agregarCanchaButtonClicked(ActionEvent event) throws IOException {
         Main m = new Main();
         m.changeSceneOnParent("src/main/java/ui/agregarCancha.fxml","Canchas");
-
+        this.listaCanchas.clear();
+        this.area = (Area)Main.manager.createQuery("FROM Area where idEncargado ="+Main.encargadoLogeado.getDni()).getSingleResult();
+        this.listaCanchas.addAll(this.area.getElementos()); //Obtengo las canchas del area
+        this.canchas.setAll(listaCanchas);
+        this.tablaCanchas.setItems(this.canchas);
+        this.tablaCanchas.refresh();
     }
 
     @FXML
