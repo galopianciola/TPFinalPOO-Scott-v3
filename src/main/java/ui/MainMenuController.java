@@ -6,8 +6,6 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.stage.Stage;
 
-
-import javax.swing.*;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -62,6 +60,18 @@ public class MainMenuController implements Initializable {
         try {
             Main m = new Main();
             m.changeScene("src/main/java/ui/usuarios.fxml", "Usuarios");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+    }
+
+    @FXML
+    void covidButtonClicked(ActionEvent event) throws IOException {
+
+        try {
+            Main m = new Main();
+            m.changeScene("src/main/java/ui/covid.fxml", "Reportar caso COVID-19");
         } catch (Exception e) {
             e.printStackTrace();
         }

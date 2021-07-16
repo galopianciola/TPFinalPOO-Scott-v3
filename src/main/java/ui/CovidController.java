@@ -25,6 +25,13 @@ public class CovidController {
     @FXML
     void buscarButtonClicked(ActionEvent event) {
 
+        try {
+            Main m = new Main();
+            m.changeSceneOnParent("src/main/java/ui/turnosAfectados.fxml","Turnos afectados");
+        } catch (Exception e){
+            e.printStackTrace();
+        }
+
     }
 
 }
