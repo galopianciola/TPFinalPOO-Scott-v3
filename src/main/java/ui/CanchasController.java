@@ -43,7 +43,7 @@ public class CanchasController implements Initializable {
     private TableColumn colOcupada;
 
     @FXML
-    private TableColumn colRecaudado;
+    private TableColumn colGananciaMensual;
 
     @FXML
     private Button eliminarCanchaButton;
@@ -56,9 +56,6 @@ public class CanchasController implements Initializable {
 
     @FXML
     private Button modificarCanchaButton;
-
-    @FXML
-    private DatePicker diaPicker;
 
     private Area area;
     private ObservableList<Elemento> canchas;
@@ -75,29 +72,16 @@ public class CanchasController implements Initializable {
             this.colID.setCellValueFactory(new PropertyValueFactory<>("id"));
             this.colMantenimiento.setCellValueFactory(new PropertyValueFactory<>("mantenimiento"));
             this.colOcupada.setCellValueFactory(new PropertyValueFactory<>("ocupada"));
-            this.colRecaudado.setCellValueFactory(new PropertyValueFactory<>("getRecaudado"));
+            this.colGananciaMensual.setCellValueFactory(new PropertyValueFactory<>("gananciaMensual"));
             this.tablaCanchas.setItems(this.canchas);
             this.tablaCanchas.refresh();
-            this.diaPicker.setValue(null);
         }
 
 
     @FXML
     void agregarCanchaButtonClicked(ActionEvent event) throws IOException {
-        /*URL url = new File("src/main/java/ui/agregarCancha.fxml").toURI().toURL();
-
-        //Creo FXMLLoader para poder pasarle el turno y que agregue los jugadores y el titular.
-        FXMLLoader loader = new FXMLLoader(url);
-        Parent root = loader.load();
-        AgregarJugadorController controlador = loader.getController();
-        Scene scene = new Scene(root);
-        Stage stage = new Stage();
-        stage.setTitle("Agregar Cancha");
-        stage.initModality(Modality.APPLICATION_MODAL);
-        stage.setScene(scene);
-        stage.showAndWait();*/
         Main m = new Main();
-        m.changeSceneOnParent("src/main/java/ui/agregarCancha.fxml","Basq");
+        m.changeSceneOnParent("src/main/java/ui/agregarCancha.fxml","Canchas");
 
     }
 

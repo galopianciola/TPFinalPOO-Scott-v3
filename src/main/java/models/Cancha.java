@@ -26,7 +26,8 @@ public class Cancha extends Elemento implements Serializable {
     private boolean mantenimiento;
     @Column(name="gastoMensual")
     private double gastoMensual;
-    //@Column(name="gananciaDiaria")
+    @Column(name="gananciaMensual")
+    private int gananciaMensual;
     @ElementCollection
     @Column(name="turno")
     private List<Turno> turnos;
@@ -57,6 +58,11 @@ public class Cancha extends Elemento implements Serializable {
     @Override
     public double getGastoMensual() {
         return gastoMensual;
+    }
+
+    @Override
+    public int getGananciaMensual(){
+        return this.gananciaMensual;
     }
 
     @Override
@@ -108,6 +114,7 @@ public class Cancha extends Elemento implements Serializable {
 
     public void setTurno(Turno t) {
         this.turnos.add(t);
+        this.gananciaMensual+=(t.getPrecio()*(t.getJugadores().size()+1));
     }
 
     public void setCapacidad(int capacidad) {

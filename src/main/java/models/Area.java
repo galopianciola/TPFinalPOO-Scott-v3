@@ -78,6 +78,14 @@ public class Area extends Elemento implements Serializable {
         return turnos;
     }
 
+    @Override
+    public int getGananciaMensual(){
+        int gananciaMensualArea =0;
+        for(Elemento elemento:this.elementos)
+            gananciaMensualArea+=elemento.getGananciaMensual();
+        return gananciaMensualArea;
+    }
+
     public String getPorcentajeElementosDisponibles(){ //devuelve el porcentaje de elementos disponibles
         int cantElementosDisponibles=0;
         double retorno=0;

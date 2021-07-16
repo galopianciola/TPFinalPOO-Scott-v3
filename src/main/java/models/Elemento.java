@@ -35,6 +35,7 @@ public abstract class Elemento {
     public abstract int getCapacidad();
     public abstract boolean getMantenimiento();
     public abstract double getGastoMensual();
+    public abstract int getGananciaMensual();
     public abstract List<Cancha> getCanchasXFiltro(Filtro f1);
     public abstract List<Turno> getTurnos();
     public abstract void setTurno(Turno t);
