@@ -25,7 +25,7 @@
          <font>
             <Font name="Lato Regular" size="13.0" />
          </font></Button>
-      <Button fx:id="covidButton" layoutX="61.0" layoutY="286.0" mnemonicParsing="false" prefHeight="41.0" prefWidth="305.0" style="-fx-background-color: #DF6054#DF6054;" text="Registrar caso COVID-19" textFill="WHITE">
+      <Button fx:id="covidButton" layoutX="61.0" layoutY="286.0" mnemonicParsing="false" onAction="#covidButtonClicked" prefHeight="41.0" prefWidth="305.0" style="-fx-background-color: #DF6054#DF6054;" text="Registrar caso COVID-19" textFill="WHITE">
          <font>
             <Font name="Lato Black" size="13.0" />
          </font></Button>
