@@ -2,10 +2,13 @@ package models;
 
 import models.filters.FxDeporte;
 
+import java.time.LocalDate;
+import java.time.LocalTime;
+
 public class MainObjetos{
 
 public static void main(String[] args) {
-
+/*
     Area basquet = new Area(1, 300, "Basquet",4,1);
     Area futbol = new Area(2, 400, "Futbol",5,2);
 
@@ -41,6 +44,6 @@ public static void main(String[] args) {
     FxDeporte f1 = new FxDeporte("Basquet");
 
     System.out.println("En el area "+basquet.toString()+" Hay "+basquet.getCanchasXFiltro(f1).size()+" de basquet");
-
+*/
 
 }}

@@ -26,7 +26,7 @@ public class Cancha extends Elemento implements Serializable {
     private boolean mantenimiento;
     @Column(name="gastoMensual")
     private double gastoMensual;
-
+    //@Column(name="gananciaDiaria")
     @ElementCollection
     @Column(name="turno")
     private List<Turno> turnos;
@@ -67,12 +67,20 @@ public class Cancha extends Elemento implements Serializable {
         return retorno;
     }
 
+    public boolean getOcupada(){
+        for(Turno turno:this.turnos)
+            if ((turno.getFecha().equals(LocalDate.now()) && ((LocalTime.now().getHour()-turno.getHora().getHour())>=0 &&(LocalTime.now().getHour()-turno.getHora().getHour())<=1)))
+                return true;
+        return false;
+    }
+
     @Override
     public boolean isOcupadaXFecha(LocalDate date,LocalTime time){
         for(Turno turno:this.turnos)
             if ((turno.getFecha().equals(date)) && (turno.getHora().equals(time)))
                 return true;
         return false;
+
     }
 
     public double getRecaudado(LocalDate date){
