@@ -117,7 +117,6 @@ public class BasquetController implements Initializable {
             this.changeSceneController(url,t);
 
         } else { // Si no se selecciono dia u horario
-
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setHeaderText(null);
             alert.setTitle("Error en los datos");
@@ -128,7 +127,7 @@ public class BasquetController implements Initializable {
     }
 
     @FXML
-    void seleccionarFecha() {
+    void seleccionarFecha()  {
         //Reseteo tablas que muestro por pantalla para volverlas a llenar con la nueva fecha
         this.obtenerAreaSeleccionada();
         this.actualizarListaTurnos();
@@ -138,10 +137,11 @@ public class BasquetController implements Initializable {
 
     @FXML
     void seleccionarHora(ActionEvent event){
+
     }
 
     @FXML
-    void seleccionarTipoArea(ActionEvent event) {
+    void seleccionarTipoArea(ActionEvent event)  {
         //Vuelvo a obtener el Area general.
         this.obtenerAreaSeleccionada();
         this.actualizarListaTurnos();
@@ -190,20 +190,8 @@ public class BasquetController implements Initializable {
 
         this.area = (Area)Main.manager.createQuery("FROM Area where nombreArea='General' and idEncargado ="+Main.encargadoLogeado.getDni()).getSingleResult();
         String areaSeleccionada = (String)this.tipoAreaSelect.getSelectionModel().getSelectedItem();
-        System.out.println("TAMAÑO LISTA "+this.area.getAreaXNombre(areaSeleccionada).size());
-        Area aux = this.area.getAreaXNombre(areaSeleccionada).get(0);
-        this.area = aux;
-        System.out.println(area.getNombreArea());
-        /*
-        if(!area.getNombreArea().equals(areaSeleccionada)) {
-            for (Elemento elemento : this.area.getElementos()){
-                if (elemento.getClass()==Area.class){
-                    if(((Area) elemento).getNombreArea().equals(areaSeleccionada))
-                        this.area= (Area) elemento;
-                }
-            }
-        }*/
-
+        if(!this.area.getAreaXNombre(areaSeleccionada).isEmpty())
+            this.area = this.area.getAreaXNombre(areaSeleccionada).get(0);
     }
 
     public void actualizarListaTurnos(){
@@ -238,24 +226,27 @@ public class BasquetController implements Initializable {
         }
     }
 
-    public void actualizarHorarios(){
+    public void actualizarHorarios() {
+
         //Reseteo comboBox de horarios que muestro por pantalla para volverlo a llenar para la nueva fecha y la nueva Area.
         this.horarios.clear();
         //Agrego todos los horarios
-        List <String> horariosDisponibles = new ArrayList<>();
-        for(int j=12;j<=20;j++) {
-            horariosDisponibles.add(j+":00");
-        }
-        //Borro los horarios en los cuales ya tengo una reserva
-        for(int i=0; i<this.turnos.size();i++){
-            for(int j=0;j<8;j++) {
-                if(horariosDisponibles.contains(this.turnos.get(i).getHora().toString()))
-                    horariosDisponibles.remove(this.turnos.get(i).getHora().toString());
+        if(!this.area.getCanchas().isEmpty()) {
+            List<String> horariosDisponibles = new ArrayList<>();
+            for (int j = 12; j <= 20; j++) {
+                horariosDisponibles.add(j + ":00");
             }
+            //Borro los horarios en los cuales ya tengo una reserva
+            for (int i = 0; i < this.turnos.size(); i++) {
+                for (int j = 0; j < 8; j++) {
+                    if (horariosDisponibles.contains(this.turnos.get(i).getHora().toString()))
+                        horariosDisponibles.remove(this.turnos.get(i).getHora().toString());
+                }
+            }
+            //Muestro por pantalla los horarios disponibles.
+            this.horarios.addAll(horariosDisponibles);
+            this.horaSelect.setItems(this.horarios);
         }
-        //Muestro por pantalla los horarios disponibles.
-        this.horarios.addAll(horariosDisponibles);
-        this.horaSelect.setItems(this.horarios);
     }
 
     public void actualizarAreas(){

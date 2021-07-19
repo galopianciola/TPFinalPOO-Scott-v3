@@ -7,6 +7,7 @@ import java.io.Serializable;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -131,15 +132,16 @@ public class Area extends Elemento implements Serializable {
 
     public List<String> getNombreSubAreas(){
         List<String> retorno = new ArrayList<>();
-        for (Elemento elemento:this.elementos) {
-            if (elemento.getClass().equals(Cancha.class))
+        if(this.elementos.isEmpty())
+            retorno.add(this.getNombreArea());
+        else {
+            for (Elemento elemento : this.elementos) {
+                if (elemento.getClass().equals(Cancha.class))
                     retorno.add(this.getNombreArea());
-            else
+                else
                     retorno.addAll(((Area) elemento).getNombreSubAreas());
             }
-        if(this.elementos.isEmpty())
-            if(this.getClass().equals(Area.class))
-                retorno.add(this.getNombreArea());
+        }
         if(!retorno.isEmpty())
             retorno = retorno.stream().distinct().collect(Collectors.toList());
         return retorno;
@@ -152,9 +154,14 @@ public class Area extends Elemento implements Serializable {
         else
             for (Elemento elemento : this.elementos) {
                 if (elemento.getClass().equals(Area.class))
+                    if(!(((Area) elemento).getAreaXNombre(nombre)).isEmpty()){
                     retorno.addAll(((Area) elemento).getAreaXNombre(nombre));
+                }
             }
-            return retorno;
+            if(!retorno.isEmpty()){
+            retorno.removeAll(Collections.singleton(null));
+            }
+        return retorno;
     }
 
 
