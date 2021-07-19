@@ -59,6 +59,7 @@ public class RegistrarTurnoController implements Initializable {
 
     private Turno turno = new Turno();
 
+    private Area area = null;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -100,12 +101,11 @@ public class RegistrarTurnoController implements Initializable {
     @FXML
     void registrarTurnoButtonClicked(ActionEvent event) {
         //Area de la cual esta a cargo el encargado logeado
-        Area area = (Area)Main.manager.createQuery("FROM Area where idEncargado ="+Main.encargadoLogeado.getDni()).getSingleResult();
 
         if(this.pagoCheck.isSelected())
             this.turno.setPagado(true);
 
-        area.setTurno(this.turno);
+        this.area.setTurno(this.turno);
 
         Main.manager.getTransaction().begin();
         Main.manager.persist(this.turno);
@@ -126,8 +126,9 @@ public class RegistrarTurnoController implements Initializable {
             this.titularLabel.setText("Titular:\n" + Integer.toString(this.turno.getTitular().getDni()));
     }
 
-    public void initAttributes(Turno t){
+    public void initAttributes(Turno t,Area a){
         this.turno = t;
+        this.area = a;
         this.diaLabel.setText(this.turno.getFecha().toString() + "\n" + this.turno.getHora().toString());
 
         this.actualizarTitular();

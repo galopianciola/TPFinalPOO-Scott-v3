@@ -61,32 +61,39 @@ public class CanchasController implements Initializable {
     private ObservableList<Elemento> canchas;
     private List<Elemento> listaCanchas = new ArrayList<>();
 
-    @Override
-    public void initialize(URL location, ResourceBundle resources) {
-        this.area = (Area)Main.manager.createQuery("FROM Area where idEncargado ="+Main.encargadoLogeado.getDni()).getSingleResult();
-        this.listaCanchas.addAll(this.area.getElementos()); //Obtengo las canchas del area
-        // for(Elemento elemento:this.listaCanchas)
-        this.canchas = FXCollections.observableArrayList(this.listaCanchas);//Agrego las canchas al observable
+    public void initAttributes(Area a) {
 
-        this.colID.setCellValueFactory(new PropertyValueFactory<>("id"));
-        this.colMantenimiento.setCellValueFactory(new PropertyValueFactory<>("mantenimiento"));
-        this.colOcupada.setCellValueFactory(new PropertyValueFactory<>("ocupada"));
-        this.colGananciaMensual.setCellValueFactory(new PropertyValueFactory<>("gananciaMensual"));
+        this.area=a;
+        this.listaCanchas.addAll(this.area.getCanchas()); //Obtengo las canchas del area
+        this.canchas = FXCollections.observableArrayList(this.listaCanchas);//Agrego las canchas al observable
         this.tablaCanchas.setItems(this.canchas);
         this.tablaCanchas.refresh();
     }
 
 
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+
+        this.colID.setCellValueFactory(new PropertyValueFactory<>("id"));
+        this.colMantenimiento.setCellValueFactory(new PropertyValueFactory<>("mantenimiento"));
+        this.colOcupada.setCellValueFactory(new PropertyValueFactory<>("ocupada"));
+        this.colGananciaMensual.setCellValueFactory(new PropertyValueFactory<>("gananciaMensual"));
+
+    }
+
+
     @FXML
     void agregarCanchaButtonClicked(ActionEvent event) throws IOException {
-        Main m = new Main();
-        m.changeSceneOnParent("src/main/java/ui/agregarCancha.fxml","Canchas");
+        URL url = new File("src/main/java/ui/agregarCancha.fxml").toURI().toURL();
+        this.changeSceneController(url,this.area);
         this.listaCanchas.clear();
-        this.area = (Area)Main.manager.createQuery("FROM Area where idEncargado ="+Main.encargadoLogeado.getDni()).getSingleResult();
-        this.listaCanchas.addAll(this.area.getElementos()); //Obtengo las canchas del area
+        //Busco en la base para poder actualizar la tabla que muestro por pantalla
+        this.area = (Area)Main.manager.createQuery("FROM Area where id ="+this.area.getId()).getSingleResult();
+        this.listaCanchas.addAll(this.area.getCanchas()); //Obtengo las canchas del area
         this.canchas.setAll(listaCanchas);
         this.tablaCanchas.setItems(this.canchas);
         this.tablaCanchas.refresh();
+
     }
 
     @FXML
@@ -106,5 +113,22 @@ public class CanchasController implements Initializable {
     }
 
 
+    public void changeSceneController(URL url,Object o) throws IOException {
+
+        FXMLLoader loader = new FXMLLoader(url); //Creo FXMLLoader para poder pasarle el turno y que agregue los jugadores y el titular.
+        Parent root = loader.load();
+
+        if(o.getClass().equals(Area.class)) {
+            AgregarCanchaController controlador = loader.getController();
+            controlador.initAttributes((Area)o);
+            Scene scene = new Scene(root);
+            Stage stage = new Stage();
+            stage.setTitle("Registrar turno");
+            stage.initModality(Modality.APPLICATION_MODAL);
+            stage.setScene(scene);
+            stage.showAndWait();
+        }
+
+    }
 }
 

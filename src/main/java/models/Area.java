@@ -14,8 +14,6 @@ import java.util.List;
 @Table(name = "areas")
 public class Area extends Elemento implements Serializable {
 
-    /*@Column(name="idArea")
-    private int idArea;*/
     @Column(name="banios")
     private int baños;
     @Column(name="idEncargado")
@@ -70,6 +68,14 @@ public class Area extends Elemento implements Serializable {
         List<Cancha> retorno = new ArrayList<>();
         for(Elemento e:this.elementos)
             retorno.addAll(e.getCanchasXFiltro(f1));
+        return retorno;
+    }
+
+    @Override
+    public List<Cancha> getCanchas(){
+        List<Cancha> retorno = new ArrayList<>();
+        for(Elemento e:this.elementos)
+            retorno.addAll(e.getCanchas());
         return retorno;
     }
 

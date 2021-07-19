@@ -69,17 +69,13 @@ public class BasquetController implements Initializable {
     @FXML
     private ComboBox tipoAreaSelect;
 
+    @FXML
+    private Button agregarAreaButton;
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-
-        //Obtengo los turnos de la base de datos.
-
-        //Area de la cual esta a cargo el encargado logeado
-        this.area = (Area)Main.manager.createQuery("FROM Area where idEncargado ="+Main.encargadoLogeado.getDni()).getSingleResult();
-
-        //List<Turno> turnosBd = (List<Turno>) Main.manager.createQuery("FROM Turno").getResultList(); //Obtengo los turnos de la base de datos.
-        this.listaTurnos= new ArrayList<>(area.getTurnos());
-        this.turnos = FXCollections.observableArrayList(this.listaTurnos); //Agrego los turnos al observable
+        //Inicializo variables
+        this.turnos = FXCollections.observableArrayList();
         this.horarios = FXCollections.observableArrayList();
         this.areas = FXCollections.observableArrayList();
 
@@ -89,42 +85,19 @@ public class BasquetController implements Initializable {
         this.colTitular.setCellValueFactory(new PropertyValueFactory<>("DniTitular"));
         this.colPago.setCellValueFactory(new PropertyValueFactory<>("Pagado"));
 
-        this.tablaTurnos.setItems(this.turnos); //Inserto los turnos en la tabla que muestro por pantalla
-        this.tablaTurnos.refresh();
         this.diaPicker.setValue(null);
         this.horaSelect.setValue(null);
         this.tipoAreaSelect.setValue(null);
+        this.area=null;
 
-        //Muestro los diferentes tipos de areas que tiene mi deporte
-
-        List<String> areasDisponibles = new ArrayList<>();
-        String nombreArea = null;
-        for(Elemento elemento:this.area.getElementos()){
-            if(elemento.getClass()== Area.class){
-                nombreArea = ((Area) elemento).getNombreArea();
-                if(!areasDisponibles.contains(nombreArea))
-                    areasDisponibles.add(nombreArea);
-            }
-
-        }
-        if(!areasDisponibles.contains(this.area.getNombreArea()))
-            areasDisponibles.add(this.area.getNombreArea());
-        this.areas.addAll(areasDisponibles);
-        this.tipoAreaSelect.setItems(this.areas);
-
+        this.actualizarAreas();//Muestro por pantalla las areas que tiene mi complejo.
     }
 
     @FXML
     void registrarTurnoButtonClicked(ActionEvent event) throws IOException {
 
         // Si se seleccionaron ambos datos (que habian sido inicializados en null previamente con setValue)
-        if (this.diaPicker.getValue() != null && this.horaSelect.getValue() != null){
-
-            URL url = new File("src/main/java/ui/registrarTurno.fxml").toURI().toURL();
-
-            FXMLLoader loader = new FXMLLoader(url); //Creo FXMLLoader para poder pasarle el turno y que agregue los jugadores y el titular.
-            Parent root = loader.load();
-            RegistrarTurnoController controlador = loader.getController();
+        if (this.diaPicker.getValue() != null && this.horaSelect.getValue() != null && this.tipoAreaSelect.getValue()!=null ) {
 
             //Obtengo el IdTurno maximo, para generar el siguiente
             int idTurnoMax = (int) Main.manager.createQuery("SELECT max(idTurno) FROM Turno").getResultList().get(0);
@@ -138,77 +111,55 @@ public class BasquetController implements Initializable {
                     300);
 
             //Paso por parametro el turno para que se le puedan añadir los jugadores y setear el titular
-            controlador.initAttributes(t);
+            //Tambien paso el area, porque es donde se debe setear el turno.
 
-            Scene scene = new Scene(root);
-            Stage stage = new Stage();
-            stage.setTitle("Registrar turno");
-            stage.initModality(Modality.APPLICATION_MODAL);
-            stage.setScene(scene);
-            stage.showAndWait();
-
-
+            URL url = new File("src/main/java/ui/registrarTurno.fxml").toURI().toURL();
+            this.changeSceneController(url,t);
 
         } else { // Si no se selecciono dia u horario
 
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setHeaderText(null);
             alert.setTitle("Error en los datos");
-            alert.setContentText("No se seleccionó día y horario para el turno");
+            alert.setContentText("No se seleccionó el Area, el día y el horario para el turno");
             alert.showAndWait();
 
         }
-
     }
 
     @FXML
-    void seleccionarFecha(ActionEvent event) {
+    void seleccionarFecha() {
         //Reseteo tablas que muestro por pantalla para volverlas a llenar con la nueva fecha
-        this.horarios.clear();
-        this.turnos.clear();
-        this.listaTurnos= new ArrayList<>(this.area.getTurnos());
-
-        LocalDate f = this.diaPicker.getValue();
-
-        //Obtengo los turnos filtrados por fecha
-        List<Turno> turnosFiltrados = new ArrayList<>();
-        for(Turno turno:this.listaTurnos) {
-            if (turno.getFecha().equals(f))
-                turnosFiltrados.add(turno);
-        }
-        //List<Turno> turnosFiltrados = (List<Turno>) Main.manager.createQuery("FROM Turno where fecha='"+f+"'").getResultList();
-
-        this.turnos.addAll(turnosFiltrados);
-        this.tablaTurnos.setItems(this.turnos);
-        this.tablaTurnos.refresh();
-
-        //Agrego todos los horarios
-        List <String> horariosDisponibles = new ArrayList<>();
-            for(int j=12;j<=20;j++) {
-                horariosDisponibles.add(j+":00");
-            }
-        //Borro los horarios en los cuales ya tengo una reserva
-        for(int i=0; i<this.turnos.size();i++){
-            for(int j=0;j<8;j++) {
-                if(horariosDisponibles.contains(this.turnos.get(i).getHora().toString()))
-                    horariosDisponibles.remove(this.turnos.get(i).getHora().toString());
-            }
-        }
-        //Muestro por pantalla los horarios disponibles.
-        this.horarios.addAll(horariosDisponibles);
-        this.horaSelect.setItems(this.horarios);
-
+        this.obtenerAreaSeleccionada();
+        this.actualizarListaTurnos();
+        this.actualizarHorarios();
     }
 
 
     @FXML
     void seleccionarHora(ActionEvent event){
-
     }
 
     @FXML
     void seleccionarTipoArea(ActionEvent event) {
+        //Vuelvo a obtener el Area general.
+        this.obtenerAreaSeleccionada();
+        this.actualizarListaTurnos();
+    }
 
+    @FXML
+    void agregarAreaButtonClicked(ActionEvent event) throws IOException {
+        if(this.tipoAreaSelect.getSelectionModel().getSelectedItem()!=null){
+            URL url = new File("src/main/java/ui/agregarArea.fxml").toURI().toURL();
+            this.changeSceneController(url,this.area);
+        }
+        else{
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setHeaderText(null);
+            alert.setTitle("Error en los datos");
+            alert.setContentText("No se seleccionó area sobre la cual se quiere agregar una sub-area");
+            alert.showAndWait();
+        }
     }
 
     @FXML
@@ -219,16 +170,137 @@ public class BasquetController implements Initializable {
 
     @FXML
     void verCanchaButtonClicked(ActionEvent event) throws IOException {
-        Main m = new Main();
-        m.changeScene("src/main/java/ui/canchas.fxml","Canchas");
+        if(this.tipoAreaSelect.getSelectionModel().getSelectedItem()!=null){
+        URL url = new File("src/main/java/ui/canchas.fxml").toURI().toURL();
+        this.changeSceneController(url,Cancha.class);
+        }
+        else{
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setHeaderText(null);
+            alert.setTitle("Error en los datos");
+            alert.setContentText("No se seleccionó area de la cual quiere ver las canchas");
+            alert.showAndWait();
+        }
     }
-    /*
-    public void refrescarTabla(){
-        this.listaTurnos= new ArrayList<>(area.getTurnos());
-        this.turnos.clear();
-        this.turnos = FXCollections.observableArrayList(listaTurnos); //Agrego los turnos al observable
-        this.tablaTurnos.setItems(turnos);
-        this.tablaTurnos.refresh();
-    }*/
+
+    public void obtenerAreaSeleccionada(){
+
+        this.area = (Area)Main.manager.createQuery("FROM Area where idEncargado ="+Main.encargadoLogeado.getDni()).getSingleResult();
+        String areaSeleccionada = (String)this.tipoAreaSelect.getSelectionModel().getSelectedItem();
+
+        if(!area.getNombreArea().equals(areaSeleccionada)) {
+            for (Elemento elemento : this.area.getElementos()){
+                if (elemento.getClass()==Area.class){
+                    if(((Area) elemento).getNombreArea().equals(areaSeleccionada))
+                        this.area= (Area) elemento;
+                }
+            }
+        }
+    }
+
+    public void actualizarListaTurnos(){
+        //Reseteo tabla que muestro por pantalla para volverla a llenar con los nuevos turnos filtrados
+        if(this.diaPicker.getValue()!=null) {
+            System.out.println("distinto de null");
+            List<Turno> turnosFiltrados = new ArrayList<>();
+            this.turnos.clear();
+            this.listaTurnos = new ArrayList<>(this.area.getTurnos());
+            LocalDate f = this.diaPicker.getValue();
+
+            //Obtengo los turnos filtrados por fecha y por el tipo de area ya filtrado anteriormente.
+            for (Turno turno : this.listaTurnos) {
+                if (turno.getFecha().equals(f))
+                    turnosFiltrados.add(turno);
+            }
+
+            this.turnos.addAll(turnosFiltrados);
+            this.tablaTurnos.setItems(this.turnos);
+            this.tablaTurnos.refresh();
+        }
+        else{
+            //Muestro todos los turnos pertenecientes a la sub area
+            List<Turno> turnos = new ArrayList<>();
+            this.turnos.clear();
+            this.listaTurnos = new ArrayList<>(this.area.getTurnos());
+            for (Turno turno : this.listaTurnos)
+                    turnos.add(turno);
+            this.turnos.addAll(turnos);
+            this.tablaTurnos.setItems(this.turnos);
+            this.tablaTurnos.refresh();
+        }
+    }
+
+    public void actualizarHorarios(){
+        //Reseteo comboBox de horarios que muestro por pantalla para volverlo a llenar para la nueva fecha y la nueva Area.
+        this.horarios.clear();
+        //Agrego todos los horarios
+        List <String> horariosDisponibles = new ArrayList<>();
+        for(int j=12;j<=20;j++) {
+            horariosDisponibles.add(j+":00");
+        }
+        //Borro los horarios en los cuales ya tengo una reserva
+        for(int i=0; i<this.turnos.size();i++){
+            for(int j=0;j<8;j++) {
+                if(horariosDisponibles.contains(this.turnos.get(i).getHora().toString()))
+                    horariosDisponibles.remove(this.turnos.get(i).getHora().toString());
+            }
+        }
+        //Muestro por pantalla los horarios disponibles.
+        this.horarios.addAll(horariosDisponibles);
+        this.horaSelect.setItems(this.horarios);
+    }
+
+    public void actualizarAreas(){
+        this.area = (Area)Main.manager.createQuery("SELECT * FROM Area where idEncargado ="+Main.encargadoLogeado.getDni()).getSingleResult();
+        List<String> areasDisponibles = new ArrayList<>();
+        //Reseteo comboBox de areas y vuelvo a llenarlo.
+        this.areas.clear();
+        //Muestro los diferentes tipos de areas que tiene mi deporte
+        areasDisponibles.add(this.area.getNombreArea());
+        for(Elemento elemento:this.area.getElementos()){
+            if(elemento.getClass()== Area.class)
+                areasDisponibles.add(((Area) elemento).getNombreArea());
+        }
+        this.areas.addAll(areasDisponibles);
+        this.tipoAreaSelect.setItems(this.areas);
+    }
+
+    public void changeSceneController(URL url,Object o) throws IOException {
+
+        FXMLLoader loader = new FXMLLoader(url); //Creo FXMLLoader para poder pasarle el turno y que agregue los jugadores y el titular.
+        Parent root = loader.load();
+
+        if(o.getClass().equals(Turno.class)) {
+            RegistrarTurnoController controlador = loader.getController();
+            controlador.initAttributes((Turno)o, this.area);
+            Scene scene = new Scene(root);
+            Stage stage = new Stage();
+            stage.setTitle("Registrar turno");
+            stage.initModality(Modality.APPLICATION_MODAL);
+            stage.setScene(scene);
+            stage.showAndWait();
+        }
+        if(o.equals(Cancha.class)) {
+            CanchasController controlador = loader.getController();
+            controlador.initAttributes((Area)this.area);
+            Scene scene = new Scene(root);
+            Stage stage = new Stage();
+            stage.setTitle("Canchas");
+            stage.initModality(Modality.APPLICATION_MODAL);
+            stage.setScene(scene);
+            stage.showAndWait();
+        }
+        if(o.getClass().equals(Area.class)) {
+            AgregarAreaController controlador = loader.getController();
+            controlador.initAttributes((Area)this.area);
+            Scene scene = new Scene(root);
+            Stage stage = new Stage();
+            stage.setTitle("Areas");
+            stage.initModality(Modality.APPLICATION_MODAL);
+            stage.setScene(scene);
+            stage.showAndWait();
+        }
+    }
+
 
 }

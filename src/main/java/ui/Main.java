@@ -50,8 +50,6 @@ public class Main extends Application {
         alert.showAndWait();
     }
 
-
-
     public void changeScene(String fxml, String titulo) throws IOException {
         //cambiar pantalla 100%
         URL url = new File(fxml).toURI().toURL();
@@ -93,12 +91,12 @@ public class Main extends Application {
         /*
         CREACION DE PRIMERAS AREAS Y ENCARGADOS
          */
+
 /*
-
-
-        Area basquet = new Area(1, 300, "Basquet",4,1,"General");
-        Area futbol = new Area(2, 400, "Futbol",5,2,"General");
-
+        Area basquet = new Area(1, 500, "Basquet", 4, 1, "General");
+        Area futbol = new Area(2, 400, "Futbol", 5, 2, "General");
+        Area futbol5 = new Area(3, 300, "Futbol", 5, 2, "Futbol 5");
+        Area basquetCanchaAmateur = new Area(4, 300, "Basquet", 4, 1, "Cancha Amateur");
         Encargado Juli = new Encargado(
                 41537503,
                 "Julian",
@@ -128,8 +126,8 @@ public class Main extends Application {
         Turno t = new Turno(
                 1,
                 p,
-                LocalDate.of(2021,7,10),
-                LocalTime.of(14,00),
+                LocalDate.of(2021, 7, 10),
+                LocalTime.of(14, 00),
                 Juli,
                 false,
                 300
@@ -137,8 +135,8 @@ public class Main extends Application {
         Turno t2 = new Turno(
                 2,
                 p,
-                LocalDate.of(2021,7,10),
-                LocalTime.of(17,00),
+                LocalDate.of(2021, 7, 10),
+                LocalTime.of(17, 00),
                 Galo,
                 true,
                 300
@@ -147,8 +145,8 @@ public class Main extends Application {
         Turno t3 = new Turno(
                 3,
                 p,
-                LocalDate.of(2021,7,10),
-                LocalTime.of(20,00),
+                LocalDate.of(2021, 7, 10),
+                LocalTime.of(20, 00),
                 Galo,
                 true,
                 300
@@ -156,7 +154,7 @@ public class Main extends Application {
 
 
         Cancha c = new Cancha(
-                3,
+                5,
                 15,
                 "Basquet",
                 10,
@@ -166,7 +164,7 @@ public class Main extends Application {
         );
 
         Cancha c2 = new Cancha(
-                4,
+                6,
                 20,
                 "Futbol",
                 10,
@@ -175,15 +173,32 @@ public class Main extends Application {
                 3000
         );
 
+        Cancha c3 = new Cancha(
+                7,
+                20,
+                "Basquet",
+                10,
+                false,
+                false,
+                3000
+        );
+
+
         basquet.setElementos(c);
+        futbol.setElementos(futbol5);
+        basquet.setElementos(basquetCanchaAmateur);
+        basquetCanchaAmateur.setElementos(c3);
+        futbol5.setElementos(c2);
 
         c.setTurno(t);
         c.setTurno(t2);
-        c2.setTurno(t3);
+        c3.setTurno(t3);
 
 
         manager.getTransaction().begin();
 
+        manager.persist(basquetCanchaAmateur);
+        manager.persist(futbol5);
         manager.persist(basquet);
         manager.persist(futbol);
         manager.persist(Juli);
@@ -194,18 +209,10 @@ public class Main extends Application {
         manager.persist(t3);
         manager.persist(c);
         manager.persist(c2);
+        manager.persist(c3);
         manager.getTransaction().commit();
-
-
-        //Busco cosas
-        manager.getTransaction().begin();
-        Encargado aux = manager.find(Encargado.class,41537503);
-        manager.getTransaction().commit();
-        System.out.println(aux.toString());
 
 */
-
-
         launch(args);
     }
 

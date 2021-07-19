@@ -68,6 +68,12 @@ public class Cancha extends Elemento implements Serializable {
             retorno.add(this);
         return retorno;
     }
+    @Override
+    public List<Cancha> getCanchas() {
+        List<Cancha> retorno = new ArrayList<>();
+        retorno.add(this);
+        return retorno;
+    }
 
     public boolean getOcupada(){
         for(Turno turno:this.turnos)

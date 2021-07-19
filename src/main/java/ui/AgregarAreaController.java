@@ -14,60 +14,46 @@ import models.Cancha;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class AgregarCanchaController implements Initializable {
+public class AgregarAreaController {
 
     @FXML
-    private TextField capacidadField;
+    private TextField nombreField;
 
     @FXML
     private TextField dimensionField;
 
     @FXML
-    private TextField precioTurnoField;
-
-    @FXML
-    private TextField gastoMensualId;
+    private TextField bañosField;
 
     @FXML
     private Button addButton;
 
-    @FXML
-    private CheckBox terminadaCheck;
-
     private Area area;
 
-    @Override
-    public void initialize(URL location, ResourceBundle resources) {
-        this.capacidadField.setText("");
-        this.dimensionField.setText("");
-        this.precioTurnoField.setText("");
-        this.gastoMensualId.setText("");
-        this.terminadaCheck.setSelected(false);
+    public void initAttributes(Area a) {
+        this.area = a;
     }
 
     @FXML
     void addButtonClicked(ActionEvent event) {
 
         int idElementoMax = (int) Main.manager.createQuery("SELECT max(id) FROM Elemento").getResultList().get(0); //Obtengo el idCanchaMaximo para generar el de la proxima cancha.
+
         // Si la conexion no está activa
         if (!Main.manager.getTransaction().isActive())
             Main.manager.getTransaction().begin(); // La abro
 
-        if(!this.capacidadField.equals("") && !this.gastoMensualId.equals("") && !this.dimensionField.equals("") && !this.precioTurnoField.equals("")) {
-            boolean mantenimiento = true;
-            if(this.terminadaCheck.isSelected())
-                mantenimiento = false;
-            Cancha cancha = new Cancha(
-                    idElementoMax + 1,
+        if(!this.nombreField.equals("") && !this.bañosField.equals("") && !this.dimensionField.equals("")) {
+            Area area = new Area(idElementoMax+1,
                     Integer.parseInt(this.dimensionField.getText()),
-                    Main.encargadoLogeado.getDeporte(),
-                    Integer.parseInt(this.capacidadField.getText()),
-                    false,
-                    mantenimiento,
-                    Integer.parseInt(this.gastoMensualId.getText())
-            );
-            this.area.setElementos(cancha);
-            Main.manager.persist(cancha);
+                    this.area.getDeporte(),
+                    Integer.parseInt(this.bañosField.getText()),
+                    Main.encargadoLogeado.getDni(),
+                    this.nombreField.getText()
+                    );
+
+            this.area.setElementos(area);
+            Main.manager.persist(area);
             Main.manager.getTransaction().commit();
         }
         else{
@@ -78,9 +64,9 @@ public class AgregarCanchaController implements Initializable {
         Stage stage = (Stage) addButton.getScene().getWindow();
         stage.close();
     }
-
-
-    public void initAttributes(Area a) {
-        this.area=a;
-    }
 }
+
+
+
+
+
