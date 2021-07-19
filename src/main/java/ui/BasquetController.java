@@ -13,6 +13,8 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import models.*;
+import models.filters.FxDisponibilidad;
+import models.filters.FxMantenimiento;
 
 
 import javax.management.Query;
@@ -115,6 +117,7 @@ public class BasquetController implements Initializable {
 
             URL url = new File("src/main/java/ui/registrarTurno.fxml").toURI().toURL();
             this.changeSceneController(url,t);
+            this.actualizarListaTurnos();
 
         } else { // Si no se selecciono dia u horario
             Alert alert = new Alert(Alert.AlertType.ERROR);
@@ -227,11 +230,11 @@ public class BasquetController implements Initializable {
     }
 
     public void actualizarHorarios() {
-
+        FxMantenimiento fxMantenimiento = new FxMantenimiento();
         //Reseteo comboBox de horarios que muestro por pantalla para volverlo a llenar para la nueva fecha y la nueva Area.
         this.horarios.clear();
         //Agrego todos los horarios
-        if(!this.area.getCanchas().isEmpty()) {
+        if(!this.area.getCanchasXFiltro(fxMantenimiento).isEmpty()) {
             List<String> horariosDisponibles = new ArrayList<>();
             for (int j = 12; j <= 20; j++) {
                 horariosDisponibles.add(j + ":00");

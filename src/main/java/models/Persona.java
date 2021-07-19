@@ -1,13 +1,14 @@
 package models;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 /*
 Clase que contiene Encargados y Jugadores
  */
 
-//@Entity
-//@Table(name="personas")
+
 @Entity
 @Inheritance(strategy=InheritanceType.JOINED)
 @Table(name="personas")
@@ -23,6 +24,8 @@ public class Persona {
     private int telefono;
     @Column(name="isEncargado")
     private boolean isEncargado;
+    @ManyToMany(cascade = CascadeType.ALL)
+    private List<Turno> turnos;
 
     public Persona(int dni,String nombre, String apellido, int telefono, boolean isEncargado) {
         this.nombre = nombre;
@@ -30,6 +33,7 @@ public class Persona {
         this.dni = dni;
         this.telefono = telefono;
         this.isEncargado = isEncargado;
+        this.turnos = new ArrayList<>();
     }
 
     public Persona() {
@@ -70,5 +74,9 @@ public class Persona {
 
     public void setEncargado(boolean encargado) {
         isEncargado = encargado;
+    }
+
+    public void setTurno(Turno t){
+        this.turnos.add(t);
     }
 }

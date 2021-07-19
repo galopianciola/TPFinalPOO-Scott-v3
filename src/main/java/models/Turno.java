@@ -20,8 +20,14 @@ public class Turno {
     private LocalDate fecha;
     @Column(name="hora")
     private LocalTime hora;
-    @ElementCollection
-    @Column(name="jugadores")
+    //@ElementCollection
+    /*@CollectionTable(
+            name = "turnos_jugadores",
+            joinColumns = @JoinColumn(name="dni"),
+            uniqueConstraints = @UniqueConstraint(columnNames={"idTurno","dni"})
+    )*/
+    @ManyToMany(mappedBy = "turnos")
+    //@Column(name="jugadores")
     private List<Persona> jugadores;
     @OneToOne()
     @JoinColumn(name="dniEncargado")
@@ -84,6 +90,7 @@ public class Turno {
 
     public void setEncargado(Encargado encargado) {
         this.encargado = encargado;
+        encargado.setTurno(this);
     }
 
     public void setPagado(boolean pagado) {
@@ -93,6 +100,7 @@ public class Turno {
     public void setJugadores(Persona jugador) {
 
         this.jugadores.add(jugador);
+        jugador.setTurno(this);
     }
 
     public int getDniTitular() {
