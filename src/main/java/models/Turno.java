@@ -109,4 +109,15 @@ public class Turno {
     public void setPrecio(int precio){
         this.precio=precio;
     }
+
+    public boolean participaJugador(int dni){
+        /*
+        Chequea si dado un DNI, esa persona participó o no en el turno
+         */
+
+        for (Persona p: this.jugadores)
+            if (p.getDni() == dni)
+                return true;
+        return false;
+    }
 }

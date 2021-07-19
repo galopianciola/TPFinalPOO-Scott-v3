@@ -61,7 +61,7 @@
             </TableView>
             <AnchorPane layoutX="440.0" layoutY="14.0" prefHeight="42.0" prefWidth="101.0" style="-fx-background-color: #327AC6; -fx-background-radius: 10px;">
                <children>
-                  <Label fx:id="titularLabel" alignment="CENTER" layoutX="2.0" layoutY="4.0" prefHeight="42.0" prefWidth="134.0" text="DNI del infectado/a:" textAlignment="CENTER" textFill="WHITE">
+                  <Label fx:id="infectadoLabel" alignment="CENTER" layoutX="2.0" layoutY="4.0" prefHeight="42.0" prefWidth="134.0" text="DNI del infectado/a:" textAlignment="CENTER" textFill="WHITE">
                      <font>
                         <Font name="Arial Italic" size="13.0" />
                      </font>

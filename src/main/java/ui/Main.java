@@ -93,6 +93,7 @@ public class Main extends Application {
          */
 
 /*
+
         Area basquet = new Area(1, 500, "Basquet", 4, 1, "General");
         Area futbol = new Area(2, 400, "Futbol", 5, 2, "General");
         Area futbol5 = new Area(3, 300, "Futbol", 5, 2, "Futbol 5");
@@ -213,6 +214,7 @@ public class Main extends Application {
         manager.getTransaction().commit();
 
 */
+
         launch(args);
     }
 
