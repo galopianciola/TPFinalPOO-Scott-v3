@@ -44,6 +44,7 @@ public abstract class Elemento {
     public abstract List<Turno> getTurnos();
     public abstract void setTurno(Turno t);
     public abstract boolean isOcupadaXFecha(LocalDate date, LocalTime time);
+
         // public abstract Cancha getCanchaDisponible(Date fecha, Time hora);
 
 

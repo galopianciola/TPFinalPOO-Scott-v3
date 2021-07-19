@@ -91,7 +91,7 @@ public class Cancha extends Elemento implements Serializable {
 
     }
 
-    public double getRecaudado(LocalDate date){
+        public double getRecaudado(LocalDate date){
         double recaudado = 0;
         for(Turno turno:this.turnos)
             if(turno.getFecha().equals(date))

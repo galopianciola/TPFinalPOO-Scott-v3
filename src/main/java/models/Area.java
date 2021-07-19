@@ -8,6 +8,7 @@ import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Entity
 @DiscriminatorValue("A")
@@ -128,6 +129,36 @@ public class Area extends Elemento implements Serializable {
         return this.nombreArea;
     }
 
+    public List<String> getNombreSubAreas(){
+        List<String> retorno = new ArrayList<>();
+        for (Elemento elemento:this.elementos) {
+            if (elemento.getClass().equals(Cancha.class))
+                    retorno.add(this.getNombreArea());
+            else
+                    retorno.addAll(((Area) elemento).getNombreSubAreas());
+            }
+        if(this.elementos.isEmpty())
+            if(this.getClass().equals(Area.class))
+                retorno.add(this.getNombreArea());
+        if(!retorno.isEmpty())
+            retorno = retorno.stream().distinct().collect(Collectors.toList());
+        return retorno;
+    }
+
+    public List<Area> getAreaXNombre(String nombre) {
+        List <Area> retorno = new ArrayList<>();
+        if (this.getNombreArea().equals(nombre))
+            retorno.add(this);
+        else
+            for (Elemento elemento : this.elementos) {
+                if (elemento.getClass().equals(Area.class))
+                    retorno.addAll(((Area) elemento).getAreaXNombre(nombre));
+            }
+            return retorno;
+    }
+
+
+
     public List<Elemento> getElementos() {
         List<Elemento> retorno = new ArrayList<>(this.elementos);
         return retorno;
@@ -159,7 +190,7 @@ public class Area extends Elemento implements Serializable {
     public void setElementos(Elemento e){
         this.elementos.add(e);
         super.setDimension(super.getDimension()+e.getDimension());
-        super.setId_Area_Padre(this.getId());
+        e.setId_Area_Padre(this.getId());
     }
 
     public void setBaños(int baños) {

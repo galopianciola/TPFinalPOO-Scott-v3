@@ -145,6 +145,7 @@ public class BasquetController implements Initializable {
         //Vuelvo a obtener el Area general.
         this.obtenerAreaSeleccionada();
         this.actualizarListaTurnos();
+        this.actualizarHorarios();
     }
 
     @FXML
@@ -152,6 +153,8 @@ public class BasquetController implements Initializable {
         if(this.tipoAreaSelect.getSelectionModel().getSelectedItem()!=null){
             URL url = new File("src/main/java/ui/agregarArea.fxml").toURI().toURL();
             this.changeSceneController(url,this.area);
+            this.actualizarAreas();
+
         }
         else{
             Alert alert = new Alert(Alert.AlertType.ERROR);
@@ -185,9 +188,13 @@ public class BasquetController implements Initializable {
 
     public void obtenerAreaSeleccionada(){
 
-        this.area = (Area)Main.manager.createQuery("FROM Area where idEncargado ="+Main.encargadoLogeado.getDni()).getSingleResult();
+        this.area = (Area)Main.manager.createQuery("FROM Area where nombreArea='General' and idEncargado ="+Main.encargadoLogeado.getDni()).getSingleResult();
         String areaSeleccionada = (String)this.tipoAreaSelect.getSelectionModel().getSelectedItem();
-
+        System.out.println("TAMAÑO LISTA "+this.area.getAreaXNombre(areaSeleccionada).size());
+        Area aux = this.area.getAreaXNombre(areaSeleccionada).get(0);
+        this.area = aux;
+        System.out.println(area.getNombreArea());
+        /*
         if(!area.getNombreArea().equals(areaSeleccionada)) {
             for (Elemento elemento : this.area.getElementos()){
                 if (elemento.getClass()==Area.class){
@@ -195,15 +202,16 @@ public class BasquetController implements Initializable {
                         this.area= (Area) elemento;
                 }
             }
-        }
+        }*/
+
     }
 
     public void actualizarListaTurnos(){
         //Reseteo tabla que muestro por pantalla para volverla a llenar con los nuevos turnos filtrados
+        this.turnos.clear();
+        if(!this.area.getTurnos().isEmpty()){
         if(this.diaPicker.getValue()!=null) {
-            System.out.println("distinto de null");
             List<Turno> turnosFiltrados = new ArrayList<>();
-            this.turnos.clear();
             this.listaTurnos = new ArrayList<>(this.area.getTurnos());
             LocalDate f = this.diaPicker.getValue();
 
@@ -220,13 +228,13 @@ public class BasquetController implements Initializable {
         else{
             //Muestro todos los turnos pertenecientes a la sub area
             List<Turno> turnos = new ArrayList<>();
-            this.turnos.clear();
             this.listaTurnos = new ArrayList<>(this.area.getTurnos());
             for (Turno turno : this.listaTurnos)
                     turnos.add(turno);
             this.turnos.addAll(turnos);
             this.tablaTurnos.setItems(this.turnos);
             this.tablaTurnos.refresh();
+        }
         }
     }
 
@@ -251,16 +259,10 @@ public class BasquetController implements Initializable {
     }
 
     public void actualizarAreas(){
-        this.area = (Area)Main.manager.createQuery("SELECT * FROM Area where idEncargado ="+Main.encargadoLogeado.getDni()).getSingleResult();
-        List<String> areasDisponibles = new ArrayList<>();
-        //Reseteo comboBox de areas y vuelvo a llenarlo.
         this.areas.clear();
-        //Muestro los diferentes tipos de areas que tiene mi deporte
-        areasDisponibles.add(this.area.getNombreArea());
-        for(Elemento elemento:this.area.getElementos()){
-            if(elemento.getClass()== Area.class)
-                areasDisponibles.add(((Area) elemento).getNombreArea());
-        }
+        this.area = (Area)Main.manager.createQuery("FROM Area where nombreArea='General' and idEncargado ="+Main.encargadoLogeado.getDni()).getSingleResult();
+        List<String> areasDisponibles = new ArrayList<>();
+        areasDisponibles.addAll(this.area.getNombreSubAreas());
         this.areas.addAll(areasDisponibles);
         this.tipoAreaSelect.setItems(this.areas);
     }
