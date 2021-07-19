@@ -14,10 +14,6 @@ import java.util.List;
 @Table(name = "canchas")
 public class Cancha extends Elemento implements Serializable {
 
-    /*@Column(name="idCancha")
-    private int idCancha;*/
-    //@Column(name="area")
-    //private Area area;
     @Column(name="capacidad")
     private int capacidad;
     @Column(name="ocupada")
@@ -38,7 +34,7 @@ public class Cancha extends Elemento implements Serializable {
         this.ocupada = ocupada;
         this.mantenimiento = mantenimiento;
         this.gastoMensual = gastoMensual;
-        this.turnos = new ArrayList<>();;
+        this.turnos = new ArrayList<>();
     }
 
     public Cancha(){
@@ -132,7 +128,6 @@ public class Cancha extends Elemento implements Serializable {
     public void setGastoMensual(double gastoMensual) {
         this.gastoMensual = gastoMensual;
     }
-
 
 
 

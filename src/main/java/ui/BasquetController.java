@@ -34,6 +34,8 @@ public class BasquetController implements Initializable {
     // Lista que alimenta la tablaTurnos
     private ObservableList<Turno> turnos;
     private ObservableList<String> horarios;
+    private ObservableList<String> areas;
+
     private List<Turno> listaTurnos;
     private Area area;
     @FXML
@@ -64,6 +66,8 @@ public class BasquetController implements Initializable {
     @FXML
     private Button verCanchaButton;
 
+    @FXML
+    private ComboBox tipoAreaSelect;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -77,6 +81,7 @@ public class BasquetController implements Initializable {
         this.listaTurnos= new ArrayList<>(area.getTurnos());
         this.turnos = FXCollections.observableArrayList(this.listaTurnos); //Agrego los turnos al observable
         this.horarios = FXCollections.observableArrayList();
+        this.areas = FXCollections.observableArrayList();
 
         this.colID.setCellValueFactory(new PropertyValueFactory<>("idTurno"));
         this.colFecha.setCellValueFactory(new PropertyValueFactory<>("fecha"));
@@ -88,6 +93,25 @@ public class BasquetController implements Initializable {
         this.tablaTurnos.refresh();
         this.diaPicker.setValue(null);
         this.horaSelect.setValue(null);
+        this.tipoAreaSelect.setValue(null);
+
+        //Muestro los diferentes tipos de areas que tiene mi deporte
+
+        List<String> areasDisponibles = new ArrayList<>();
+        String nombreArea = null;
+        for(Elemento elemento:this.area.getElementos()){
+            if(elemento.getClass()== Area.class){
+                nombreArea = ((Area) elemento).getNombreArea();
+                if(!areasDisponibles.contains(nombreArea))
+                    areasDisponibles.add(nombreArea);
+            }
+
+        }
+        if(!areasDisponibles.contains(this.area.getNombreArea()))
+            areasDisponibles.add(this.area.getNombreArea());
+        this.areas.addAll(areasDisponibles);
+        this.tipoAreaSelect.setItems(this.areas);
+
     }
 
     @FXML
@@ -142,8 +166,7 @@ public class BasquetController implements Initializable {
         //Reseteo tablas que muestro por pantalla para volverlas a llenar con la nueva fecha
         this.horarios.clear();
         this.turnos.clear();
-        this.area = (Area)Main.manager.createQuery("FROM Area where idEncargado ="+Main.encargadoLogeado.getDni()).getSingleResult();
-        this.listaTurnos= new ArrayList<>(area.getTurnos());
+        this.listaTurnos= new ArrayList<>(this.area.getTurnos());
 
         LocalDate f = this.diaPicker.getValue();
 
@@ -180,6 +203,11 @@ public class BasquetController implements Initializable {
 
     @FXML
     void seleccionarHora(ActionEvent event){
+
+    }
+
+    @FXML
+    void seleccionarTipoArea(ActionEvent event) {
 
     }
 

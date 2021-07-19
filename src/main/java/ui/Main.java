@@ -93,11 +93,11 @@ public class Main extends Application {
         /*
         CREACION DE PRIMERAS AREAS Y ENCARGADOS
          */
-
 /*
 
-        Area basquet = new Area(1, 300, "Basquet",4,1);
-        Area futbol = new Area(2, 400, "Futbol",5,2);
+
+        Area basquet = new Area(1, 300, "Basquet",4,1,"General");
+        Area futbol = new Area(2, 400, "Futbol",5,2,"General");
 
         Encargado Juli = new Encargado(
                 41537503,
@@ -203,8 +203,8 @@ public class Main extends Application {
         manager.getTransaction().commit();
         System.out.println(aux.toString());
 
-
 */
+
 
         launch(args);
     }

@@ -20,11 +20,14 @@ public abstract class Elemento {
     private double dimension;
     @Column(name = "deporte")
     private String deporte;
+    @Column(name = "areaPadre")
+    private int id_Area_Padre;
 
     public Elemento(int id, double dimension, String deporte) {
         this.id = id;
         this.dimension = dimension;
         this.deporte = deporte;
+        this.id_Area_Padre = -1;
     }
 
     public Elemento() {
@@ -68,8 +71,11 @@ public abstract class Elemento {
         this.deporte = deporte;
     }
 
-    //public logic.Elemento getPadre(){return this.padre;}
-    //public void setPadre(logic.Elemento p){this.padre=p;}
+    public void setId_Area_Padre(int id_Area){
+        this.id_Area_Padre=id_Area;
+    }
+
+
     //falta el getCopia
 
 

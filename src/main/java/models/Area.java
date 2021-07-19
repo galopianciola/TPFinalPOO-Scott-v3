@@ -20,15 +20,18 @@ public class Area extends Elemento implements Serializable {
     private int baños;
     @Column(name="idEncargado")
     private int idEncargado;
+    @Column(name="nombreArea")
+    private String nombreArea;
     @ElementCollection
     @Column(name="idElemento")
     private List<Elemento> elementos;
 
-    public Area(int id, double dimension, String deporte, int baños, int idEncargado) {
+    public Area(int id, double dimension, String deporte, int baños, int idEncargado,String nombreArea) {
         super(id, dimension, deporte);
         this.baños = baños;
         this.idEncargado = idEncargado;
         this.elementos = new ArrayList<>();
+        this.nombreArea=nombreArea;
     }
 
     public Area(){
@@ -115,6 +118,10 @@ public class Area extends Elemento implements Serializable {
         return idEncargado;
     }
 
+    public String getNombreArea(){
+        return this.nombreArea;
+    }
+
     public List<Elemento> getElementos() {
         List<Elemento> retorno = new ArrayList<>(this.elementos);
         return retorno;
@@ -146,12 +153,16 @@ public class Area extends Elemento implements Serializable {
     public void setElementos(Elemento e){
         this.elementos.add(e);
         super.setDimension(super.getDimension()+e.getDimension());
+        super.setId_Area_Padre(this.getId());
     }
 
     public void setBaños(int baños) {
         this.baños = baños;
     }
 
+    public void setNombreArea(String nombreArea){
+        this.nombreArea=nombreArea;
+    }
 
     @Override
     public String toString() {
