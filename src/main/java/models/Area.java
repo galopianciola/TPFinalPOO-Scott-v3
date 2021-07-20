@@ -208,6 +208,11 @@ public class Area extends Elemento implements Serializable {
         this.nombreArea=nombreArea;
     }
 
+    public void eliminarElemento(Elemento e){
+        if(this.elementos.contains(e))
+            this.elementos.remove(e);
+    }
+
     @Override
     public String toString() {
         return "Area{" +

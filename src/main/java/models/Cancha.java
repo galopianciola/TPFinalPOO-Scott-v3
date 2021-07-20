@@ -9,7 +9,7 @@ import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
 
-@Entity
+@Entity()
 @DiscriminatorValue("C")
 @Table(name = "canchas")
 public class Cancha extends Elemento implements Serializable {

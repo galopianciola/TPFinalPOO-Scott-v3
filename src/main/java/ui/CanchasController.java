@@ -86,13 +86,8 @@ public class CanchasController implements Initializable {
     void agregarCanchaButtonClicked(ActionEvent event) throws IOException {
         URL url = new File("src/main/java/ui/agregarCancha.fxml").toURI().toURL();
         this.changeSceneController(url,this.area);
-        this.listaCanchas.clear();
         //Busco en la base para poder actualizar la tabla que muestro por pantalla
-        this.area = (Area)Main.manager.createQuery("FROM Area where id ="+this.area.getId()).getSingleResult();
-        this.listaCanchas.addAll(this.area.getCanchas()); //Obtengo las canchas del area
-        this.canchas.setAll(listaCanchas);
-        this.tablaCanchas.setItems(this.canchas);
-        this.tablaCanchas.refresh();
+        this.actualizarCanchas();
 
     }
 
@@ -104,14 +99,47 @@ public class CanchasController implements Initializable {
 
     @FXML
     void eliminarCanchaButtonClicked(ActionEvent event) {
+        Cancha c = (Cancha)tablaCanchas.getSelectionModel().getSelectedItem();
+        List<Area> areas = (List<Area>)Main.manager.createQuery("FROM Area" ).getResultList();
 
+        Main.manager.getTransaction().begin();
+        for(Area area:areas){
+            if(area.getElementos().contains(c)) {
+                area.eliminarElemento(c);
+                Main.manager.merge(area);
+            }
+        }
+        Main.manager.remove(c);
+        Main.manager.getTransaction().commit();
+        this.actualizarCanchas();
     }
 
     @FXML
     void modificarCanchaButtonClicked(ActionEvent event) {
-
+        Cancha c = (Cancha)tablaCanchas.getSelectionModel().getSelectedItem();
+        if(tablaCanchas.getSelectionModel().getSelectedItem().getMantenimiento()==true){
+            Main.manager.getTransaction().begin();
+            c.setMantenimiento(false);
+            Main.manager.merge(c);
+            Main.manager.getTransaction().commit();
+        }
+        else{
+            Main.manager.getTransaction().begin();
+            c.setMantenimiento(true);
+            Main.manager.merge(c);
+            Main.manager.getTransaction().commit();
+        }
+        this.actualizarCanchas();
     }
 
+    public void actualizarCanchas(){
+        this.listaCanchas.clear();
+        this.area = (Area)Main.manager.createQuery("FROM Area where id ="+this.area.getId()).getSingleResult();
+        this.listaCanchas.addAll(this.area.getCanchas()); //Obtengo las canchas del area
+        this.canchas.setAll(listaCanchas);
+        this.tablaCanchas.setItems(this.canchas);
+        this.tablaCanchas.refresh();
+    }
 
     public void changeSceneController(URL url,Object o) throws IOException {
 
