@@ -37,11 +37,8 @@ public class LoginController {
             if(usernameField.getText().isEmpty() || passwordField.getText().isEmpty())
                 wrongLogin.setText("Por favor ingresa tus datos.");
             else {
-                Main.manager.getTransaction().begin();
                 int dniIngresado = Integer.parseInt(usernameField.getText());
                 Main.encargadoLogeado = Main.manager.find(Encargado.class, dniIngresado);
-                Main.manager.getTransaction().commit();
-
                 if (Main.encargadoLogeado != null) {
                     if (Main.encargadoLogeado.getPassword().equals(passwordField.getText())) {
                         wrongLogin.setText("Ingreso exitoso!");

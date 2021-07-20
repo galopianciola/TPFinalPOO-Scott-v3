@@ -39,7 +39,10 @@ public class Encargado extends Persona implements Serializable {
     }
 
     public int getIdArea() {
-        return this.area.getId();
+        if(this.area!=null)
+            return this.area.getId();
+        else
+            return -1;
     }
 
     public double getSueldo() {
@@ -51,7 +54,10 @@ public class Encargado extends Persona implements Serializable {
     }
 
     public String getDeporte(){
+        if(this.area!=null)
         return this.area.getDeporte();
+        else
+            return "Ninguno";
     }
 
     public void setArea(Area area) {
