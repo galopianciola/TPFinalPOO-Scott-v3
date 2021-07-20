@@ -58,9 +58,10 @@ public class AgregarJugadorController implements Initializable {
 
             // Busco a la persona en la base por DNI
             Persona personaExistente = Main.manager.find(Persona.class, Integer.parseInt(this.dniField.getText()));
-            System.out.println("EL DNI ES" + this.dniField.getText());
 
             if (personaExistente == null){ // Si la persona no existe previamente
+                System.out.println("LA PERSONA NO EXISTE" + this.dniField.getText());
+
                 // La creo
                 Persona p = new Persona(
                         Integer.parseInt(this.dniField.getText()),
@@ -73,6 +74,8 @@ public class AgregarJugadorController implements Initializable {
                 this.chequearTitular(p, true);
 
             } else {
+                System.out.println("LA PERSONA EXISTE" + this.dniField.getText());
+
                 // Si ya existe, y encima ya esta agregada como jugador en este turno
                 if (this.turno.getJugadores().contains(personaExistente)){
 
@@ -92,8 +95,8 @@ public class AgregarJugadorController implements Initializable {
 
                 }
             }
-
-            Main.manager.getTransaction().commit(); // Cierro la conexion
+            if (Main.manager.getTransaction().isActive())
+                Main.manager.getTransaction().commit(); // Cierro la conexion
 
         } else { // Si algun dato esta incompleto...
             Main m = new Main();
@@ -128,6 +131,9 @@ public class AgregarJugadorController implements Initializable {
 
         if (this.titularCheck.isSelected()) // Y si el checkbox de titular esta marcado
             this.turno.setTitular(persona); // Lo seteo como titular
+
+        if (Main.manager.getTransaction().isActive())
+            Main.manager.getTransaction().commit(); // Cierro la conexion
 
         // Cierro la ventana porque la persona ya fue agregada
         Stage stage = (Stage) addButton.getScene().getWindow();

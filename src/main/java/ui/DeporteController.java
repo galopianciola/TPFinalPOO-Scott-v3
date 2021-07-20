@@ -106,24 +106,27 @@ public class DeporteController implements Initializable {
 
         // Si se seleccionaron ambos datos (que habian sido inicializados en null previamente con setValue)
         if (this.diaPicker.getValue() != null && this.horaSelect.getValue() != null && this.tipoAreaSelect.getValue()!=null ) {
-
+            int idTurnoMax = 0;
             //Obtengo el IdTurno maximo, para generar el siguiente
-            int idTurnoMax = (int) Main.manager.createQuery("SELECT max(idTurno) FROM Turno").getResultList().get(0);
+            if(Main.manager.createQuery("SELECT max(idTurno) FROM Turno").getResultList().get(0)!=null) {
+                idTurnoMax = (int) Main.manager.createQuery("SELECT max(idTurno) FROM Turno").getResultList().get(0);
+            }
+                System.out.println("ID TURNO " + idTurnoMax);
+                Turno t = new Turno(idTurnoMax + 1,
+                        null,
+                        this.diaPicker.getValue(),
+                        (LocalTime.parse((String) this.horaSelect.getValue())),
+                        Main.encargadoLogeado,
+                        false,
+                        300);
 
-            Turno t = new Turno(idTurnoMax+1,
-                    null,
-                    this.diaPicker.getValue(),
-                    (LocalTime.parse((String)this.horaSelect.getValue())),
-                    Main.encargadoLogeado,
-                    false,
-                    300);
+                //Paso por parametro el turno para que se le puedan añadir los jugadores y setear el titular
+                //Tambien paso el area, porque es donde se debe setear el turno.
 
-            //Paso por parametro el turno para que se le puedan añadir los jugadores y setear el titular
-            //Tambien paso el area, porque es donde se debe setear el turno.
-
-            URL url = new File("src/main/java/ui/registrarTurno.fxml").toURI().toURL();
-            this.changeSceneController(url,t);
-            this.actualizarListaTurnos();
+                URL url = new File("src/main/java/ui/registrarTurno.fxml").toURI().toURL();
+                this.changeSceneController(url, t);
+                this.actualizarListaTurnos();
+                this.actualizarHorarios();
 
         } else { // Si no se selecciono dia u horario
             Alert alert = new Alert(Alert.AlertType.ERROR);

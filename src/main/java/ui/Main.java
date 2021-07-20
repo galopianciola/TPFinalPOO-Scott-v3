@@ -109,6 +109,16 @@ public class Main extends Application {
                 0,
                 "root");
 
+        Encargado julian = new Encargado(
+                41537503,
+                "Julian",
+                "Wagner",
+                220645,
+                basquet,
+                0,
+                "123j");
+
+
         manager.getTransaction().begin();
         manager.persist(basquet);
         manager.persist(futbol);
@@ -116,9 +126,10 @@ public class Main extends Application {
         manager.persist(tenis);
         manager.persist(voley);
         manager.persist(root);
+        manager.persist(julian);
         manager.getTransaction().commit();
-
 */
+
         launch(args);
     }
 
