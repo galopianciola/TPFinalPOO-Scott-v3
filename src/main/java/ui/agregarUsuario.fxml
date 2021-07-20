@@ -45,7 +45,7 @@
     <children>
         <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="254.0" prefWidth="359.0" style="-fx-background-color: #2A2B3B#2A2B3B;" VBox.vgrow="ALWAYS">
             <children>
-                <Label layoutX="57.0" layoutY="22.0" opacity="0.7" prefHeight="25.0" prefWidth="156.0" text="Agregar usuario" textFill="WHITE">
+                <Label layoutX="27.0" layoutY="20.0" opacity="0.7" prefHeight="25.0" prefWidth="156.0" text="Agregar usuario" textFill="WHITE">
                     <font>
                         <Font name="Lato Black" size="20.0" />
                     </font>
@@ -59,11 +59,6 @@
                 <TextField fx:id="sueldoField" layoutX="27.0" layoutY="195.0" prefHeight="26.0" prefWidth="143.0" promptText="Sueldo" />
                 <TextField fx:id="passwordField" layoutX="27.0" layoutY="163.0" prefHeight="26.0" prefWidth="143.0" promptText="Password" />
                 <ComboBox fx:id="area" layoutX="195.0" layoutY="68.0" prefWidth="150.0" promptText="Área" />
-                <Button fx:id="backButton" layoutX="7.0" layoutY="22.0" mnemonicParsing="false" onAction="#backButtonClicked" text="&lt;&lt;">
-                    <font>
-                        <Font size="15.0" />
-                    </font>
-                </Button>
             </children>
         </AnchorPane>
     </children>

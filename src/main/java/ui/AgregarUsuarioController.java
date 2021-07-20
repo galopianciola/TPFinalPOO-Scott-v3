@@ -9,6 +9,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
 import models.Area;
 import models.Encargado;
 
@@ -43,9 +44,6 @@ public class AgregarUsuarioController implements Initializable {
     @FXML
     private ComboBox area; //Combobox donde se van a mostrar las areas sin encargado
 
-    @FXML
-    private Button backButton;
-
     private ObservableList<String> areas;
     List <Area> areasDisponibles = new ArrayList<>();
 
@@ -78,8 +76,8 @@ public class AgregarUsuarioController implements Initializable {
             if (!Main.manager.getTransaction().isActive())
                 Main.manager.getTransaction().begin(); // La abro
             Main.manager.persist(encargado);
-            // areaSeleccionada.setIdEncargado(encargado.getDni());
-            // Main.manager.merge(areaSeleccionada);
+            areaSeleccionada.setIdEncargado(encargado.getDni());
+            Main.manager.merge(areaSeleccionada);
             Main.manager.getTransaction().commit();
         }
         else{
@@ -87,12 +85,8 @@ public class AgregarUsuarioController implements Initializable {
             m.sendAlert(Alert.AlertType.ERROR,"Datos incompletos","Los datos están incompletos. Inténtelo de nuevo");
         }
 
-    }
-
-    @FXML
-    void backButtonClicked(ActionEvent event) {
-        Main m = new Main();
-        m.backButtonClicked("src/main/java/ui/usuarios.fxml","Usuarios");
+        Stage stage = (Stage) addButton.getScene().getWindow();
+        stage.close();
     }
 
 }

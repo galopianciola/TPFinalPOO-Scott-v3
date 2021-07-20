@@ -134,7 +134,6 @@ public class ResumenController implements Initializable {
         }
         //Ya obtuve los turnos filtrados, ahora calculo cuanta gente hay en mi complejo actualmente.
         int cantGenteAct = 0;
-        System.out.println(turnosFiltrados.size());
         for (Turno turno : turnosFiltrados)
             cantGenteAct += turno.getJugadores().size();
         //Seteo el valor obtenido en el label

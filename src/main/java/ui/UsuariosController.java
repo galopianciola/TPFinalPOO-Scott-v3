@@ -13,6 +13,7 @@ import models.Area;
 import models.Encargado;
 import models.Turno;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
@@ -56,25 +57,14 @@ public class UsuariosController implements Initializable {
         this.colDeporte.setCellValueFactory(new PropertyValueFactory<>("Deporte"));
         this.colSueldo.setCellValueFactory(new PropertyValueFactory<>("Sueldo"));
 
-        // Obtengo todos los encargados de la base
-        this.listaEncargados = (ArrayList<Encargado>)Main.manager.createQuery("FROM Encargado").getResultList();
-
-        System.out.println("Cantidad encargados: " + this.listaEncargados.size());
-
-        // Los agrego al observable
-        this.encargados = FXCollections.observableArrayList(this.listaEncargados);
-
-        // Inserto los encargados en la tabla que muestro por pantalla
-        this.tablaUsuarios.setItems(this.encargados);
-        this.tablaUsuarios.refresh();
+        this.actualizarUsuarios();
     }
 
     @FXML
-    void agregarUsuarioButtonClicked(ActionEvent event) {
-        //int idUsuarioMax = (int) Main.manager.createQuery("SELECT max(id) FROM Usuario").getResultList().get(0); //Obtengo el idCanchaMaximo para generar el de la proxima cancha.
+    void agregarUsuarioButtonClicked(ActionEvent event) throws IOException {
         Main m = new Main();
-        m.backButtonClicked("src/main/java/ui/agregarUsuario.fxml", "Agregar usuario");
-
+        m.changeSceneOnParent("src/main/java/ui/agregarUsuario.fxml", "Agregar usuario");
+        this.actualizarUsuarios();
     }
 
     @FXML
@@ -86,7 +76,29 @@ public class UsuariosController implements Initializable {
     @FXML
     void borrarUsuarioButtonClicked(ActionEvent event) {
         Encargado encargadoSeleccionado = (Encargado) this.tablaUsuarios.getSelectionModel().getSelectedItem();
-        System.out.println(encargadoSeleccionado.toString());
+
+        List<Turno> turnos = (List<Turno>)Main.manager.createQuery("FROM Turno where dniEncargado ="+encargadoSeleccionado.getDni()).getResultList();
+        Main.manager.getTransaction().begin();
+            for(Turno t:turnos){
+                t.setEncargado(null);
+                Main.manager.merge(t);
+            }
+        Main.manager.remove(encargadoSeleccionado);
+        Main.manager.getTransaction().commit();
+
+        this.actualizarUsuarios();
+    }
+
+    public void actualizarUsuarios(){
+        // Obtengo todos los encargados de la base
+        this.listaEncargados = (ArrayList<Encargado>)Main.manager.createQuery("FROM Encargado").getResultList();
+
+        // Los agrego al observable
+        this.encargados = FXCollections.observableArrayList(this.listaEncargados);
+
+        // Inserto los encargados en la tabla que muestro por pantalla
+        this.tablaUsuarios.setItems(this.encargados);
+        this.tablaUsuarios.refresh();
     }
 
 }

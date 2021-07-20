@@ -22,7 +22,7 @@ public class Turno {
     private LocalTime hora;
     @ManyToMany(mappedBy = "turnos")
     private List<Persona> jugadores;
-    @OneToOne()
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name="dniEncargado")
     private Encargado encargado;
     @Column(name="pagado")
@@ -82,8 +82,12 @@ public class Turno {
     }
 
     public void setEncargado(Encargado encargado) {
-        this.encargado = encargado;
-        encargado.setTurno(this);
+        if(encargado!=null){
+            this.encargado = encargado;
+            encargado.setTurno(this);
+        }
+        else
+            this.encargado=null;
     }
 
     public void setPagado(boolean pagado) {
