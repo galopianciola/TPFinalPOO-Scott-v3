@@ -71,13 +71,16 @@ public class UsuariosController implements Initializable {
 
     @FXML
     void agregarUsuarioButtonClicked(ActionEvent event) {
+        //int idUsuarioMax = (int) Main.manager.createQuery("SELECT max(id) FROM Usuario").getResultList().get(0); //Obtengo el idCanchaMaximo para generar el de la proxima cancha.
+        Main m = new Main();
+        m.backButtonClicked("src/main/java/ui/agregarUsuario.fxml", "Agregar usuario");
 
     }
 
     @FXML
     void backButtonClicked(ActionEvent event) {
         Main m = new Main();
-        m.backButtonClicked("src/main/java/ui/main-menu.fxml", "Menú principal");
+        m.backButtonClicked("src/main/java/ui/main-menu.fxml", "MenÃº principal");
     }
 
     @FXML

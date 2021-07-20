@@ -7,7 +7,6 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.input.MouseEvent;
 
-
 public class AreasController {
 
     @FXML
@@ -27,7 +26,7 @@ public class AreasController {
 
 
     @FXML
-    void backButtonClicked(ActionEvent event){
+    void backButtonClicked(ActionEvent event) {
         Main m = new Main();
         m.backButtonClicked("src/main/java/ui/main-menu.fxml", "Menú principal");
     }
@@ -39,7 +38,7 @@ public class AreasController {
 
         try {
             if (Main.encargadoLogeado.getArea().getDeporte().equals("Basquet"))
-                m.changeScene("src/main/java/ui/basquet.fxml", "Basquet");
+                m.changeScene("src/main/java/ui/deporte.fxml", "Basquet");
             else {
                 Alert alert = new Alert(Alert.AlertType.ERROR);
                 alert.setHeaderText(null);
@@ -51,5 +50,81 @@ public class AreasController {
             e.printStackTrace();
         }
 
+    }
+
+    @FXML
+    void futbolButtonClicked(MouseEvent event) {
+        Main m = new Main();
+
+        try {
+            if (Main.encargadoLogeado.getArea().getDeporte().equals("Futbol"))
+                m.changeScene("src/main/java/ui/deporte.fxml", "Futbol");
+            else {
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setHeaderText(null);
+                alert.setTitle("Acceso denegado");
+                alert.setContentText("No es posible ingresar al área seleccionada");
+                alert.showAndWait();
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    @FXML
+    void paddleButtonClicked(MouseEvent event) {
+        Main m = new Main();
+
+        try {
+            if (Main.encargadoLogeado.getArea().getDeporte().equals("Paddle"))
+                m.changeScene("src/main/java/ui/deporte.fxml", "Paddle");
+            else {
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setHeaderText(null);
+                alert.setTitle("Acceso denegado");
+                alert.setContentText("No es posible ingresar al área seleccionada");
+                alert.showAndWait();
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    @FXML
+    void tenisButtonClicked(MouseEvent event) {
+        Main m = new Main();
+
+        try {
+            if (Main.encargadoLogeado.getArea().getDeporte().equals("Tenis"))
+                m.changeScene("src/main/java/ui/deporte.fxml", "Tenis");
+            else {
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setHeaderText(null);
+                alert.setTitle("Acceso denegado");
+                alert.setContentText("No es posible ingresar al área seleccionada");
+                alert.showAndWait();
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    @FXML
+    void voleyButtonClicked(MouseEvent event) {
+        Main m = new Main();
+
+        try {
+            if (Main.encargadoLogeado.getArea().getDeporte().equals("Voley"))
+                m.changeScene("src/main/java/ui/deporte.fxml", "Voley");
+            else {
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setHeaderText(null);
+                alert.setTitle("Acceso denegado");
+                alert.setContentText("No es posible ingresar al área seleccionada");
+                alert.showAndWait();
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }

@@ -99,7 +99,7 @@ public class CanchasController implements Initializable {
     @FXML
     void backButtonClicked(ActionEvent event) {
         Main m = new Main();
-        m.backButtonClicked("src/main/java/ui/basquet.fxml", "Basquet");
+        m.backButtonClicked("src/main/java/ui/deporte.fxml", "Basquet");
     }
 
     @FXML

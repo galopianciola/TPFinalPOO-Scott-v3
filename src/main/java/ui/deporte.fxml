@@ -44,11 +44,11 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.BasquetController">
+<VBox prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.DeporteController">
   <children>
     <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #2A2B3B#2A2B3B;" VBox.vgrow="ALWAYS">
       <children>
-            <Label layoutX="70.0" layoutY="27.0" opacity="0.7" prefHeight="25.0" prefWidth="143.0" text="Área Básquet" textFill="WHITE">
+            <Label fx:id="deporteLabel" layoutX="70.0" layoutY="27.0" opacity="0.7" prefHeight="25.0" prefWidth="143.0" text="Área X" textFill="WHITE">
                <font>
                   <Font name="Lato Black" size="20.0" />
                </font>

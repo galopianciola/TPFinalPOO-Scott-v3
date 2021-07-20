@@ -28,7 +28,7 @@ import java.util.List;
 import java.util.ResourceBundle;
 
 
-public class BasquetController implements Initializable {
+public class DeporteController implements Initializable {
 
     @FXML
     private TableView<Turno> tablaTurnos;
@@ -40,6 +40,10 @@ public class BasquetController implements Initializable {
 
     private List<Turno> listaTurnos;
     private Area area;
+
+    @FXML
+    private Label deporteLabel;
+
     @FXML
     private TableColumn colID;
 
@@ -90,9 +94,11 @@ public class BasquetController implements Initializable {
         this.diaPicker.setValue(null);
         this.horaSelect.setValue(null);
         this.tipoAreaSelect.setValue(null);
-        this.area=null;
 
         this.actualizarAreas();//Muestro por pantalla las areas que tiene mi complejo.
+
+        this.area = (Area)Main.manager.createQuery("FROM Area where nombreArea='General' and idEncargado ="+Main.encargadoLogeado.getDni()).getSingleResult();
+        this.deporteLabel.setText("Área "+this.area.getDeporte());
     }
 
     @FXML

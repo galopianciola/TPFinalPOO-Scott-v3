@@ -68,7 +68,7 @@
                   </Label>
                </children>
             </AnchorPane>
-            <AnchorPane fx:id="futbolButton" layoutX="135.0" layoutY="140.0" prefHeight="120.0" prefWidth="100.0" style="-fx-background-color: #D6D6D6#D6D6D6; -fx-background-radius: 10px;">
+            <AnchorPane fx:id="futbolButton" layoutX="135.0" layoutY="140.0" onMouseClicked="#futbolButtonClicked" prefHeight="120.0" prefWidth="100.0" style="-fx-background-color: #D6D6D6#D6D6D6; -fx-background-radius: 10px;">
                <children>
                   <ImageView fitHeight="80.0" fitWidth="73.0" layoutX="14.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -82,7 +82,7 @@
                   </Label>
                </children>
             </AnchorPane>
-            <AnchorPane fx:id="paddleButton" layoutX="250.0" layoutY="140.0" prefHeight="120.0" prefWidth="100.0" style="-fx-background-color: #D6D6D6#D6D6D6; -fx-background-radius: 10px;">
+            <AnchorPane fx:id="paddleButton" layoutX="250.0" layoutY="140.0" onMouseClicked="#paddleButtonClicked" prefHeight="120.0" prefWidth="100.0" style="-fx-background-color: #D6D6D6#D6D6D6; -fx-background-radius: 10px;">
                <children>
                   <ImageView fitHeight="73.0" fitWidth="73.0" layoutX="14.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -96,7 +96,7 @@
                   </Label>
                </children>
             </AnchorPane>
-            <AnchorPane fx:id="tenisButton" layoutX="367.0" layoutY="140.0" prefHeight="120.0" prefWidth="100.0" style="-fx-background-color: #D6D6D6#D6D6D6; -fx-background-radius: 10px;">
+            <AnchorPane fx:id="tenisButton" layoutX="367.0" layoutY="140.0" onMouseClicked="#tenisButtonClicked" prefHeight="120.0" prefWidth="100.0" style="-fx-background-color: #D6D6D6#D6D6D6; -fx-background-radius: 10px;">
                <children>
                   <ImageView fitHeight="73.0" fitWidth="73.0" layoutX="14.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -110,7 +110,7 @@
                   </Label>
                </children>
             </AnchorPane>
-            <AnchorPane fx:id="voleyButton" layoutX="480.0" layoutY="140.0" prefHeight="120.0" prefWidth="100.0" style="-fx-background-color: #D6D6D6#D6D6D6; -fx-background-radius: 10px;">
+            <AnchorPane fx:id="voleyButton" layoutX="480.0" layoutY="140.0" onMouseClicked="#voleyButtonClicked" prefHeight="120.0" prefWidth="100.0" style="-fx-background-color: #D6D6D6#D6D6D6; -fx-background-radius: 10px;">
                <children>
                   <ImageView fitHeight="82.0" fitWidth="73.0" layoutX="14.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
                      <image>
