@@ -94,128 +94,31 @@ public class Main extends Application {
 
 /*
 
-        Area basquet = new Area(1, 500, "Basquet", 4, 1, "General");
-        Area futbol = new Area(2, 400, "Futbol", 5, 2, "General");
-        Area futbol5 = new Area(3, 300, "Futbol", 5, 2, "Futbol 5");
-        Area basquetCanchaAmateur = new Area(4, 300, "Basquet", 4, 1, "Cancha Amateur");
-        Encargado Juli = new Encargado(
-                41537503,
-                "Julian",
-                "Wagner",
-                220645,
-                basquet,
-                40000,
-                "123j");
+        Area basquet = new Area(1, 100, "Basquet", 4, -1, "General");
+        Area futbol = new Area(2, 80, "Futbol", 5, -1, "General");
+        Area paddle= new Area(3, 95, "Paddle", 3, -1, "General");
+        Area tenis = new Area(4, 100, "Tenis", 2, -1, "General");
+        Area voley = new Area(5, 110, "Voley", 4, -1, "General");
 
-        Encargado Galo = new Encargado(
-                41104148,
-                "Galo",
-                "Pianciola",
-                426487,
-                futbol,
-                38000,
-                "123g");
-
-        Persona p = new Persona(
-                41104142,
-                "Gonzalo",
-                "Kolman",
-                424242,
-                false
-        );
-
-        Turno t = new Turno(
+        Encargado root = new Encargado(
                 1,
-                p,
-                LocalDate.of(2021, 7, 10),
-                LocalTime.of(14, 00),
-                Juli,
-                false,
-                300
-        );
-        Turno t2 = new Turno(
-                2,
-                p,
-                LocalDate.of(2021, 7, 10),
-                LocalTime.of(17, 00),
-                Galo,
-                true,
-                300
-        );
-
-        Turno t3 = new Turno(
-                3,
-                p,
-                LocalDate.of(2021, 7, 10),
-                LocalTime.of(20, 00),
-                Galo,
-                true,
-                300
-        );
-
-
-        Cancha c = new Cancha(
-                5,
-                15,
-                "Basquet",
-                10,
-                false,
-                false,
-                2500
-        );
-
-        Cancha c2 = new Cancha(
-                6,
-                20,
-                "Futbol",
-                10,
-                false,
-                false,
-                3000
-        );
-
-        Cancha c3 = new Cancha(
-                7,
-                20,
-                "Basquet",
-                10,
-                false,
-                false,
-                3000
-        );
-
-
-        basquet.setElementos(c);
-        futbol.setElementos(futbol5);
-        basquet.setElementos(basquetCanchaAmateur);
-        basquetCanchaAmateur.setElementos(c3);
-        futbol5.setElementos(c2);
-
-        c.setTurno(t);
-        c.setTurno(t2);
-        c3.setTurno(t3);
-
+                "root",
+                "root",
+                0,
+                null,
+                0,
+                "root");
 
         manager.getTransaction().begin();
-
-        manager.persist(basquetCanchaAmateur);
-        manager.persist(futbol5);
         manager.persist(basquet);
         manager.persist(futbol);
-        manager.persist(Juli);
-        manager.persist(Galo);
-        manager.persist(p);
-        manager.persist(t);
-        manager.persist(t2);
-        manager.persist(t3);
-        manager.persist(c);
-        manager.persist(c2);
-        manager.persist(c3);
+        manager.persist(paddle);
+        manager.persist(tenis);
+        manager.persist(voley);
+        manager.persist(root);
         manager.getTransaction().commit();
 
 */
-
-
         launch(args);
     }
 
