@@ -42,40 +42,34 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.CanchasController">
+<VBox prefHeight="314.0" prefWidth="557.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.CanchasController">
   <children>
-    <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #2A2B3B#2A2B3B;" VBox.vgrow="ALWAYS">
+    <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="360.0" prefWidth="600.0" style="-fx-background-color: #2A2B3B#2A2B3B;" VBox.vgrow="ALWAYS">
       <children>
-            <Label layoutX="70.0" layoutY="27.0" opacity="0.7" prefHeight="25.0" prefWidth="143.0" text="Canchas" textFill="WHITE">
+            <Label layoutX="24.0" layoutY="21.0" opacity="0.7" prefHeight="25.0" prefWidth="114.0" text="Canchas" textFill="WHITE">
                <font>
                   <Font name="Lato Black" size="20.0" />
                </font>
             </Label>
-            <Separator layoutX="163.0" layoutY="32.0" opacity="0.5" prefHeight="16.0" prefWidth="412.0" />
-            <Separator layoutX="23.0" layoutY="364.0" opacity="0.5" prefHeight="16.0" prefWidth="554.0" />
+            <Separator layoutX="118.0" layoutY="25.0" opacity="0.5" prefHeight="16.0" prefWidth="418.0" />
             <Accordion layoutX="213.0" layoutY="163.0" />
-            <TableView fx:id="tablaCanchas" layoutX="25.0" layoutY="76.0" prefHeight="274.0" prefWidth="490.0">
+            <TableView fx:id="tablaCanchas" layoutX="24.0" layoutY="61.0" prefHeight="233.0" prefWidth="449.0">
               <columns>
-                <TableColumn fx:id="colID" prefWidth="71.0" text="ID" />
+                <TableColumn fx:id="colID" prefWidth="66.0" text="ID" />
                 <TableColumn fx:id="colMantenimiento" prefWidth="100.0" text="Mantenimiento" />
-                  <TableColumn fx:id="colOcupada" prefWidth="100.0" text="Ocupada" />
-                  <TableColumn fx:id="colGananciaMensual" prefWidth="165.0" text="Ganancias del mes" />
+                  <TableColumn fx:id="colOcupada" prefWidth="105.0" text="Ocupada" />
+                  <TableColumn fx:id="colGananciaMensual" prefWidth="177.0" text="Ganancias del mes" />
               </columns>
             </TableView>
-            <Button fx:id="eliminarCanchaButton" layoutX="528.0" layoutY="189.0" mnemonicParsing="false" onAction="#eliminarCanchaButtonClicked" prefHeight="49.0" prefWidth="49.0" style="-fx-background-color: #CE375C#CE375C #CE375C#CE375C;" text="-">
+            <Button fx:id="eliminarCanchaButton" layoutX="487.0" layoutY="174.0" mnemonicParsing="false" onAction="#eliminarCanchaButtonClicked" prefHeight="49.0" prefWidth="49.0" style="-fx-background-color: #CE375C#CE375C #CE375C#CE375C;" text="-">
                <font>
                   <Font size="20.0" />
                </font></Button>
-            <Button fx:id="backButton" layoutX="25.0" layoutY="25.0" mnemonicParsing="false" onAction="#backButtonClicked" text="&lt;&lt;">
-               <font>
-                  <Font size="15.0" />
-               </font>
-            </Button>
-            <Button fx:id="agregarCanchaButton" layoutX="528.0" layoutY="76.0" mnemonicParsing="false" onAction="#agregarCanchaButtonClicked" prefHeight="49.0" prefWidth="49.0" style="-fx-background-color: #65D26E#65D26E #65D26E#65D26E;" text="+">
+            <Button fx:id="agregarCanchaButton" layoutX="487.0" layoutY="61.0" mnemonicParsing="false" onAction="#agregarCanchaButtonClicked" prefHeight="49.0" prefWidth="49.0" style="-fx-background-color: #65D26E#65D26E #65D26E#65D26E;" text="+">
                <font>
                   <Font name="System Bold" size="20.0" />
                </font></Button>
-            <Button fx:id="modificarCanchaButton" layoutX="528.0" layoutY="132.0" mnemonicParsing="false" onAction="#modificarCanchaButtonClicked" prefHeight="49.0" prefWidth="49.0" style="-fx-background-color: #F2B443#F2B443;" text="&lt;&gt;">
+            <Button fx:id="modificarCanchaButton" layoutX="487.0" layoutY="117.0" mnemonicParsing="false" onAction="#modificarCanchaButtonClicked" prefHeight="49.0" prefWidth="49.0" style="-fx-background-color: #F2B443#F2B443;" text="&lt;&gt;">
                <font>
                   <Font size="18.0" />
                </font></Button>
