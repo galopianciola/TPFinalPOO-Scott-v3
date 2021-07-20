@@ -20,14 +20,7 @@ public class Turno {
     private LocalDate fecha;
     @Column(name="hora")
     private LocalTime hora;
-    //@ElementCollection
-    /*@CollectionTable(
-            name = "turnos_jugadores",
-            joinColumns = @JoinColumn(name="dni"),
-            uniqueConstraints = @UniqueConstraint(columnNames={"idTurno","dni"})
-    )*/
     @ManyToMany(mappedBy = "turnos")
-    //@Column(name="jugadores")
     private List<Persona> jugadores;
     @OneToOne()
     @JoinColumn(name="dniEncargado")
@@ -116,5 +109,16 @@ public class Turno {
     }
     public void setPrecio(int precio){
         this.precio=precio;
+    }
+
+    public boolean participaJugador(int dni){
+        /*
+        Chequea si dado un DNI, esa persona participó o no en el turno
+         */
+
+        for (Persona p: this.jugadores)
+            if (p.getDni() == dni)
+                return true;
+        return false;
     }
 }

@@ -92,6 +92,7 @@ public class Main extends Application {
         CREACION DE PRIMERAS AREAS Y ENCARGADOS
          */
 
+/*
 
         Area basquet = new Area(1, 500, "Basquet", 4, 1, "General");
         Area futbol = new Area(2, 400, "Futbol", 5, 2, "General");
@@ -211,6 +212,8 @@ public class Main extends Application {
         manager.persist(c2);
         manager.persist(c3);
         manager.getTransaction().commit();
+
+*/
 
 
         launch(args);
