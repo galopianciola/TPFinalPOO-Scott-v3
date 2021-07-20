@@ -17,6 +17,7 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
+import java.util.stream.Collectors;
 
 public class TurnosAfectadosController implements Initializable {
 
@@ -65,8 +66,10 @@ public class TurnosAfectadosController implements Initializable {
         for (Turno t: turnosEnRango)
             // Si el jugador infectado participó en el turno
             if (t.participaJugador(this.dniAfectado))
-                // Agrego todos los jugadores
-                this.listaAfectados.addAll(t.getJugadores());
+                for(Persona p:t.getJugadores())
+                    if(!this.listaAfectados.contains(p) && p.getDni()!=this.dniAfectado)
+                        // Agrego todos los jugadores
+                        this.listaAfectados.add(p);
 
         // Seteo finalmente la lista de jugadores afectados en la tabla para que se muestren
         this.tablaAfectados.setItems(this.listaAfectados);
