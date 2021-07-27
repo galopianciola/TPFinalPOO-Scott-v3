@@ -27,6 +27,7 @@ public class Cancha extends Elemento implements Serializable {
     @ElementCollection
     @Column(name="turno")
     private List<Turno> turnos;
+    private String disponible;//Este atributo solamente se usa para mostrar de una mejor forma por la interface.
 
     public Cancha(int id, double dimension, String deporte, int capacidad, boolean ocupada, boolean mantenimiento, double gastoMensual) {
         super(id, dimension, deporte);
@@ -35,6 +36,7 @@ public class Cancha extends Elemento implements Serializable {
         this.mantenimiento = mantenimiento;
         this.gastoMensual = gastoMensual;
         this.turnos = new ArrayList<>();
+       // this.setDisponible();
     }
 
     public Cancha(){
@@ -75,11 +77,18 @@ public class Cancha extends Elemento implements Serializable {
         return retorno;
     }
 
-    public boolean getOcupada(){
+    /*public boolean getOcupada(){
         for(Turno turno:this.turnos)
             if ((turno.getFecha().equals(LocalDate.now()) && ((LocalTime.now().getHour()-turno.getHora().getHour())>=0 &&(LocalTime.now().getHour()-turno.getHora().getHour())<=1)))
                 return true;
         return false;
+    }*/
+
+    public String getOcupada(){
+        for(Turno turno:this.turnos)
+            if ((turno.getFecha().equals(LocalDate.now()) && ((LocalTime.now().getHour()-turno.getHora().getHour())>=0 &&(LocalTime.now().getHour()-turno.getHora().getHour())<=1)))
+                return "Si";
+        return "No";
     }
 
     @Override
@@ -91,7 +100,7 @@ public class Cancha extends Elemento implements Serializable {
 
     }
 
-        public double getRecaudado(LocalDate date){
+    public double getRecaudado(LocalDate date){
         double recaudado = 0;
         for(Turno turno:this.turnos)
             if(turno.getFecha().equals(date))
@@ -99,6 +108,11 @@ public class Cancha extends Elemento implements Serializable {
         return recaudado;
     }
 
+    public String getDisponible(){
+        if(this.mantenimiento==true)
+            return "No";
+        return "Si";
+    }
 
 
     public List<Turno> getTurnos() {

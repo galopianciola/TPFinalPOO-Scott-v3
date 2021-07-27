@@ -41,9 +41,9 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox prefHeight="270.0" prefWidth="359.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.AgregarUsuarioController">
+<VBox prefHeight="277.0" prefWidth="359.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.AgregarUsuarioController">
     <children>
-        <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="254.0" prefWidth="359.0" style="-fx-background-color: #2A2B3B#2A2B3B;" VBox.vgrow="ALWAYS">
+        <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="286.0" prefWidth="359.0" style="-fx-background-color: #2A2B3B#2A2B3B;" VBox.vgrow="ALWAYS">
             <children>
                 <Label layoutX="27.0" layoutY="20.0" opacity="0.7" prefHeight="25.0" prefWidth="156.0" text="Agregar usuario" textFill="WHITE">
                     <font>
@@ -51,13 +51,13 @@
                     </font>
                 </Label>
                 <Accordion layoutX="213.0" layoutY="163.0" />
-                <TextField fx:id="nombreField" layoutX="27.0" layoutY="67.0" prefHeight="26.0" prefWidth="143.0" promptText="Nombre" />
+                <TextField fx:id="nombreField" layoutX="27.0" layoutY="68.0" prefHeight="26.0" prefWidth="143.0" promptText="Nombre" />
                 <TextField fx:id="apellidoField" layoutX="27.0" layoutY="100.0" prefHeight="26.0" prefWidth="143.0" promptText="Apellido" />
                 <TextField fx:id="dniField" layoutX="27.0" layoutY="130.0" prefHeight="26.0" prefWidth="143.0" promptText="DNI" />
-                <TextField fx:id="telefonoField" layoutX="27.0" layoutY="227.0" prefHeight="26.0" prefWidth="143.0" promptText="Teléfono" />
+                <TextField fx:id="passwordField" layoutX="27.0" layoutY="163.0" prefHeight="26.0" prefWidth="143.0" promptText="Contraseña" />
+                <TextField fx:id="sueldoField" layoutX="27.0" layoutY="197.0" prefHeight="26.0" prefWidth="143.0" promptText="Sueldo" />
+                <TextField fx:id="telefonoField" layoutX="27.0" layoutY="229.0" prefHeight="26.0" prefWidth="143.0" promptText="Teléfono" />
                 <Button fx:id="addButton" layoutX="195.0" layoutY="117.0" mnemonicParsing="false" onAction="#addButtonClicked" prefHeight="26.0" prefWidth="150.0" text="Agregar" />
-                <TextField fx:id="sueldoField" layoutX="27.0" layoutY="195.0" prefHeight="26.0" prefWidth="143.0" promptText="Sueldo" />
-                <TextField fx:id="passwordField" layoutX="27.0" layoutY="163.0" prefHeight="26.0" prefWidth="143.0" promptText="Password" />
                 <ComboBox fx:id="area" layoutX="195.0" layoutY="68.0" prefWidth="150.0" promptText="Área" />
             </children>
         </AnchorPane>

@@ -20,7 +20,7 @@ public class Encargado extends Persona implements Serializable {
     @OneToMany(mappedBy = "encargado",cascade = CascadeType.ALL)
     private List<Turno> turnos;
 
-    public Encargado(int dni, String nombre, String apellido, int telefono, Area area, double sueldo, String password) {
+    public Encargado(int dni, String nombre, String apellido, int telefono, Area area, double sueldo,String password) {
         super(dni, nombre, apellido, telefono, true);
         this.area = area;
         this.sueldo = sueldo;
@@ -38,6 +38,7 @@ public class Encargado extends Persona implements Serializable {
     public String getPassword() {
         return password;
     }
+
 
     public Area getArea() {
         return area;
@@ -78,13 +79,7 @@ public class Encargado extends Persona implements Serializable {
         this.password = password;
     }
 
-    @PreRemove
-    public void nullificar(){
-        this.area.setIdEncargado(-1);
-        for(Turno turno:this.turnos)
-            turno.setEncargado(null);
-        this.turnos.clear();
-    }
+
 
     @Override
     public String toString() {

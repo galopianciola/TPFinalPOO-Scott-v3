@@ -28,7 +28,10 @@ public class UsuariosController implements Initializable {
     private TableColumn colDNI;
 
     @FXML
-    private TableColumn colArea;
+    private TableColumn colNombre;
+
+    @FXML
+    private TableColumn colApellido;
 
     @FXML
     private TableColumn colDeporte;
@@ -40,10 +43,13 @@ public class UsuariosController implements Initializable {
     private Button agregarUsuarioButton;
 
     @FXML
-    private Button backButton;
+    private Button modificarSueldo;
 
     @FXML
-    private Button borrarUsuarioTurnoButton;
+    private Button borrarUsuarioButton;
+
+    @FXML
+    private Button backButton;
 
     private ObservableList<Encargado> encargados; // Lista observable que alimenta el tableView
 
@@ -53,7 +59,8 @@ public class UsuariosController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         this.colDNI.setCellValueFactory(new PropertyValueFactory<>("Dni"));
-        this.colArea.setCellValueFactory(new PropertyValueFactory<>("IdArea"));
+        this.colNombre.setCellValueFactory(new PropertyValueFactory<>("Nombre"));
+        this.colApellido.setCellValueFactory(new PropertyValueFactory<>("Apellido"));
         this.colDeporte.setCellValueFactory(new PropertyValueFactory<>("Deporte"));
         this.colSueldo.setCellValueFactory(new PropertyValueFactory<>("Sueldo"));
 
@@ -68,10 +75,10 @@ public class UsuariosController implements Initializable {
     }
 
     @FXML
-    void backButtonClicked(ActionEvent event) {
-        Main m = new Main();
-        m.backButtonClicked("src/main/java/ui/main-menu.fxml", "MenÃº principal");
+    void modificarSueldoButtonClicked(ActionEvent event) {
+        //Te muestra una pantalla para modificarle el sueldo.
     }
+
 
     @FXML
     void borrarUsuarioButtonClicked(ActionEvent event) {
@@ -87,6 +94,12 @@ public class UsuariosController implements Initializable {
         Main.manager.getTransaction().commit();
 
         this.actualizarUsuarios();
+    }
+
+    @FXML
+    void backButtonClicked(ActionEvent event) {
+        Main m = new Main();
+        m.backButtonClicked("src/main/java/ui/main-menu.fxml", "MenÃº principal");
     }
 
     public void actualizarUsuarios(){

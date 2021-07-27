@@ -37,7 +37,7 @@ public class CanchasController implements Initializable {
     private TableColumn colID;
 
     @FXML
-    private TableColumn colMantenimiento;
+    private TableColumn colDisponible;
 
     @FXML
     private TableColumn colOcupada;
@@ -73,9 +73,8 @@ public class CanchasController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-
         this.colID.setCellValueFactory(new PropertyValueFactory<>("id"));
-        this.colMantenimiento.setCellValueFactory(new PropertyValueFactory<>("mantenimiento"));
+        this.colDisponible.setCellValueFactory(new PropertyValueFactory<>("disponible"));
         this.colOcupada.setCellValueFactory(new PropertyValueFactory<>("ocupada"));
         this.colGananciaMensual.setCellValueFactory(new PropertyValueFactory<>("gananciaMensual"));
 

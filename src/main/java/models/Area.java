@@ -50,11 +50,10 @@ public class Area extends Elemento implements Serializable {
 
     @Override
     public boolean getMantenimiento() {
-        boolean retorno=false;
         for(Elemento e:this.elementos)
             if(e.getMantenimiento()==true)
-                retorno=true;
-        return retorno;
+                return true;
+        return false;
     }
 
     @Override
@@ -183,7 +182,7 @@ public class Area extends Elemento implements Serializable {
     public void setTurno(Turno t){
         int contador=0;
         for(Elemento elemento:this.elementos) {
-            if ((!elemento.isOcupadaXFecha(t.getFecha(),t.getHora())) && (contador==0)) {
+            if ((!elemento.isOcupadaXFecha(t.getFecha(),t.getHora())) && (elemento.getMantenimiento()==false) && (contador==0)) {
                 elemento.setTurno(t);
                 contador++;
             }

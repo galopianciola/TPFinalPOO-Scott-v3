@@ -56,13 +56,14 @@
             <Accordion layoutX="213.0" layoutY="163.0" />
             <TableView fx:id="tablaUsuarios" layoutX="23.0" layoutY="77.0" prefHeight="276.0" prefWidth="501.0">
               <columns>
-                <TableColumn fx:id="colDNI" prefWidth="133.0" text="DNI" />
-                <TableColumn fx:id="colArea" minWidth="0.0" text="ID Área" />
-                  <TableColumn fx:id="colDeporte" prefWidth="157.0" text="Deporte del Área" />
-                  <TableColumn fx:id="colSueldo" prefWidth="130.0" text="Sueldo" />
+                <TableColumn fx:id="colNombre" minWidth="0.0" prefWidth="90.0" text="Nombre" />
+                  <TableColumn fx:id="colApellido" prefWidth="94.0" text="Apellido" />
+                <TableColumn fx:id="colDNI" prefWidth="107.0" text="DNI" />
+                  <TableColumn fx:id="colDeporte" prefWidth="123.0" text="Deporte del Área" />
+                  <TableColumn fx:id="colSueldo" prefWidth="86.0" text="Sueldo" />
               </columns>
             </TableView>
-            <Button fx:id="agregarUsuarioButton" layoutX="532.0" layoutY="77.0" mnemonicParsing="false" onAction="#agregarUsuarioButtonClicked" prefHeight="40.0" prefWidth="45.0" style="-fx-background-color: #65D26E#65D26E;" text="+">
+            <Button fx:id="agregarUsuarioButton" layoutX="528.0" layoutY="77.0" mnemonicParsing="false" onAction="#agregarUsuarioButtonClicked" prefHeight="44.0" prefWidth="51.0" style="-fx-background-color: #65D26E#65D26E;" text="+">
                <font>
                   <Font name="System Bold" size="20.0" />
                </font></Button>
@@ -71,9 +72,14 @@
                   <Font size="15.0" />
                </font>
             </Button>
-            <Button fx:id="borrarUsuarioTurnoButton" layoutX="532.0" layoutY="123.0" mnemonicParsing="false" onAction="#borrarUsuarioButtonClicked" prefHeight="40.0" prefWidth="45.0" style="-fx-background-color: #CE375C#CE375C;" text="-">
+            <Button fx:id="borrarUsuarioButton" layoutX="528.0" layoutY="185.0" mnemonicParsing="false" onAction="#borrarUsuarioButtonClicked" prefHeight="44.0" prefWidth="51.0" style="-fx-background-color: #CE375C#CE375C;" text="-">
                <font>
                   <Font name="System Bold" size="20.0" />
+               </font>
+            </Button>
+            <Button fx:id="modificarSueldoButton" layoutX="528.0" layoutY="131.0" mnemonicParsing="false" onAction="#modificarSueldoButtonClicked" prefHeight="44.0" prefWidth="51.0" style="-fx-background-color: #F2B443#F2B443;" text="&lt;&gt;">
+               <font>
+                  <Font size="18.0" />
                </font>
             </Button>
       </children>

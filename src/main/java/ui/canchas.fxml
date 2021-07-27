@@ -56,8 +56,8 @@
             <TableView fx:id="tablaCanchas" layoutX="24.0" layoutY="61.0" prefHeight="233.0" prefWidth="449.0">
               <columns>
                 <TableColumn fx:id="colID" prefWidth="66.0" text="ID" />
-                <TableColumn fx:id="colMantenimiento" prefWidth="100.0" text="Mantenimiento" />
-                  <TableColumn fx:id="colOcupada" prefWidth="105.0" text="Ocupada" />
+                <TableColumn fx:id="colDisponible" prefWidth="110.0" text="Disponible" />
+                  <TableColumn fx:id="colOcupada" prefWidth="95.0" text="Ocupada" />
                   <TableColumn fx:id="colGananciaMensual" prefWidth="177.0" text="Ganancias del mes" />
               </columns>
             </TableView>

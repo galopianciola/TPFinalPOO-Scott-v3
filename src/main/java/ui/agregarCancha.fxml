@@ -54,7 +54,7 @@
             <TextField fx:id="capacidadField" layoutX="27.0" layoutY="85.0" prefHeight="26.0" prefWidth="143.0" promptText="Capacidad" />
             <TextField fx:id="dimensionField" layoutX="184.0" layoutY="85.0" prefHeight="26.0" prefWidth="143.0" promptText="Dimension" />
             <TextField fx:id="precioTurnoField" layoutX="27.0" layoutY="137.0" prefHeight="26.0" prefWidth="143.0" promptText="Precio del turno" />
-            <TextField fx:id="gastoMensualId" layoutX="183.0" layoutY="137.0" prefHeight="26.0" prefWidth="143.0" promptText="Gasto Mensual" />
+            <TextField fx:id="gastoMensualField" layoutX="183.0" layoutY="137.0" prefHeight="26.0" prefWidth="143.0" promptText="Gasto Mensual" />
             <Button fx:id="addButton" layoutX="206.0" layoutY="191.0" mnemonicParsing="false" onAction="#addButtonClicked" prefHeight="26.0" prefWidth="120.0" text="Agregar" />
             <CheckBox fx:id="terminadaCheck" layoutX="27.0" layoutY="195.0" mnemonicParsing="false" text="Terminada" textFill="WHITE" />
       </children>

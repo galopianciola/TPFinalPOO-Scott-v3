@@ -59,7 +59,7 @@ public class AgregarUsuarioController implements Initializable {
     @FXML
     void addButtonClicked(ActionEvent event) {
 
-        if(this.area.getSelectionModel().getSelectedItem()!=null && !this.nombreField.equals("")&& !this.apellidoField.equals("") && !this.dniField.equals("") && !this.telefonoField.equals("") && !this.sueldoField.equals("") && !this.passwordField.equals("")) {
+        if(this.area.getSelectionModel().getSelectedItem()!=null && !this.nombreField.getText().equals("") && !this.apellidoField.getText().equals("") && !this.dniField.getText().equals("") && !this.telefonoField.getText().equals("") && !this.sueldoField.getText().equals("") && !this.passwordField.getText().equals("")) {
             Area areaSeleccionada=null;
             for(Area a:this.areasDisponibles)
                 if(a.getDeporte().equals(this.area.getSelectionModel().getSelectedItem()))

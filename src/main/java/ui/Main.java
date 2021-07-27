@@ -89,7 +89,7 @@ public class Main extends Application {
         manager = emf.createEntityManager();
 
         /*
-        CREACION DE PRIMERAS AREAS Y ENCARGADOS
+        CREACION DE Deportes que incluye el complejo y encargado root
          */
 
 /*
@@ -128,8 +128,8 @@ public class Main extends Application {
         manager.persist(root);
         manager.persist(julian);
         manager.getTransaction().commit();
-*/
 
+*/
         launch(args);
     }
 

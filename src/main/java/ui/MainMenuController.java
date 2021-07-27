@@ -3,6 +3,7 @@ package ui;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.stage.Stage;
 
@@ -56,14 +57,16 @@ public class MainMenuController implements Initializable {
 
     @FXML
     void usuariosButtonClicked(ActionEvent event) throws IOException {
-
-        try {
-            Main m = new Main();
+        Main m = new Main();
+        if(Main.encargadoLogeado.getDni()==1){
+            try {
             m.changeScene("src/main/java/ui/usuarios.fxml", "Usuarios");
         } catch (Exception e) {
             e.printStackTrace();
         }
-
+        }
+        else
+            m.sendAlert(Alert.AlertType.ERROR,"Acceso denegado,","Solo usuarios root pueden ingresar a esta sección");
     }
 
     @FXML

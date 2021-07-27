@@ -43,7 +43,7 @@ public class AgregarAreaController {
         if (!Main.manager.getTransaction().isActive())
             Main.manager.getTransaction().begin(); // La abro
 
-        if(!this.nombreField.equals("") && !this.bañosField.equals("") && !this.dimensionField.equals("")) {
+        if(!this.nombreField.getText().equals("") && !this.bañosField.getText().equals("") && !this.dimensionField.getText().equals("")) {
             Area area = new Area(idElementoMax+1,
                     Integer.parseInt(this.dimensionField.getText()),
                     this.area.getDeporte(),

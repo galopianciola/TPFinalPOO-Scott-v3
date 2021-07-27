@@ -35,96 +35,86 @@ public class AreasController {
     @FXML
     void basquetButtonClicked(MouseEvent event) {
         Main m = new Main();
+        if(Main.encargadoLogeado.getDni()==1)
+            m.sendAlert(Alert.AlertType.ERROR,"Acceso denegado,","No es posible ingresar al área seleccionada ya que no tiene un deporte asignado");
+        else {
 
-        try {
-            if (Main.encargadoLogeado.getArea().getDeporte().equals("Basquet"))
-                m.changeScene("src/main/java/ui/deporte.fxml", "Basquet");
-            else {
-                Alert alert = new Alert(Alert.AlertType.ERROR);
-                alert.setHeaderText(null);
-                alert.setTitle("Acceso denegado");
-                alert.setContentText("No es posible ingresar al área seleccionada");
-                alert.showAndWait();
+            try {
+                if (Main.encargadoLogeado.getArea().getDeporte().equals("Basquet"))
+                    m.changeScene("src/main/java/ui/deporte.fxml", "Basquet");
+                else
+                    m.sendAlert(Alert.AlertType.ERROR, "Acceso denegado,", "No es posible ingresar al área seleccionada");
+            } catch (Exception e) {
+                e.printStackTrace();
             }
-        } catch (Exception e) {
-            e.printStackTrace();
         }
-
     }
 
     @FXML
     void futbolButtonClicked(MouseEvent event) {
         Main m = new Main();
-
-        try {
-            if (Main.encargadoLogeado.getArea().getDeporte().equals("Futbol"))
-                m.changeScene("src/main/java/ui/deporte.fxml", "Futbol");
-            else {
-                Alert alert = new Alert(Alert.AlertType.ERROR);
-                alert.setHeaderText(null);
-                alert.setTitle("Acceso denegado");
-                alert.setContentText("No es posible ingresar al área seleccionada");
-                alert.showAndWait();
+        if(Main.encargadoLogeado.getDni()==1)
+            m.sendAlert(Alert.AlertType.ERROR,"Acceso denegado,","No es posible ingresar al área seleccionada ya que no tiene un deporte asignado");
+        else {
+            try {
+                if (Main.encargadoLogeado.getArea().getDeporte().equals("Futbol"))
+                    m.changeScene("src/main/java/ui/deporte.fxml", "Futbol");
+                else
+                    m.sendAlert(Alert.AlertType.ERROR, "Acceso denegado,", "No es posible ingresar al área seleccionada");
+            } catch (Exception e) {
+                e.printStackTrace();
             }
-        } catch (Exception e) {
-            e.printStackTrace();
         }
     }
 
     @FXML
     void paddleButtonClicked(MouseEvent event) {
         Main m = new Main();
-
-        try {
-            if (Main.encargadoLogeado.getArea().getDeporte().equals("Paddle"))
-                m.changeScene("src/main/java/ui/deporte.fxml", "Paddle");
-            else {
-                Alert alert = new Alert(Alert.AlertType.ERROR);
-                alert.setHeaderText(null);
-                alert.setTitle("Acceso denegado");
-                alert.setContentText("No es posible ingresar al área seleccionada");
-                alert.showAndWait();
+        if(Main.encargadoLogeado.getDni()==1)
+            m.sendAlert(Alert.AlertType.ERROR,"Acceso denegado,","No es posible ingresar al área seleccionada ya que no tiene un deporte asignado");
+        else {
+            try {
+                if (Main.encargadoLogeado.getArea().getDeporte().equals("Paddle"))
+                    m.changeScene("src/main/java/ui/deporte.fxml", "Paddle");
+                else
+                    m.sendAlert(Alert.AlertType.ERROR, "Acceso denegado,", "No es posible ingresar al área seleccionada");
+            } catch (Exception e) {
+                e.printStackTrace();
             }
-        } catch (Exception e) {
-            e.printStackTrace();
         }
     }
 
     @FXML
     void tenisButtonClicked(MouseEvent event) {
         Main m = new Main();
-
-        try {
-            if (Main.encargadoLogeado.getArea().getDeporte().equals("Tenis"))
-                m.changeScene("src/main/java/ui/deporte.fxml", "Tenis");
-            else {
-                Alert alert = new Alert(Alert.AlertType.ERROR);
-                alert.setHeaderText(null);
-                alert.setTitle("Acceso denegado");
-                alert.setContentText("No es posible ingresar al área seleccionada");
-                alert.showAndWait();
+        if(Main.encargadoLogeado.getDni()==1)
+            m.sendAlert(Alert.AlertType.ERROR,"Acceso denegado,","No es posible ingresar al área seleccionada ya que no tiene un deporte asignado");
+        else {
+            try {
+                if (Main.encargadoLogeado.getArea().getDeporte().equals("Tenis"))
+                    m.changeScene("src/main/java/ui/deporte.fxml", "Tenis");
+                else
+                    m.sendAlert(Alert.AlertType.ERROR, "Acceso denegado,", "No es posible ingresar al área seleccionada");
+            } catch (Exception e) {
+                e.printStackTrace();
             }
-        } catch (Exception e) {
-            e.printStackTrace();
         }
     }
 
     @FXML
     void voleyButtonClicked(MouseEvent event) {
         Main m = new Main();
-
-        try {
-            if (Main.encargadoLogeado.getArea().getDeporte().equals("Voley"))
-                m.changeScene("src/main/java/ui/deporte.fxml", "Voley");
-            else {
-                Alert alert = new Alert(Alert.AlertType.ERROR);
-                alert.setHeaderText(null);
-                alert.setTitle("Acceso denegado");
-                alert.setContentText("No es posible ingresar al área seleccionada");
-                alert.showAndWait();
+        if(Main.encargadoLogeado.getDni()==1)
+            m.sendAlert(Alert.AlertType.ERROR,"Acceso denegado,","No es posible ingresar al área seleccionada ya que no tiene un deporte asignado");
+        else {
+            try {
+                if (Main.encargadoLogeado.getArea().getDeporte().equals("Voley"))
+                    m.changeScene("src/main/java/ui/deporte.fxml", "Voley");
+                else
+                    m.sendAlert(Alert.AlertType.ERROR, "Acceso denegado,", "No es posible ingresar al área seleccionada");
+            } catch (Exception e) {
+                e.printStackTrace();
             }
-        } catch (Exception e) {
-            e.printStackTrace();
         }
     }
 }

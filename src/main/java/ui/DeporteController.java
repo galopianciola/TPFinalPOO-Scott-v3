@@ -108,9 +108,9 @@ public class DeporteController implements Initializable {
         if (this.diaPicker.getValue() != null && this.horaSelect.getValue() != null && this.tipoAreaSelect.getValue()!=null ) {
             int idTurnoMax = 0;
             //Obtengo el IdTurno maximo, para generar el siguiente
-            if(Main.manager.createQuery("SELECT max(idTurno) FROM Turno").getResultList().get(0)!=null) {
+            if(Main.manager.createQuery("SELECT max(idTurno) FROM Turno").getResultList().get(0)!=null)
                 idTurnoMax = (int) Main.manager.createQuery("SELECT max(idTurno) FROM Turno").getResultList().get(0);
-            }
+
                 System.out.println("ID TURNO " + idTurnoMax);
                 Turno t = new Turno(idTurnoMax + 1,
                         null,
@@ -210,21 +210,21 @@ public class DeporteController implements Initializable {
         //Reseteo tabla que muestro por pantalla para volverla a llenar con los nuevos turnos filtrados
         this.turnos.clear();
         if(!this.area.getTurnos().isEmpty()){
-        if(this.diaPicker.getValue()!=null) {
-            List<Turno> turnosFiltrados = new ArrayList<>();
-            this.listaTurnos = new ArrayList<>(this.area.getTurnos());
-            LocalDate f = this.diaPicker.getValue();
+            if(this.diaPicker.getValue()!=null) {
+                List<Turno> turnosFiltrados = new ArrayList<>();
+                this.listaTurnos = new ArrayList<>(this.area.getTurnos());
+                LocalDate f = this.diaPicker.getValue();
 
-            //Obtengo los turnos filtrados por fecha y por el tipo de area ya filtrado anteriormente.
-            for (Turno turno : this.listaTurnos) {
-                if (turno.getFecha().equals(f))
-                    turnosFiltrados.add(turno);
-            }
+                //Obtengo los turnos filtrados por fecha y por el tipo de area ya filtrado anteriormente.
+                for (Turno turno : this.listaTurnos) {
+                    if (turno.getFecha().equals(f))
+                        turnosFiltrados.add(turno);
+                }
 
             this.turnos.addAll(turnosFiltrados);
             this.tablaTurnos.setItems(this.turnos);
             this.tablaTurnos.refresh();
-        }
+            }
         else{
             //Muestro todos los turnos pertenecientes a la sub area
             List<Turno> turnos = new ArrayList<>();
@@ -246,15 +246,19 @@ public class DeporteController implements Initializable {
         if(!this.area.getCanchasXFiltro(fxMantenimiento).isEmpty()) {
             List<String> horariosDisponibles = new ArrayList<>();
             for (int j = 12; j <= 20; j++) {
-                horariosDisponibles.add(j + ":00");
+                for (int i = 0; i < this.turnos.size(); i++) {
+                    if(!this.turnos.get(i).getHora().toString().equals(j+":00") && !horariosDisponibles.contains(j+":00"))
+                        horariosDisponibles.add(j + ":00");
+                }
             }
             //Borro los horarios en los cuales ya tengo una reserva
-            for (int i = 0; i < this.turnos.size(); i++) {
+            /*for (int i = 0; i < this.turnos.size(); i++) {
                 for (int j = 0; j < 8; j++) {
                     if (horariosDisponibles.contains(this.turnos.get(i).getHora().toString()))
                         horariosDisponibles.remove(this.turnos.get(i).getHora().toString());
                 }
-            }
+            }*/
+
             //Muestro por pantalla los horarios disponibles.
             this.horarios.addAll(horariosDisponibles);
             this.horaSelect.setItems(this.horarios);

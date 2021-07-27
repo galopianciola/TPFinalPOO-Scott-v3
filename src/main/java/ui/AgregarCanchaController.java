@@ -26,7 +26,7 @@ public class AgregarCanchaController implements Initializable {
     private TextField precioTurnoField;
 
     @FXML
-    private TextField gastoMensualId;
+    private TextField gastoMensualField;
 
     @FXML
     private Button addButton;
@@ -38,10 +38,6 @@ public class AgregarCanchaController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        this.capacidadField.setText("");
-        this.dimensionField.setText("");
-        this.precioTurnoField.setText("");
-        this.gastoMensualId.setText("");
         this.terminadaCheck.setSelected(false);
     }
 
@@ -53,7 +49,8 @@ public class AgregarCanchaController implements Initializable {
         if (!Main.manager.getTransaction().isActive())
             Main.manager.getTransaction().begin(); // La abro
 
-        if(!this.capacidadField.equals("") && !this.gastoMensualId.equals("") && !this.dimensionField.equals("") && !this.precioTurnoField.equals("")) {
+        if(!this.capacidadField.getText().equals("") && !this.gastoMensualField.getText().equals("") && !this.dimensionField.getText().equals("") && !this.precioTurnoField.getText().equals("")) {
+            System.out.println("ENTRE");
             boolean mantenimiento = true;
             if(this.terminadaCheck.isSelected())
                 mantenimiento = false;
@@ -64,7 +61,7 @@ public class AgregarCanchaController implements Initializable {
                     Integer.parseInt(this.capacidadField.getText()),
                     false,
                     mantenimiento,
-                    Integer.parseInt(this.gastoMensualId.getText())
+                    Integer.parseInt(this.gastoMensualField.getText())
             );
             this.area.setElementos(cancha);
             Main.manager.persist(cancha);
