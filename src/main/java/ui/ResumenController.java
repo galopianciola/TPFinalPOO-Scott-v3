@@ -65,7 +65,7 @@ public class ResumenController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         //Obtengo las areas del complejo
-        this.areas = (List<Area>) Main.manager.createQuery("FROM Area").getResultList();
+        this.areas = (List<Area>) Main.manager.createQuery("FROM Area where nombreArea='general'").getResultList();
 
         double contadorAreasDisponibles = 0;
         //Cuento cuantas areas estan disponibles

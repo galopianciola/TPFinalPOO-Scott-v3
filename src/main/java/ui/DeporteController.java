@@ -13,7 +13,6 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import models.*;
-import models.filters.FxDisponibilidad;
 import models.filters.FxMantenimiento;
 
 
