@@ -24,8 +24,10 @@ import java.net.URL;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.ResourceBundle;
+import java.util.stream.Collectors;
 
 
 public class DeporteController implements Initializable {
@@ -196,6 +198,10 @@ public class DeporteController implements Initializable {
             alert.setContentText("No se seleccionó area de la cual quiere ver las canchas");
             alert.showAndWait();
         }
+
+        this.actualizarListaTurnos();
+        this.actualizarHorarios();
+
     }
 
     public void obtenerAreaSeleccionada(){
@@ -239,26 +245,25 @@ public class DeporteController implements Initializable {
     }
 
     public void actualizarHorarios() {
-        FxMantenimiento fxMantenimiento = new FxMantenimiento();
         //Reseteo comboBox de horarios que muestro por pantalla para volverlo a llenar para la nueva fecha y la nueva Area.
         this.horarios.clear();
+        FxMantenimiento fxMantenimiento = new FxMantenimiento();
+        List<Cancha> canchasDisponiblesDelArea = this.area.getCanchasXFiltro(fxMantenimiento);
         //Agrego todos los horarios
-        if(!this.area.getCanchasXFiltro(fxMantenimiento).isEmpty()) {
+        if(!canchasDisponiblesDelArea.isEmpty()) {
             List<String> horariosDisponibles = new ArrayList<>();
-            for (int j = 12; j <= 20; j++) {
-                for (int i = 0; i < this.turnos.size(); i++) {
-                    if(!this.turnos.get(i).getHora().toString().equals(j+":00") && !horariosDisponibles.contains(j+":00"))
-                        horariosDisponibles.add(j + ":00");
+            for (int i = 0; i < canchasDisponiblesDelArea.size(); i++) {
+                for (int j = 12; j <= 20; j++) {
+                    horariosDisponibles.add(j+":00");
+                    List<Turno> turnosDeCadaCancha = canchasDisponiblesDelArea.get(i).getTurnos();
+                    for (Turno turno : turnosDeCadaCancha) {
+                        if(this.turnos.contains(turno) && turno.getHora().toString().equals(j + ":00") && horariosDisponibles.contains(j + ":00"))
+                            horariosDisponibles.remove(j+":00");
+                    }
                 }
             }
-            //Borro los horarios en los cuales ya tengo una reserva
-            /*for (int i = 0; i < this.turnos.size(); i++) {
-                for (int j = 0; j < 8; j++) {
-                    if (horariosDisponibles.contains(this.turnos.get(i).getHora().toString()))
-                        horariosDisponibles.remove(this.turnos.get(i).getHora().toString());
-                }
-            }*/
-
+            horariosDisponibles = horariosDisponibles.stream().distinct().collect(Collectors.toList());
+            Collections.sort(horariosDisponibles);
             //Muestro por pantalla los horarios disponibles.
             this.horarios.addAll(horariosDisponibles);
             this.horaSelect.setItems(this.horarios);
