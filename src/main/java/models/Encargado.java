@@ -32,13 +32,11 @@ public class Encargado extends Persona implements Serializable {
     }
     public Encargado(){
         super();
-
     }
 
     public String getPassword() {
         return password;
     }
-
 
     public Area getArea() {
         return area;
@@ -78,9 +76,7 @@ public class Encargado extends Persona implements Serializable {
     public void setPassword(String password) {
         this.password = password;
     }
-
-
-
+    /*
     @Override
     public String toString() {
         return "Encargado{" +"dni="+super.dni+
@@ -88,5 +84,5 @@ public class Encargado extends Persona implements Serializable {
                 ", sueldo=" + sueldo +
                 ", password='" + password  +
                 '}';
-    }
+    }*/
 }

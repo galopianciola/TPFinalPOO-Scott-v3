@@ -70,7 +70,7 @@ public class ResumenController implements Initializable {
         double contadorAreasDisponibles = 0;
         //Cuento cuantas areas estan disponibles
         for (Area area : this.areas) {
-            if (area.getDisponibilidad()) {
+            if (area.getMantenimiento()==false) {
                 contadorAreasDisponibles++;
             }
         }
@@ -80,7 +80,6 @@ public class ResumenController implements Initializable {
         //Seteo en los label los String ya convertidos, con el % al final.
         this.disponibilidadAreasLabel.setText(porcentajeAreasDisponibles);
         this.mantenimientoAreasLabel.setText(PorcentajeAreasMantenimiento);
-
 
         //Para todas las areas que tengo, me fijo cuantas canchas estan disponibles y cuantas no
         FxMantenimiento fxMantenimiento = new FxMantenimiento();

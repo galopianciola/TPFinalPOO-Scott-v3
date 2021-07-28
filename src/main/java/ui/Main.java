@@ -92,7 +92,7 @@ public class Main extends Application {
         CREACION DE Deportes que incluye el complejo y encargado root
          */
 
-        /*
+/*
         Area basquet = new Area(1, 100, "Basquet", 4, -1, "General");
         Area futbol = new Area(2, 80, "Futbol", 5, -1, "General");
         Area paddle= new Area(3, 95, "Paddle", 3, -1, "General");
@@ -127,7 +127,6 @@ public class Main extends Application {
         manager.persist(root);
         manager.persist(julian);
         manager.getTransaction().commit();
-
 */
         launch(args);
     }
