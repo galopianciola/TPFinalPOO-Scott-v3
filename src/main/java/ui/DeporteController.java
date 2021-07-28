@@ -69,6 +69,8 @@ public class DeporteController implements Initializable {
     @FXML
     private ComboBox horaSelect;
 
+    @FXML
+    private Button registrarPagoButton;
 
     @FXML
     private Button verCanchaButton;
@@ -269,6 +271,28 @@ public class DeporteController implements Initializable {
         }
     }
 
+    @FXML
+    void registrarPagoButtonClicked(ActionEvent event) {
+        Turno t = tablaTurnos.getSelectionModel().getSelectedItem();
+        System.out.println(t.getPagado());
+        if(tablaTurnos.getSelectionModel().getSelectedItem().getPagado().equals("Si")){
+            System.out.println("ENTRO A SI");
+            Main.manager.getTransaction().begin();
+            t.setPagado(false);
+            Main.manager.merge(t);
+            Main.manager.getTransaction().commit();
+        }
+        else{
+            System.out.println("Entro a no");
+            Main.manager.getTransaction().begin();
+            t.setPagado(true);
+            Main.manager.merge(t);
+            Main.manager.getTransaction().commit();
+        }
+        this.actualizarListaTurnos();
+
+    }
+
     public void actualizarAreas(){
         this.areas.clear();
         this.area = (Area)Main.manager.createQuery("FROM Area where nombreArea='General' and idEncargado ="+Main.encargadoLogeado.getDni()).getSingleResult();
@@ -277,6 +301,8 @@ public class DeporteController implements Initializable {
         this.areas.addAll(areasDisponibles);
         this.tipoAreaSelect.setItems(this.areas);
     }
+
+
 
     public void changeSceneController(URL url,Object o) throws IOException {
 

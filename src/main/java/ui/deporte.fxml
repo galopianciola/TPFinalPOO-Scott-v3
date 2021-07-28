@@ -67,7 +67,7 @@
             </TableView>
             <DatePicker fx:id="diaPicker" layoutX="162.0" layoutY="77.0" onAction="#seleccionarFecha" prefHeight="25.0" prefWidth="114.0" promptText="Dia" />
             <ComboBox fx:id="horaSelect" layoutX="282.0" layoutY="75.0" onAction="#seleccionarHora" prefHeight="26.0" prefWidth="91.0" promptText="Hora" />
-            <Button fx:id="registrarTurnoButton" layoutX="381.0" layoutY="76.0" mnemonicParsing="false" onAction="#registrarTurnoButtonClicked" prefHeight="26.0" prefWidth="98.0" text="Registrar turno" />
+            <Button fx:id="registrarTurnoButton" layoutX="379.0" layoutY="56.0" mnemonicParsing="false" onAction="#registrarTurnoButtonClicked" prefHeight="26.0" prefWidth="98.0" text="Registrar turno" />
             <Button fx:id="backButton" layoutX="25.0" layoutY="25.0" mnemonicParsing="false" onAction="#backButtonClicked" text="&lt;&lt;">
                <font>
                   <Font size="15.0" />
@@ -76,6 +76,7 @@
             <Button fx:id="verCanchaButton" layoutX="486.0" layoutY="56.0" mnemonicParsing="false" onAction="#verCanchaButtonClicked" prefHeight="26.0" prefWidth="91.0" text="Canchas" />
             <ComboBox fx:id="tipoAreaSelect" layoutX="25.0" layoutY="75.0" onAction="#seleccionarTipoArea" prefHeight="26.0" prefWidth="131.0" promptText="Area" />
             <Button fx:id="agregarAreaButton" layoutX="486.0" layoutY="89.0" mnemonicParsing="false" onAction="#agregarAreaButtonClicked" prefHeight="26.0" prefWidth="91.0" text="Agregar área" />
+            <Button fx:id="registrarPagoButton" layoutX="379.0" layoutY="89.0" mnemonicParsing="false" onAction="#registrarPagoButtonClicked" prefHeight="26.0" prefWidth="98.0" text="Registrar Pago" />
       </children>
     </AnchorPane>
   </children>

@@ -108,7 +108,7 @@ public class Turno {
     public String getPagado(){
         // para PropertyValueFactory
         if (this.pagado)
-            return "Sí";
+            return "Si";
         return "No";
     }
     public void setPrecio(int precio){

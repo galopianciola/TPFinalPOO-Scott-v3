@@ -48,14 +48,12 @@ public class CanchasController implements Initializable {
     @FXML
     private Button eliminarCanchaButton;
 
-    @FXML
-    private Button backButton;
 
     @FXML
     private Button agregarCanchaButton;
 
     @FXML
-    private Button modificarCanchaButton;
+    private Button modificarDisponibilidadButton;
 
     private Area area;
     private ObservableList<Elemento> canchas;
@@ -84,16 +82,9 @@ public class CanchasController implements Initializable {
     @FXML
     void agregarCanchaButtonClicked(ActionEvent event) throws IOException {
         URL url = new File("src/main/java/ui/agregarCancha.fxml").toURI().toURL();
-        this.changeSceneController(url,this.area);
+        this.changeSceneController(url, this.area);
         //Busco en la base para poder actualizar la tabla que muestro por pantalla
         this.actualizarCanchas();
-
-    }
-
-    @FXML
-    void backButtonClicked(ActionEvent event) {
-        Main m = new Main();
-        m.backButtonClicked("src/main/java/ui/deporte.fxml", "Basquet");
     }
 
     @FXML
@@ -114,7 +105,7 @@ public class CanchasController implements Initializable {
     }
 
     @FXML
-    void modificarCanchaButtonClicked(ActionEvent event) {
+    void modificarDisponibilidadButtonClicked(ActionEvent event) {
         Cancha c = (Cancha)tablaCanchas.getSelectionModel().getSelectedItem();
         if(tablaCanchas.getSelectionModel().getSelectedItem().getMantenimiento()==true){
             Main.manager.getTransaction().begin();
