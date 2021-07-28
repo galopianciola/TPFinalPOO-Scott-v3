@@ -27,7 +27,8 @@ public class Cancha extends Elemento implements Serializable {
     @ElementCollection
     @Column(name="turno")
     private List<Turno> turnos;
-    private String disponible;//Este atributo solamente se usa para mostrar de una mejor forma por la interface.
+    private String disponible;
+    //Este atributo solamente se usa para mostrar de una mejor forma por la interface
 
     public Cancha(int id, double dimension, String deporte, int capacidad, boolean ocupada, boolean mantenimiento, double gastoMensual) {
         super(id, dimension, deporte);
@@ -36,7 +37,6 @@ public class Cancha extends Elemento implements Serializable {
         this.mantenimiento = mantenimiento;
         this.gastoMensual = gastoMensual;
         this.turnos = new ArrayList<>();
-       // this.setDisponible();
     }
 
     public Cancha(){
@@ -63,6 +63,9 @@ public class Cancha extends Elemento implements Serializable {
         return this.gananciaMensual;
     }
 
+    /*
+Devuelve una lista de canchas, con las que cumplen la condicion del filtro.
+ */
     @Override
     public List<Cancha> getCanchasXFiltro(Filtro f1) {
         List<Cancha> retorno = new ArrayList<>();
@@ -70,20 +73,19 @@ public class Cancha extends Elemento implements Serializable {
             retorno.add(this);
         return retorno;
     }
+
+    /*
+Devuelve todas las canchas del area
+ */
     @Override
     public List<Cancha> getCanchas() {
         List<Cancha> retorno = new ArrayList<>();
         retorno.add(this);
         return retorno;
     }
-
-    /*public boolean getOcupada(){
-        for(Turno turno:this.turnos)
-            if ((turno.getFecha().equals(LocalDate.now()) && ((LocalTime.now().getHour()-turno.getHora().getHour())>=0 &&(LocalTime.now().getHour()-turno.getHora().getHour())<=1)))
-                return true;
-        return false;
-    }*/
-
+    /*
+    Chequea si en este momento hay algun turno en curso o si esta disponible la cancha.
+     */
     public String getOcupada(){
         for(Turno turno:this.turnos)
             if ((turno.getFecha().equals(LocalDate.now()) && ((LocalTime.now().getHour()-turno.getHora().getHour())>=0 &&(LocalTime.now().getHour()-turno.getHora().getHour())<=1)))
@@ -91,6 +93,9 @@ public class Cancha extends Elemento implements Serializable {
         return "No";
     }
 
+    /*
+Chequea si esta ocupada en una fecha en particular
+ */
     @Override
     public boolean isOcupadaXFecha(LocalDate date,LocalTime time){
         for(Turno turno:this.turnos)
@@ -99,26 +104,34 @@ public class Cancha extends Elemento implements Serializable {
         return false;
 
     }
-
+    /*
+Obtiene lo que recaudo la cancha en un cierto dia
+     */
     public double getRecaudado(LocalDate date){
         double recaudado = 0;
         for(Turno turno:this.turnos)
             if(turno.getFecha().equals(date))
-                recaudado+= turno.getPrecio();
+                recaudado+= turno.getPrecio()*turno.getJugadores().size();
         return recaudado;
     }
 
+    /*
+Retorna si esta disponible la cancha o si esta en mantenimiento
+ */
     public String getDisponible(){
         if(this.mantenimiento==true)
             return "No";
         return "Si";
     }
 
-
     public List<Turno> getTurnos() {
         return new ArrayList<>(this.turnos);
     }
 
+    /*
+Se utiliza para ver la gente que hay en el complejo actualmente.
+Matchea con los turnos del dia, y con los que arrancaron y todavia no terminaron.
+ */
     public List<Turno> getTurnosXFechaYHora(LocalDate date, LocalTime time){
         List<Turno> turnos = new ArrayList<>();
         for (Turno turno : this.turnos) {
@@ -127,10 +140,12 @@ public class Cancha extends Elemento implements Serializable {
         }
         return turnos;
     }
-
+    /*
+    Seteo el turno y ademas aumento la ganancia mensual.
+     */
     public void setTurno(Turno t) {
         this.turnos.add(t);
-        this.gananciaMensual+=(t.getPrecio()*(t.getJugadores().size()+1));
+        this.gananciaMensual+=(t.getPrecio()*(t.getJugadores().size()));
     }
 
     public void setCapacidad(int capacidad) {
@@ -149,16 +164,5 @@ public class Cancha extends Elemento implements Serializable {
         this.gastoMensual = gastoMensual;
     }
 
-
-
-
-
-        /*
-    @Override
-    public Cancha getCanchaDisponible(Date fecha, Time hora) {
-        return null;
-    }
-*/
-
-    }
+}
 

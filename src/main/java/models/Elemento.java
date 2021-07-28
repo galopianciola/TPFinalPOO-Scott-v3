@@ -34,7 +34,6 @@ public abstract class Elemento {
 
     }
 
-
     public abstract int getCapacidad();
     public abstract boolean getMantenimiento();
     public abstract double getGastoMensual();
@@ -44,9 +43,6 @@ public abstract class Elemento {
     public abstract List<Turno> getTurnos();
     public abstract void setTurno(Turno t);
     public abstract boolean isOcupadaXFecha(LocalDate date, LocalTime time);
-
-        // public abstract Cancha getCanchaDisponible(Date fecha, Time hora);
-
 
     public int getId() {
         return id;
@@ -75,9 +71,5 @@ public abstract class Elemento {
     public void setId_Area_Padre(int id_Area){
         this.id_Area_Padre=id_Area;
     }
-
-
-    //falta el getCopia
-
 
 }
