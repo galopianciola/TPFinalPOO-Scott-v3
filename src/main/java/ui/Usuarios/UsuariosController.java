@@ -44,9 +44,6 @@ public class UsuariosController implements Initializable {
     private Button agregarUsuarioButton;
 
     @FXML
-    private Button modificarSueldo;
-
-    @FXML
     private Button borrarUsuarioButton;
 
     @FXML
@@ -76,12 +73,6 @@ public class UsuariosController implements Initializable {
     }
 
     @FXML
-    void modificarSueldoButtonClicked(ActionEvent event) {
-        //Te muestra una pantalla para modificarle el sueldo.
-    }
-
-
-    @FXML
     void borrarUsuarioButtonClicked(ActionEvent event) {
         Encargado encargadoSeleccionado = (Encargado) this.tablaUsuarios.getSelectionModel().getSelectedItem();
 
@@ -104,7 +95,7 @@ public class UsuariosController implements Initializable {
     @FXML
     void backButtonClicked(ActionEvent event) {
         Main m = new Main();
-        m.backButtonClicked("src/main/java/ui/main-menu.fxml", "MenÃº principal");
+        m.backButtonClicked("src/main/java/ui/main-menu.fxml", "Menu principal");
     }
 
     public void actualizarUsuarios(){
