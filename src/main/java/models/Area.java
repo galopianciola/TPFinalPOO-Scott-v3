@@ -77,21 +77,10 @@ Devuelve unas lista de canchas que cumplen con la condicion del filtro.
      */
     @Override
     public List<Cancha> getCanchasXFiltro(Filtro f1) {
-        List<Cancha> retorno = new ArrayList<>();
-        for(Elemento e:this.elementos)
-            retorno.addAll(e.getCanchasXFiltro(f1));
-        return retorno;
-    }
-
-    /*
-Devuelve una lista de canchas, sin ningun tipo de condicion.
-     */
-    @Override
-    public List<Cancha> getCanchas(){
-        List<Cancha> retorno = new ArrayList<>();
-        for(Elemento e:this.elementos)
-            retorno.addAll(e.getCanchas());
-        return retorno;
+            List<Cancha> retorno = new ArrayList<>();
+            for (Elemento e : this.elementos)
+                retorno.addAll(e.getCanchasXFiltro(f1));
+            return retorno;
     }
 
     /*

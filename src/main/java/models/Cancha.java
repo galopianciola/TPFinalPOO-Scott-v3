@@ -64,25 +64,22 @@ public class Cancha extends Elemento implements Serializable {
     }
 
     /*
-Devuelve una lista de canchas, con las que cumplen la condicion del filtro.
+Devuelve una lista de canchas, con la misma si es que cumple la condicion del filtro.
+Si el filtro es null, devuelve la lista de canchas con la misma.
  */
     @Override
     public List<Cancha> getCanchasXFiltro(Filtro f1) {
         List<Cancha> retorno = new ArrayList<>();
-        if (f1.cumple(this) == true)
+        if(f1!=null) {
+            if (f1.cumple(this) == true)
+                retorno.add(this);
+        }
+        else {
             retorno.add(this);
+        }
         return retorno;
     }
 
-    /*
-Devuelve todas las canchas del area
- */
-    @Override
-    public List<Cancha> getCanchas() {
-        List<Cancha> retorno = new ArrayList<>();
-        retorno.add(this);
-        return retorno;
-    }
     /*
     Chequea si en este momento hay algun turno en curso o si esta disponible la cancha.
      */

@@ -9,6 +9,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -61,7 +62,7 @@ public class CanchasController implements Initializable {
     public void initAttributes(Area a) {
 
         this.area=a;
-        this.listaCanchas.addAll(this.area.getCanchas()); //Obtengo las canchas del area
+        this.listaCanchas.addAll(this.area.getCanchasXFiltro(null)); //Obtengo las canchas del area
         this.canchas = FXCollections.observableArrayList(this.listaCanchas);//Agrego las canchas al observable
         this.tablaCanchas.setItems(this.canchas);
         this.tablaCanchas.refresh();
@@ -106,25 +107,30 @@ public class CanchasController implements Initializable {
     @FXML
     void modificarDisponibilidadButtonClicked(ActionEvent event) {
         Cancha c = (Cancha)tablaCanchas.getSelectionModel().getSelectedItem();
-        if(tablaCanchas.getSelectionModel().getSelectedItem().getMantenimiento()==true){
-            Main.manager.getTransaction().begin();
-            c.setMantenimiento(false);
-            Main.manager.merge(c);
-            Main.manager.getTransaction().commit();
+        if (tablaCanchas.getSelectionModel().getSelectedItem() != null) {
+            if (tablaCanchas.getSelectionModel().getSelectedItem().getMantenimiento() == true) {
+                Main.manager.getTransaction().begin();
+                c.setMantenimiento(false);
+                Main.manager.merge(c);
+                Main.manager.getTransaction().commit();
+            } else {
+                Main.manager.getTransaction().begin();
+                c.setMantenimiento(true);
+                Main.manager.merge(c);
+                Main.manager.getTransaction().commit();
+            }
+            this.actualizarCanchas();
         }
         else{
-            Main.manager.getTransaction().begin();
-            c.setMantenimiento(true);
-            Main.manager.merge(c);
-            Main.manager.getTransaction().commit();
+            Main m = new Main();
+            m.sendAlert(Alert.AlertType.ERROR,"No selecciono cancha","No se selecciono una cancha. Inténtelo de nuevo");
         }
-        this.actualizarCanchas();
     }
 
     public void actualizarCanchas(){
         this.listaCanchas.clear();
         this.area = (Area)Main.manager.createQuery("FROM Area where id ="+this.area.getId()).getSingleResult();
-        this.listaCanchas.addAll(this.area.getCanchas()); //Obtengo las canchas del area
+        this.listaCanchas.addAll(this.area.getCanchasXFiltro(null)); //Obtengo las canchas del area
         this.canchas.setAll(listaCanchas);
         this.tablaCanchas.setItems(this.canchas);
         this.tablaCanchas.refresh();
