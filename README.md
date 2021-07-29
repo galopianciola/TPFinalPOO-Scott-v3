@@ -1,7 +1,7 @@
 # Trabajo Práctico Final: Scott
 Realizado por Pianciola Galo y Wagner Julian para **Programación Orientada a Objetos**
 
-## Recursos necesarios 
+## Instrucciones para la ejecución 
 > 1. Clonar el proyecto
 > 2. Descargar MAMP para montar servidor local de MySQL
 > 3. Configurar archivo persistence.xml en `target/classes/META-INF` con los datos de acceso a la base
