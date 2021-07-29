@@ -92,46 +92,49 @@ public class Main extends Application {
         CREACION DE Deportes que incluye el complejo y encargado root
          */
 
-/*
-        Area basquet = new Area(1, 100, "Basquet", 4, -1, "General");
-        Area futbol = new Area(2, 80, "Futbol", 5, -1, "General");
-        Area paddle= new Area(3, 95, "Paddle", 3, -1, "General");
-        Area tenis = new Area(4, 100, "Tenis", 2, -1, "General");
-        Area voley = new Area(5, 110, "Voley", 4, -1, "General");
+        Persona rootExistente = manager.find(Persona.class, 41537503);
+        if(rootExistente==null) {
 
-        Encargado root = new Encargado(
-                1,
-                "root",
-                "root",
-                0,
-                null,
-                0,
-                "root");
+            Area basquet = new Area(1, 100, "Basquet", 4, -1, "General");
+            Area futbol = new Area(2, 80, "Futbol", 5, -1, "General");
+            Area paddle = new Area(3, 95, "Paddle", 3, -1, "General");
+            Area tenis = new Area(4, 100, "Tenis", 2, -1, "General");
+            Area voley = new Area(5, 110, "Voley", 4, -1, "General");
 
-        Encargado julian = new Encargado(
-                41537503,
-                "Julian",
-                "Wagner",
-                220645,
-                basquet,
-                0,
-                "123j");
+            Encargado root = new Encargado(
+                    1,
+                    "root",
+                    "root",
+                    0,
+                    null,
+                    0,
+                    "root");
 
-
-        manager.getTransaction().begin();
-        manager.persist(basquet);
-        manager.persist(futbol);
-        manager.persist(paddle);
-        manager.persist(tenis);
-        manager.persist(voley);
-        manager.persist(root);
-        manager.persist(julian);
-        manager.getTransaction().commit();
+            Encargado julian = new Encargado(
+                    41537503,
+                    "Julian",
+                    "Wagner",
+                    220645,
+                    basquet,
+                    0,
+                    "123j");
 
 
+            manager.getTransaction().begin();
+            manager.persist(basquet);
+            manager.persist(futbol);
+            manager.persist(paddle);
+            manager.persist(tenis);
+            manager.persist(voley);
+            manager.persist(root);
+            manager.persist(julian);
+            manager.getTransaction().commit();
+        }
 
- */
+
+
         launch(args);
+
     }
 
 
