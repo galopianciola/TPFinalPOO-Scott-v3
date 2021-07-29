@@ -7,5 +7,5 @@ Realizado por Pianciola Galo y Wagner Julian para **Programación Orientada a Ob
 > 3. Configurar archivo persistence.xml en `target/classes/META-INF` con los datos de acceso a la base
 > 4. Ejecutar desde el `main` presente en `target/classes/ui`
 > 4. Ingresar con las siguientes credenciales
-	> · User: 41414141
-	> · Pass: root123
+	· User: 41414141
+	· Pass: root123
