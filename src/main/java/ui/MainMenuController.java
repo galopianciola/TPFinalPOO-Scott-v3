@@ -34,7 +34,7 @@ public class MainMenuController implements Initializable {
 
         try {
             Main m = new Main();
-            m.changeScene("src/main/java/ui/areas.fxml", "Areas");
+            m.changeScene("src/main/java/ui/Areas/areas.fxml", "Areas");
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -47,7 +47,7 @@ public class MainMenuController implements Initializable {
 
         try {
             Main m = new Main();
-            m.changeScene("src/main/java/ui/resumen.fxml", "Resumen");
+            m.changeScene("src/main/java/ui/Resumen/resumen.fxml", "Resumen");
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -60,7 +60,7 @@ public class MainMenuController implements Initializable {
         Main m = new Main();
         if(Main.encargadoLogeado.getDni()==1){
             try {
-            m.changeScene("src/main/java/ui/usuarios.fxml", "Usuarios");
+            m.changeScene("src/main/java/ui/Usuarios/usuarios.fxml", "Usuarios");
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -74,7 +74,7 @@ public class MainMenuController implements Initializable {
 
         try {
             Main m = new Main();
-            m.changeScene("src/main/java/ui/covid.fxml", "Reportar caso COVID-19");
+            m.changeScene("src/main/java/ui/Covid/covid.fxml", "Reportar caso COVID-19");
         } catch (Exception e) {
             e.printStackTrace();
         }

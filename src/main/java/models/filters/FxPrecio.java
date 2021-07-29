@@ -1,6 +1,6 @@
 package models.filters;
 import models.Cancha;
-/*
+
 public class FxPrecio implements Filtro{
 
     private int precioRequerido;
@@ -17,14 +17,15 @@ public class FxPrecio implements Filtro{
         this.limiteSup=limiteSup;
     }
 
-    /*@Override
+    @Override
     public boolean cumple(Cancha c){
-        if (this.precioRequerido == -1)
+       /* if (this.precioRequerido == -1)
             return c.getPrecioTurno()>=this.limiteInf && c.getPrecioTurno()<=this.limiteSup;
         else
             return c.getPrecioTurno()==this.precioRequerido;
 
-    }
-    }*/
+    */
+        return true;}
+}
 
 

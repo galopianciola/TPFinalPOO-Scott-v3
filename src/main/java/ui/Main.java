@@ -127,7 +127,10 @@ public class Main extends Application {
         manager.persist(root);
         manager.persist(julian);
         manager.getTransaction().commit();
-*/
+
+
+
+ */
         launch(args);
     }
 
