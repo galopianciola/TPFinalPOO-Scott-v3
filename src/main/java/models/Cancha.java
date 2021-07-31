@@ -117,16 +117,6 @@ Chequea si esta ocupada en una fecha en particular
         return false;
 
     }
-    /*
-Obtiene lo que recaudo la cancha en un cierto dia
-     */
-    public double getRecaudado(LocalDate date){
-        double recaudado = 0;
-        for(Turno turno:this.turnos)
-            if(turno.getFecha().equals(date))
-                recaudado+= turno.getPrecio()*turno.getJugadores().size();
-        return recaudado;
-    }
 
     /*
 Retorna si esta disponible la cancha o si esta en mantenimiento
