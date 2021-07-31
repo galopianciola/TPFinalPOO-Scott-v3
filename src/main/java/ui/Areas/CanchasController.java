@@ -55,6 +55,9 @@ public class CanchasController implements Initializable {
     @FXML
     private Button modificarDisponibilidadButton;
 
+    @FXML
+    private Button nuevoMesButton;
+
     private Area area;
     private ObservableList<Elemento> canchas;
     private List<Elemento> listaCanchas = new ArrayList<>();
@@ -127,6 +130,17 @@ public class CanchasController implements Initializable {
         }
     }
 
+
+    @FXML
+    void nuevoMesButtonClicked(ActionEvent event) {
+        Main.manager.getTransaction().begin();
+        for(Elemento e:area.getElementos()){
+            e.reiniciarGananciaMensual();
+            Main.manager.merge(e);
+            }
+        Main.manager.getTransaction().commit();
+    }
+
     public void actualizarCanchas(){
         this.listaCanchas.clear();
         this.area = (Area)Main.manager.createQuery("FROM Area where id ="+this.area.getId()).getSingleResult();
@@ -146,7 +160,7 @@ public class CanchasController implements Initializable {
             controlador.initAttributes((Area)o);
             Scene scene = new Scene(root);
             Stage stage = new Stage();
-            stage.setTitle("Registrar turno");
+            stage.setTitle("Agregar cancha");
             stage.initModality(Modality.APPLICATION_MODAL);
             stage.setScene(scene);
             stage.showAndWait();

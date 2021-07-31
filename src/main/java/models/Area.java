@@ -210,7 +210,12 @@ Seteo un elemento al area. Puede ser una sub area o una cancha
      */
     public void setElementos(Elemento e){
         this.elementos.add(e);
-        e.setId_Area_Padre(this.getId());
+    }
+
+    @Override
+    public void reiniciarGananciaMensual(){
+        for(Elemento e:this.elementos)
+            e.reiniciarGananciaMensual();
     }
 
     public void setBaños(int baños) {
@@ -225,6 +230,8 @@ Seteo un elemento al area. Puede ser una sub area o una cancha
         if(this.elementos.contains(e))
             this.elementos.remove(e);
     }
+
+
 
 }
 

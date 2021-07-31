@@ -20,14 +20,11 @@ public abstract class Elemento {
     private double dimension;
     @Column(name = "deporte")
     private String deporte;
-    @Column(name = "areaPadre")
-    private int id_Area_Padre;
 
     public Elemento(int id, double dimension, String deporte) {
         this.id = id;
         this.dimension = dimension;
         this.deporte = deporte;
-        this.id_Area_Padre = -1;
     }
 
     public Elemento() {
@@ -43,6 +40,8 @@ public abstract class Elemento {
     public abstract List<Turno> getTurnos();
     public abstract void setTurno(Turno t);
     public abstract boolean isOcupadaXFecha(LocalDate date, LocalTime time);
+    public abstract void reiniciarGananciaMensual();
+
 
     public int getId() {
         return id;
@@ -68,8 +67,5 @@ public abstract class Elemento {
         this.deporte = deporte;
     }
 
-    public void setId_Area_Padre(int id_Area){
-        this.id_Area_Padre=id_Area;
-    }
 
 }

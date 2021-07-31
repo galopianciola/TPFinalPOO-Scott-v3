@@ -174,5 +174,10 @@ Matchea con los turnos del dia, y con los que arrancaron y todavia no terminaron
         if(this.turnos.contains(turno))
             this.turnos.remove(turno);
     }
+
+    @Override
+    public void reiniciarGananciaMensual(){
+        this.gananciaMensual=0;
+    }
 }
 
