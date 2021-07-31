@@ -1,4 +1,2 @@
-src/main/resources/persistence.xml
-target/classes/META-INF/persistence.xml
-target/classes/META-INF/
-target/classes/persistence.xml
+out/
+.idea/artifacts/
