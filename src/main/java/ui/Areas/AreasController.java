@@ -36,7 +36,7 @@ public class AreasController {
     @FXML
     void basquetButtonClicked(MouseEvent event) {
         Main m = new Main();
-        if(Main.encargadoLogeado.getDni()==1)
+        if(Main.encargadoLogeado.getDni()==7668)
             m.sendAlert(Alert.AlertType.ERROR,"Acceso denegado,","No es posible ingresar al área seleccionada ya que no tiene un deporte asignado");
         else {
 
@@ -54,7 +54,7 @@ public class AreasController {
     @FXML
     void futbolButtonClicked(MouseEvent event) {
         Main m = new Main();
-        if(Main.encargadoLogeado.getDni()==1)
+        if(Main.encargadoLogeado.getDni()==7668)
             m.sendAlert(Alert.AlertType.ERROR,"Acceso denegado,","No es posible ingresar al área seleccionada ya que no tiene un deporte asignado");
         else {
             try {
@@ -71,7 +71,7 @@ public class AreasController {
     @FXML
     void paddleButtonClicked(MouseEvent event) {
         Main m = new Main();
-        if(Main.encargadoLogeado.getDni()==1)
+        if(Main.encargadoLogeado.getDni()==7668)
             m.sendAlert(Alert.AlertType.ERROR,"Acceso denegado,","No es posible ingresar al área seleccionada ya que no tiene un deporte asignado");
         else {
             try {
@@ -88,7 +88,7 @@ public class AreasController {
     @FXML
     void tenisButtonClicked(MouseEvent event) {
         Main m = new Main();
-        if(Main.encargadoLogeado.getDni()==1)
+        if(Main.encargadoLogeado.getDni()==7668)
             m.sendAlert(Alert.AlertType.ERROR,"Acceso denegado,","No es posible ingresar al área seleccionada ya que no tiene un deporte asignado");
         else {
             try {
@@ -105,7 +105,7 @@ public class AreasController {
     @FXML
     void voleyButtonClicked(MouseEvent event) {
         Main m = new Main();
-        if(Main.encargadoLogeado.getDni()==1)
+        if(Main.encargadoLogeado.getDni()==7668)
             m.sendAlert(Alert.AlertType.ERROR,"Acceso denegado,","No es posible ingresar al área seleccionada ya que no tiene un deporte asignado");
         else {
             try {
