@@ -14,32 +14,35 @@ import java.util.List;
 @Table(name = "canchas")
 public class Cancha extends Elemento implements Serializable {
 
-    @Column(name="capacidad")
+    @Column(name = "capacidad")
     private int capacidad;
-    @Column(name="ocupada")
+    @Column(name = "ocupada")
     private boolean ocupada;
-    @Column(name="estado")
+    @Column(name = "estado")
     private boolean mantenimiento;
-    @Column(name="gastoMensual")
+    @Column(name = "gastoMensual")
     private double gastoMensual;
-    @Column(name="gananciaMensual")
+    @Column(name = "gananciaMensual")
     private int gananciaMensual;
+    @Column(name = "Precio")
+    private int precio;
     @ElementCollection
-    @Column(name="turno")
+    @Column(name = "turno")
     private List<Turno> turnos;
     private String disponible;
     //Este atributo solamente se usa para mostrar de una mejor forma por la interface
 
-    public Cancha(int id, double dimension, String deporte, int capacidad, boolean ocupada, boolean mantenimiento, double gastoMensual) {
+    public Cancha(int id, double dimension, String deporte, int capacidad, boolean ocupada, boolean mantenimiento, double gastoMensual, int precio) {
         super(id, dimension, deporte);
         this.capacidad = capacidad;
         this.ocupada = ocupada;
         this.mantenimiento = mantenimiento;
         this.gastoMensual = gastoMensual;
+        this.precio = precio;
         this.turnos = new ArrayList<>();
     }
 
-    public Cancha(){
+    public Cancha() {
         super();
     }
 
@@ -59,8 +62,12 @@ public class Cancha extends Elemento implements Serializable {
     }
 
     @Override
-    public int getGananciaMensual(){
+    public int getGananciaMensual() {
         return this.gananciaMensual;
+    }
+
+    public int getPrecio(){
+        return this.precio;
     }
 
     /*

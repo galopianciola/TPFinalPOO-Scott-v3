@@ -62,7 +62,8 @@ public class AgregarCanchaController implements Initializable {
                     Integer.parseInt(this.capacidadField.getText()),
                     false,
                     mantenimiento,
-                    Integer.parseInt(this.gastoMensualField.getText())
+                    Integer.parseInt(this.gastoMensualField.getText()),
+                    Integer.parseInt(this.precioTurnoField.getText())
             );
             this.area.setElementos(cancha);
             Main.manager.persist(cancha);

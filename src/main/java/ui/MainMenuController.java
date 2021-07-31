@@ -58,7 +58,7 @@ public class MainMenuController implements Initializable {
     @FXML
     void usuariosButtonClicked(ActionEvent event) throws IOException {
         Main m = new Main();
-        if(Main.encargadoLogeado.getDni()==1){
+        if(Main.encargadoLogeado.getDni()==7668){
             try {
             m.changeScene("src/main/java/ui/Usuarios/usuarios.fxml", "Usuarios");
         } catch (Exception e) {

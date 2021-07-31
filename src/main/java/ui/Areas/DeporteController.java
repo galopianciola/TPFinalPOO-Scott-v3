@@ -126,7 +126,7 @@ public class DeporteController implements Initializable {
                         (LocalTime.parse((String) this.horaSelect.getValue())),
                         Main.encargadoLogeado,
                         false,
-                        300);
+                        this.area.getPrecioCancha());
 
                 //Paso por parametro el turno para que se le puedan añadir los jugadores y setear el titular
                 //Tambien paso el area, porque es donde se debe setear el turno.

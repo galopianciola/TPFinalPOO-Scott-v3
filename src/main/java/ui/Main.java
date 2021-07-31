@@ -92,7 +92,7 @@ public class Main extends Application {
         CREACION DE Deportes que incluye el complejo y encargado root
          */
 
-        Persona rootExistente = manager.find(Persona.class, 41414141);
+        Persona rootExistente = manager.find(Persona.class, 7668);
         if(rootExistente==null) {
 
             Area basquet = new Area(1, 100, "Basquet", 4, -1, "General");
@@ -102,7 +102,7 @@ public class Main extends Application {
             Area voley = new Area(5, 110, "Voley", 4, -1, "General");
 
             Encargado root = new Encargado(
-                    41414141,
+                    7668,
                     "root",
                     "root",
                     0,
