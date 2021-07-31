@@ -88,15 +88,20 @@ public class ResumenController implements Initializable {
         List<Cancha> canchasDisponibles = new ArrayList<>(); //Voy a guardar las canchas que no se encuentra en mantenimiento.
         for (Area area : this.areas) {
             canchasDisponibles.addAll(area.getCanchasXFiltro(fxMantenimiento));
-            contadorCanchasTotales += area.getElementos().size();
+            contadorCanchasTotales += area.getCanchasXFiltro(null).size();
         }
-        //Convierto a String tanto la cantidad de canchas disponibles como las que estan en mantenimiento.
-        String porcentajeCanchasDisponibles = (Double.toString(((double)canchasDisponibles.size() / contadorCanchasTotales * 100))) + "%";
-        String porcentajeCanchasMantenimiento = (Double.toString((100 - ((double)canchasDisponibles.size() / contadorCanchasTotales * 100)))) + "%";
-        //Seteo en los label los String ya convertidos, con el % al final.
-        this.disponibilidadCanchasLabel.setText(porcentajeCanchasDisponibles);
-        this.mantenimientoCanchasLabel.setText(porcentajeCanchasMantenimiento);
-
+        if(contadorCanchasTotales!=0) {
+            //Convierto a String tanto la cantidad de canchas disponibles como las que estan en mantenimiento.
+            String porcentajeCanchasDisponibles = (Double.toString(((double) canchasDisponibles.size() / contadorCanchasTotales * 100))) + "%";
+            String porcentajeCanchasMantenimiento = (Double.toString((100 - ((double) canchasDisponibles.size() / contadorCanchasTotales * 100)))) + "%";
+            //Seteo en los label los String ya convertidos, con el % al final.
+            this.disponibilidadCanchasLabel.setText(porcentajeCanchasDisponibles);
+            this.mantenimientoCanchasLabel.setText(porcentajeCanchasMantenimiento);
+        }
+        else{
+            this.disponibilidadCanchasLabel.setText("-");
+            this.mantenimientoCanchasLabel.setText("-");
+        }
         //Calculo la dimension del complejo como la suma de la dimension de las areas
         double dimensionComplejo = 0;
         for (Area area : this.areas) {
