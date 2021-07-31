@@ -103,10 +103,11 @@ public class DeporteController implements Initializable {
         this.horaSelect.setValue(null);
         this.tipoAreaSelect.setValue(null);
 
-        this.actualizarAreas();//Muestro por pantalla las areas que tiene mi complejo.
-
         this.area = (Area) Main.manager.createQuery("FROM Area where nombreArea='General' and idEncargado ="+Main.encargadoLogeado.getDni()).getSingleResult();
         this.deporteLabel.setText("Área "+this.area.getDeporte());
+
+        this.actualizarAreas();//Muestro por pantalla las areas que tiene mi complejo.
+
     }
 
     @FXML

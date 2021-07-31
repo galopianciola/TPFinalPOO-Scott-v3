@@ -142,16 +142,11 @@ Para esto, recorro los elementos y agrego los nombres de los que son areas.
      */
     public List<String> getNombreSubAreas(){
         List<String> retorno = new ArrayList<>();
-        if(this.elementos.isEmpty())
-            retorno.add(this.getNombreArea());
-        else {
+        retorno.add(this.getNombreArea());
             for (Elemento elemento : this.elementos) {
-                if (elemento.getClass().equals(Cancha.class))
-                    retorno.add(this.getNombreArea());
-                else
+                if (elemento.getClass().equals(Area.class))
                     retorno.addAll(((Area) elemento).getNombreSubAreas());
             }
-        }
         if(!retorno.isEmpty())
             retorno = retorno.stream().distinct().collect(Collectors.toList());
         return retorno;
