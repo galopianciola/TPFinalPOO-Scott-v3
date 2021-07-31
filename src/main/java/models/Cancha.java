@@ -178,8 +178,10 @@ Matchea con los turnos del dia, y con los que arrancaron y todavia no terminaron
     }
 
     public void eliminarTurno(Turno turno){
-        if(this.turnos.contains(turno))
+        if(this.turnos.contains(turno)){
             this.turnos.remove(turno);
+            this.gananciaMensual-=turno.getPrecio()*turno.getJugadores().size();
+        }
     }
 
     @Override
