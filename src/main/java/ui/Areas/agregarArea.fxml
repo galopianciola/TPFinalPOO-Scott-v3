@@ -51,7 +51,7 @@
             </Label>
             <Accordion layoutX="213.0" layoutY="163.0" />
             <TextField fx:id="nombreField" layoutX="48.0" layoutY="75.0" prefHeight="26.0" prefWidth="143.0" promptText="Nombre " />
-            <TextField fx:id="dimensionField" layoutX="47.0" layoutY="117.0" prefHeight="26.0" prefWidth="143.0" promptText="Dimension" />
+            <TextField fx:id="dimensionField" layoutX="47.0" layoutY="117.0" prefHeight="26.0" prefWidth="143.0" promptText="Dimension (m²)" />
             <TextField fx:id="bañosField" layoutX="47.0" layoutY="157.0" prefHeight="26.0" prefWidth="143.0" promptText="Baños" />
             <Button fx:id="addButton" layoutX="59.0" layoutY="214.0" mnemonicParsing="false" onAction="#addButtonClicked" prefHeight="26.0" prefWidth="120.0" text="Agregar" />
       </children>
