@@ -148,7 +148,7 @@
                         <Font name="Lato Regular" size="13.0" />
                      </font>
                   </Label>
-                  <Label fx:id="cantCanchasLabel" layoutX="177.0" layoutY="137.0" prefHeight="16.0" prefWidth="64.0" textFill="WHITE">
+                  <Label fx:id="cantCanchasLabel" layoutX="184.0" layoutY="137.0" prefHeight="16.0" prefWidth="64.0" textFill="WHITE">
                      <font>
                         <Font name="Lato Regular" size="13.0" />
                      </font>

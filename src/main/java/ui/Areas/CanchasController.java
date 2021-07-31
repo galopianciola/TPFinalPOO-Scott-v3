@@ -139,6 +139,7 @@ public class CanchasController implements Initializable {
             Main.manager.merge(e);
             }
         Main.manager.getTransaction().commit();
+        this.actualizarCanchas();
     }
 
     public void actualizarCanchas(){

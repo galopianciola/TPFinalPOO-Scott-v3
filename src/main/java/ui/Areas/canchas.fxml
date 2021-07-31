@@ -69,8 +69,8 @@
                <font>
                   <Font name="System Bold" size="20.0" />
                </font></Button>
-            <Button fx:id="modificarCanchaButton" layoutX="326.0" layoutY="38.0" mnemonicParsing="false" onAction="#modificarDisponibilidadButtonClicked" prefHeight="26.0" prefWidth="147.0" text="Modificar disponibilidad" />
-            <Button fx:id="nuevoMesButton" layoutX="187.0" layoutY="38.0" mnemonicParsing="false" onAction="#nuevoMesButtonClicked" prefHeight="26.0" prefWidth="124.0" text="Nuevo mes" />
+            <Button fx:id="modificarCanchaButton" layoutX="296.0" layoutY="38.0" mnemonicParsing="false" onAction="#modificarDisponibilidadButtonClicked" prefHeight="26.0" prefWidth="177.0" text="Modificar disponibilidad" />
+            <Button fx:id="nuevoMesButton" layoutX="166.0" layoutY="38.0" mnemonicParsing="false" onAction="#nuevoMesButtonClicked" prefHeight="26.0" prefWidth="124.0" text="Nuevo mes" />
       </children>
     </AnchorPane>
   </children>

@@ -178,5 +178,10 @@ Matchea con los turnos del dia, y con los que arrancaron y todavia no terminaron
     public void reiniciarGananciaMensual(){
         this.gananciaMensual=0;
     }
+
+    @Override
+    public int getPrecioCancha(){
+        return this.precio;
+    }
 }
 

@@ -124,11 +124,13 @@ Suma las ganancias mensuales de todos los elementos que compone el area, y retor
         return idEncargado;
     }
 
+    @Override
     public int getPrecioCancha(){
-        for(Elemento e:this.elementos) {
-            if (e.getClass().equals(Cancha.class))
-                return ((Cancha) e).getPrecio();
-        }
+        /*
+            Recorre todos los elementos, y cuando encuentra una cancha retorna su precio. Sino el precio es 0.
+        */
+        for(Elemento e:this.elementos)
+            return e.getPrecioCancha();
         return 0;
     }
 

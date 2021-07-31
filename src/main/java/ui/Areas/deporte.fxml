@@ -53,10 +53,10 @@
                   <Font name="Lato Black" size="20.0" />
                </font>
             </Label>
-            <Separator layoutX="201.0" layoutY="32.0" opacity="0.5" prefHeight="16.0" prefWidth="374.0" />
-            <Separator layoutX="23.0" layoutY="364.0" opacity="0.5" prefHeight="16.0" prefWidth="554.0" />
+            <Separator layoutX="201.0" layoutY="32.0" opacity="0.5" prefHeight="16.0" prefWidth="387.0" />
+            <Separator layoutX="23.0" layoutY="364.0" opacity="0.5" prefHeight="16.0" prefWidth="567.0" />
             <Accordion layoutX="213.0" layoutY="163.0" />
-            <TableView fx:id="tablaTurnos" layoutX="24.0" layoutY="129.0" prefHeight="221.0" prefWidth="465.0">
+            <TableView fx:id="tablaTurnos" layoutX="14.0" layoutY="129.0" prefHeight="221.0" prefWidth="465.0">
               <columns>
                 <TableColumn fx:id="colID" prefWidth="57.0" text="ID" />
                 <TableColumn fx:id="colFecha" prefWidth="102.0" text="Fecha" />
@@ -65,19 +65,19 @@
                   <TableColumn fx:id="colPago" minWidth="1.0" prefWidth="78.0" text="Pago" />
               </columns>
             </TableView>
-            <DatePicker fx:id="diaPicker" layoutX="162.0" layoutY="76.0" onAction="#seleccionarFecha" prefHeight="26.0" prefWidth="114.0" promptText="Dia" />
-            <ComboBox fx:id="horaSelect" layoutX="282.0" layoutY="75.0" onAction="#seleccionarHora" prefHeight="26.0" prefWidth="98.0" promptText="Hora" />
-            <Button fx:id="registrarTurnoButton" layoutX="495.0" layoutY="150.0" mnemonicParsing="false" onAction="#registrarTurnoButtonClicked" prefHeight="26.0" prefWidth="98.0" text="Registrar turno" />
+            <DatePicker fx:id="diaPicker" layoutX="152.0" layoutY="76.0" onAction="#seleccionarFecha" prefHeight="26.0" prefWidth="114.0" promptText="Dia" />
+            <ComboBox fx:id="horaSelect" layoutX="272.0" layoutY="75.0" onAction="#seleccionarHora" prefHeight="26.0" prefWidth="98.0" promptText="Hora" />
+            <Button fx:id="registrarTurnoButton" layoutX="490.0" layoutY="149.0" mnemonicParsing="false" onAction="#registrarTurnoButtonClicked" prefHeight="26.0" prefWidth="98.0" text="Registrar turno" />
             <Button fx:id="backButton" layoutX="25.0" layoutY="25.0" mnemonicParsing="false" onAction="#backButtonClicked" text="&lt;&lt;">
                <font>
                   <Font size="15.0" />
                </font>
             </Button>
-            <Button fx:id="verCanchaButton" layoutX="388.0" layoutY="75.0" mnemonicParsing="false" onAction="#verCanchaButtonClicked" prefHeight="26.0" prefWidth="98.0" text="Canchas" />
-            <ComboBox fx:id="tipoAreaSelect" layoutX="25.0" layoutY="75.0" onAction="#seleccionarTipoArea" prefHeight="26.0" prefWidth="131.0" promptText="Area" />
-            <Button fx:id="agregarAreaButton" layoutX="495.0" layoutY="75.0" mnemonicParsing="false" onAction="#agregarAreaButtonClicked" prefHeight="26.0" prefWidth="98.0" text="Agregar área" />
-            <Button fx:id="registrarPagoButton" layoutX="495.0" layoutY="227.0" mnemonicParsing="false" onAction="#registrarPagoButtonClicked" prefHeight="26.0" prefWidth="98.0" text="Registrar pago" />
-            <Button fx:id="eliminarTurnoButton" layoutX="495.0" layoutY="187.0" mnemonicParsing="false" onAction="#eliminarTurnoButtonClicked" prefHeight="26.0" prefWidth="98.0" text="Eliminar turno" />
+            <Button fx:id="verCanchaButton" layoutX="378.0" layoutY="75.0" mnemonicParsing="false" onAction="#verCanchaButtonClicked" prefHeight="26.0" prefWidth="98.0" text="Canchas" />
+            <ComboBox fx:id="tipoAreaSelect" layoutX="15.0" layoutY="75.0" onAction="#seleccionarTipoArea" prefHeight="26.0" prefWidth="131.0" promptText="Area" />
+            <Button fx:id="agregarAreaButton" layoutX="490.0" layoutY="74.0" mnemonicParsing="false" onAction="#agregarAreaButtonClicked" prefHeight="26.0" prefWidth="98.0" text="Agregar área" />
+            <Button fx:id="registrarPagoButton" layoutX="490.0" layoutY="226.0" mnemonicParsing="false" onAction="#registrarPagoButtonClicked" prefHeight="26.0" prefWidth="98.0" text="Registrar pago" />
+            <Button fx:id="eliminarTurnoButton" layoutX="490.0" layoutY="186.0" mnemonicParsing="false" onAction="#eliminarTurnoButtonClicked" prefHeight="26.0" prefWidth="98.0" text="Eliminar turno" />
       </children>
     </AnchorPane>
   </children>
