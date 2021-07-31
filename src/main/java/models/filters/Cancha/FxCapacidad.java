@@ -1,7 +1,7 @@
-package models.filters;
+package models.filters.Cancha;
 import models.Cancha;
 
-public class FxCapacidad implements Filtro{
+public class FxCapacidad implements Filtro {
 
     private int capacidadRequerida;
     private int limiteInf;

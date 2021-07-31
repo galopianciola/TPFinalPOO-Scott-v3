@@ -6,7 +6,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import models.*;
-import models.filters.FxMantenimiento;
+import models.filters.Cancha.FxMantenimiento;
 import ui.Main;
 
 import java.net.URL;

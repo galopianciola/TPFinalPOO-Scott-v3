@@ -1,6 +1,6 @@
 package models;
 
-import models.filters.Filtro;
+import models.filters.Cancha.Filtro;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -77,6 +77,15 @@ Si el filtro es null, devuelve la lista de canchas con la misma.
         else {
             retorno.add(this);
         }
+        return retorno;
+    }
+
+    @Override
+    public List<Turno> getTurnosXFiltro (models.filters.Turno.Filtro f1) {
+        List<Turno> retorno = new ArrayList<>();
+        for(Turno turno:this.turnos)
+            if (f1.cumple(turno))
+                retorno.add(turno);
         return retorno;
     }
 
@@ -161,5 +170,9 @@ Matchea con los turnos del dia, y con los que arrancaron y todavia no terminaron
         this.gastoMensual = gastoMensual;
     }
 
+    public void eliminarTurno(Turno turno){
+        if(this.turnos.contains(turno))
+            this.turnos.remove(turno);
+    }
 }
 

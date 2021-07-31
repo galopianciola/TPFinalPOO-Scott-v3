@@ -1,4 +1,4 @@
-package models.filters;
+package models.filters.Cancha;
 import models.Cancha;
 
 public interface Filtro {

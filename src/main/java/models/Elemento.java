@@ -1,6 +1,6 @@
 package models;
 
-import models.filters.Filtro;
+import models.filters.Cancha.Filtro;
 
 import javax.persistence.*;
 import java.time.LocalDate;
@@ -39,6 +39,7 @@ public abstract class Elemento {
     public abstract double getGastoMensual();
     public abstract int getGananciaMensual();
     public abstract List<Cancha> getCanchasXFiltro(Filtro f1);
+    public abstract List<Turno> getTurnosXFiltro(models.filters.Turno.Filtro f1);
     public abstract List<Turno> getTurnos();
     public abstract void setTurno(Turno t);
     public abstract boolean isOcupadaXFecha(LocalDate date, LocalTime time);

@@ -1,6 +1,6 @@
 package models;
 
-import models.filters.Filtro;
+import models.filters.Cancha.Filtro;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -81,6 +81,17 @@ Devuelve unas lista de canchas que cumplen con la condicion del filtro.
             for (Elemento e : this.elementos)
                 retorno.addAll(e.getCanchasXFiltro(f1));
             return retorno;
+    }
+
+    /*
+Devuelve unas lista de turnos que cumplen con la condicion del filtro.
+     */
+    @Override
+    public List<Turno> getTurnosXFiltro(models.filters.Turno.Filtro f1){
+        List<Turno> retorno = new ArrayList<>();
+        for (Elemento e : this.elementos)
+            retorno.addAll(e.getTurnosXFiltro(f1));
+        return retorno;
     }
 
     /*

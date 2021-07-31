@@ -1,7 +1,7 @@
-package models.filters;
+package models.filters.Cancha;
 import models.Cancha;
 
-public class FxDeporte implements Filtro{
+public class FxDeporte implements Filtro {
 
     private String deporte;
 

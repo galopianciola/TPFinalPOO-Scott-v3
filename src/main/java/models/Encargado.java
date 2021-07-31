@@ -18,6 +18,7 @@ public class Encargado extends Persona implements Serializable {
     @Column(name="password")
     private String password;
     @OneToMany(mappedBy = "encargado",cascade = CascadeType.ALL)
+    //Es necesaria la lista para hacer el mappedBy con los turnos y que se guarde bien en la base.
     private List<Turno> turnos;
 
     public Encargado(int dni, String nombre, String apellido, int telefono, Area area, double sueldo,String password) {
@@ -75,6 +76,11 @@ public class Encargado extends Persona implements Serializable {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public void eliminarTurno(Turno turno){
+        if (this.turnos.contains(turno))
+            this.turnos.remove(turno);
     }
     /*
     @Override

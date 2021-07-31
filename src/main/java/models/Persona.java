@@ -66,4 +66,10 @@ public class Persona {
     public void setTurno(Turno t){
         this.turnos.add(t);
     }
+
+    public void eliminarTurno(Turno turno){
+        if (this.turnos.contains(turno))
+            this.turnos.remove(turno);
+    }
+
 }

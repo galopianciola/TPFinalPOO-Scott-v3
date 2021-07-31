@@ -11,14 +11,15 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import models.Area;
 import models.Persona;
 import models.Turno;
+import models.filters.Turno.FxAnd;
+import models.filters.Turno.FxDni;
+import models.filters.Turno.FxFecha;
 import ui.Main;
-
 import java.net.URL;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
-import java.util.stream.Collectors;
 
 public class TurnosAfectadosController implements Initializable {
 
@@ -60,16 +61,24 @@ public class TurnosAfectadosController implements Initializable {
         this.dniAfectado = dniAfectado;
         this.infectadoLabel.setText("DNI del infectado/a:\n" + this.dniAfectado);
 
-        // Traigo los turnos de hace 2 dias en adelante
-        List<Turno> turnosEnRango = (List<Turno>) Main.manager.createQuery("FROM Turno WHERE fecha BETWEEN '" + LocalDate.now().minusDays(2).toString() + "' AND '" + LocalDate.now().toString() + "'").getResultList();
+        // Traigo las areas de la base
+        List<Area> areas = (List<Area>) Main.manager.createQuery("FROM Area where nombreArea ='General'").getResultList();
+        System.out.println("Cantida de areas "+areas.size());
+        //Por cada area, filtro los turnos por dni y por fecha
+        FxDni fxDni = new FxDni(this.dniAfectado);
+        FxFecha fxFecha = new FxFecha(LocalDate.now().minusDays(3),LocalDate.now());
+        FxAnd fxAnd = new FxAnd(fxDni,fxFecha);
 
-        // De los turnos en el rango...
-        for (Turno t: turnosEnRango)
-            // Si el jugador infectado participó en el turno
-            if (t.participaJugador(this.dniAfectado))
+        List<Turno> turnosFiltrados = new ArrayList<>();
+        for(Area a:areas)
+            turnosFiltrados.addAll(a.getTurnosXFiltro(fxAnd));
+        System.out.println("Cantidad de turnos filtrados "+turnosFiltrados.size());
+
+        // De los turnos filtrados por dni y rango...
+        for (Turno t: turnosFiltrados)
                 for(Persona p:t.getJugadores())
+                    // Agrego todos los jugadores
                     if(!this.listaAfectados.contains(p) && p.getDni()!=this.dniAfectado)
-                        // Agrego todos los jugadores
                         this.listaAfectados.add(p);
 
         // Seteo finalmente la lista de jugadores afectados en la tabla para que se muestren

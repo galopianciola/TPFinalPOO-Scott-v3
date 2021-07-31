@@ -1,5 +1,5 @@
 
-package models.filters;
+package models.filters.Cancha;
 import models.Cancha;
 
 public class FxOcupada implements Filtro {

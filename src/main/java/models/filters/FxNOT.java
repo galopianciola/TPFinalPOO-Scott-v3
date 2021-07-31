@@ -1,5 +1,6 @@
 package models.filters;
 import models.Cancha;
+import models.filters.Cancha.Filtro;
 
 public class FxNOT implements Filtro {
     private Filtro f;

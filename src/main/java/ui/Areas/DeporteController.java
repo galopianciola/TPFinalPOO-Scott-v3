@@ -13,7 +13,9 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import models.*;
-import models.filters.FxMantenimiento;
+import models.filters.Cancha.Filtro;
+import models.filters.Cancha.FxMantenimiento;
+import models.filters.Cancha.FxTurno;
 import ui.Main;
 
 
@@ -80,6 +82,9 @@ public class DeporteController implements Initializable {
 
     @FXML
     private Button agregarAreaButton;
+
+    @FXML
+    private Button eliminarTurnoButton;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -270,6 +275,32 @@ public class DeporteController implements Initializable {
             this.horaSelect.setItems(this.horarios);
         }
     }
+
+    @FXML
+    void eliminarTurnoButtonClicked(ActionEvent event) {
+        if (tablaTurnos.getSelectionModel().getSelectedItem() != null) {
+            Turno turnoSeleccionado = this.tablaTurnos.getSelectionModel().getSelectedItem();
+            //Obtengo la cancha que tiene el turno para eliminarlo de ahi.
+            FxTurno fxTurno = new FxTurno(turnoSeleccionado);
+            List<Cancha> canchaFiltrada = this.area.getCanchasXFiltro(fxTurno);
+
+            Main.manager.getTransaction().begin();
+            canchaFiltrada.get(0).eliminarTurno(turnoSeleccionado);
+            for(Persona p:turnoSeleccionado.getJugadores())
+                p.eliminarTurno(turnoSeleccionado);
+            turnoSeleccionado.getEncargado().eliminarTurno(turnoSeleccionado);
+
+            Main.manager.remove(turnoSeleccionado);
+            Main.manager.getTransaction().commit();
+
+        }else{
+            Main m = new Main();
+            m.sendAlert(Alert.AlertType.ERROR,"No selecciono turno","No se selecciono un turno. Inténtelo de nuevo");
+        }
+        this.actualizarListaTurnos();
+        this.actualizarHorarios();
+    }
+
 
     @FXML
     void registrarPagoButtonClicked(ActionEvent event) {

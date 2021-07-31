@@ -1,7 +1,8 @@
 package models.filters;
 import models.Cancha;
+import models.filters.Cancha.Filtro;
 
-public class FxOR implements Filtro{
+public class FxOR implements Filtro {
 
     private Filtro f1;
     private Filtro f2;

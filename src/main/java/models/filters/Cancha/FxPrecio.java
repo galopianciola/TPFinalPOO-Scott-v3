@@ -1,7 +1,7 @@
-package models.filters;
+package models.filters.Cancha;
 import models.Cancha;
 
-public class FxPrecio implements Filtro{
+public class FxPrecio implements Filtro {
 
     private int precioRequerido;
     private int limiteInf;

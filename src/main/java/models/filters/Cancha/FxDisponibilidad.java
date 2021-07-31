@@ -1,4 +1,4 @@
-package models.filters;
+package models.filters.Cancha;
 
 import models.Cancha;
 import models.Turno;
@@ -7,7 +7,7 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
-public class FxDisponibilidad implements Filtro{
+public class FxDisponibilidad implements Filtro {
 
     private LocalDate fecha;
 
