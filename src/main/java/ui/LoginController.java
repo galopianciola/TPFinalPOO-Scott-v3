@@ -8,6 +8,7 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import models.Encargado;
 import models.Persona;
+import ui.Main;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;

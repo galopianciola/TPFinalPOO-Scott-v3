@@ -23,9 +23,9 @@
          <font>
             <Font name="Lato Regular" size="13.0" />
          </font></Button>
-      <ImageView fitHeight="120.0" fitWidth="117.0" layoutX="242.0" layoutY="48.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="104.0" fitWidth="105.0" layoutX="249.0" layoutY="34.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../../../../TPFinalPOO-Scott-v3/src/main/java/img/logo-scott.png" />
+            <Image url="@../img/logo-scott.png" />
          </image>
       </ImageView>
       <Label fx:id="wrongLogin" alignment="CENTER" layoutX="200.0" layoutY="281.0" prefHeight="17.0" prefWidth="200.0" textFill="#fcbb44">
